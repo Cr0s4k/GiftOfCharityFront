@@ -21,7 +21,7 @@ class Home extends Component{
 
     render() {
         return(
-            <div>
+            <div className="divForFooter">
                 <TitleBar />
                 <HomeSection />
                 <HomeProducts products={this.state.products}/>
