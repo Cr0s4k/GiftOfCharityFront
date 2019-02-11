@@ -1,0 +1,17 @@
+#homeSectionImage{
+    width: 300px;
+    height: 300px;
+    display: block;
+    margin: 0 auto;
+}
+
+#homeSectionGrid {
+    background-color: rgb(234,255,241);
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+li{
+    margin-bottom: 10px;
+    font-size: 20px;
+}

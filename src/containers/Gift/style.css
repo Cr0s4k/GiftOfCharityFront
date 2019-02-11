@@ -1,0 +1,17 @@
+h2 {
+  text-align: center;
+}
+
+.header {
+  margin-top: 10px;
+  margin-bottom: 15px;
+}
+
+#gotoGrid {
+  margin-top: 15px;
+}
+
+#gotoBtn{
+  display: block;
+  margin: 0 auto;
+}
