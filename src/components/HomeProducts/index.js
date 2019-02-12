@@ -14,7 +14,7 @@ class HomeProducts extends Component {
     }
 
     handleClick(product){
-        document.location.replace(`/item/${product.id}`)
+        document.location.href = `/item/${product.id}`
     }
 
     render() {
@@ -24,7 +24,7 @@ class HomeProducts extends Component {
                     <Typography align="center" variant="h4" gutterBottom>Choose a <b>gift</b>!</Typography>
                 </Grid>
                 <GridList cellHeight={300} spacing={0}>
-                    {this.props.products.map((product, i) => (
+                    {this.props.products && this.props.products.map((product, i) => (
                         <GridListTile key={i}>
                             <img src={product.imageURL} alt={product.name} />
                             <GridListTileBar

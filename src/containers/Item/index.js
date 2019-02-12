@@ -8,7 +8,7 @@ class Item extends React.Component{
     constructor(props) {
         super(props);
         this.state = {
-            item: undefined
+            item: {}
         }
     }
 
@@ -17,6 +17,7 @@ class Item extends React.Component{
     }
 
     render() {
+        document.title = this.state.item !== undefined ? this.state.item.name : "";
         return(
             <div className="divForFooter">
                 <TitleBar/>

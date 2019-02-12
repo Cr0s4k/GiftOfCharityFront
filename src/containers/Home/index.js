@@ -8,10 +8,10 @@ import Footer from "../../components/Footer";
 
 class Home extends Component{
     constructor(props) {
-        super(props)
+        super(props);
         this.state = {
             products: []
-        }
+        };
         document.title = "Gift Of Charity"
     }
 

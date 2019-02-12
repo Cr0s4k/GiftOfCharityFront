@@ -4,3 +4,28 @@
     padding-bottom: 15px;
     margin-bottom: 10px;
 }
+
+#specificItemImage {
+    width: 400px;
+    height: 300px;
+    display: block;
+    margin: 0 auto;
+    max-width: 100%;
+}
+
+#specificItemGridRight{
+    padding-top: 25px;
+    padding-right: 20px;
+    padding-left: 20px;
+}
+
+#specificItemBtn{
+    display: block;
+    margin: 0 auto;
+    margin-top: 20px;
+    background-color: #3c8e3f;
+}
+
+#specificItemBtn:hover {
+    background-color: #0e6e10;
+}
