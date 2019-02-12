@@ -7,6 +7,11 @@ import Typography from "@material-ui/core/Typography";
 class SpecificItem extends React.Component {
     constructor(props){
         super(props);
+        this.handleClick = this.handleClick.bind(this)
+    }
+
+    handleClick() {
+        document.location.href = "/login"
     }
 
     render() {
@@ -24,7 +29,14 @@ class SpecificItem extends React.Component {
                     <Typography variant="h6" gutterBottom>
                         {this.props.item.description}
                     </Typography>
-                    <Button variant="contained" color="primary" id="specificItemBtn" size="large">Give away</Button>
+                    <Button
+                        variant="contained"
+                        color="primary"
+                        id="specificItemBtn"
+                        size="large"
+                        onClick={this.handleClick}>
+                        Give away
+                    </Button>
                 </Grid>
             </Grid>
         );
