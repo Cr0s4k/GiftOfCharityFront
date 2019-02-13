@@ -21,7 +21,7 @@ class LoginFrom extends React.Component {
                         style={{width: "100%"}}
                     />
                 </Grid>
-                <Grid sm={12}/>
+                <Grid item sm={12}/>
                 <Grid item sm={5} xs={7}>
                     <TextField
                         id="filledPasswordInput"
@@ -33,19 +33,19 @@ class LoginFrom extends React.Component {
                         style={{width: "100%"}}
                     />
                 </Grid>
-                <Grid sm={12}/>
+                <Grid item sm={12}/>
                 <Grid item sm={5} xs={7}>
                     <Button variant="contained" color="primary" id="loginBtn" size="large">Login</Button>
                 </Grid>
-                <Grid sm={12} />
+                <Grid item sm={12} />
                 <Grid item sm={5} xs={7} container justify="center" id="loginFormTexts">
                     <Grid item sm={6} xs={12}>
-                        <Typography variant="h8" gutterBottom align="center">
+                        <Typography variant="body1" gutterBottom align="center">
                             <Link href="/resetpassword">Forgot your password?</Link>
                         </Typography>
                     </Grid>
                     <Grid item sm={6} xs={12}>
-                        <Typography variant="h8" gutterBottom align="center">
+                        <Typography variant="body1" gutterBottom align="center">
                             <Link href="/register">Don't have an account? <b>Get Started</b></Link>
                         </Typography>
                     </Grid>

@@ -9,10 +9,10 @@
     display: block;
     margin: 0 auto;
     margin-top: 20px;
-    /*background-color: #3c8e3f;*/
+    background-color: #3c8e3f;
     width: 100%;
 }
 
 #registerBtn:hover {
-    /*background-color: #0e6e10;*/
+    background-color: #0e6e10;
 }
