@@ -5,9 +5,15 @@ import RegisterForm from "../../components/RegisterForm"
 import './style.css'
 
 class Register extends React.Component {
+    constructor(props) {
+        super(props);
+        document.title = "Register"
+    }
+
+
     render() {
         return(
-            <div>
+            <div className="divForFooter">
                 <TitleBar/>
                 <RegisterForm/>
                 <Footer/>
