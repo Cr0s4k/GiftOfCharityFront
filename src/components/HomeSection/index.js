@@ -7,7 +7,7 @@ import './styles.css'
 class HomeSection extends Component {
     render() {
         return (
-            <Grid container spacing={8} justify="center" id="homeSectionGrid">
+            <Grid container justify="center" id="homeSectionGrid">
                 <Grid item xs={12} sm={6}>
                     <div>
                         <img src={homeSectionImage} id={"homeSectionImage"}/>

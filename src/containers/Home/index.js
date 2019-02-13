@@ -4,13 +4,15 @@ import TitleBar from '../../components/TitleBar'
 import HomeProducts from "../../components/HomeProducts";
 import HomeSection from "../../components/HomeSection";
 import API from '../../services/api/app'
+import Footer from "../../components/Footer";
 
 class Home extends Component{
     constructor(props) {
-        super(props)
+        super(props);
         this.state = {
             products: []
-        }
+        };
+        document.title = "Gift Of Charity"
     }
 
     componentDidMount() {
@@ -19,10 +21,11 @@ class Home extends Component{
 
     render() {
         return(
-            <div>
+            <div className="divForFooter">
                 <TitleBar />
                 <HomeSection />
                 <HomeProducts products={this.state.products}/>
+                <Footer />
             </div>
         )
     }

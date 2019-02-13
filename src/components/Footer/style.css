@@ -1,0 +1,7 @@
+#footerContainer{
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background-color: rgb(225, 255, 237);
+    position: absolute;
+    bottom: 0;
+}
