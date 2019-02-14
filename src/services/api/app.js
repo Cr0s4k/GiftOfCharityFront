@@ -1,4 +1,4 @@
-const ENDPOINT = "http://127.0.0.1:3000";
+const ENDPOINT = process.env.REACT_APP_BACKEND_URL
 
 class API {
 
