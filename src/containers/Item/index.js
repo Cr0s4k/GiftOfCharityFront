@@ -38,7 +38,7 @@ class Item extends React.Component{
                 ) : (
                     <ErrorMessage
                         title="Error!"
-                        description="The charity project your are trying to find it doesn't exists!"
+                        description="The charity project you are trying to find it doesn't exists!"
                         handleClose={this.handleCloseError}
                     />
                 )}
