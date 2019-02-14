@@ -26,7 +26,7 @@ class HomeProducts extends Component {
                 <GridList cellHeight={300} spacing={0}>
                     {this.props.products && this.props.products.map((product, i) => (
                         <GridListTile key={i}>
-                            <img src={product.imageURL} alt={product.name} />
+                            <img src={product.imageUrl} alt={product.name} />
                             <GridListTileBar
                                 title={product.name}
                                 subtitle={<span>Price: {product.price} €</span>}

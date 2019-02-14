@@ -16,7 +16,12 @@ class Home extends Component{
     }
 
     componentDidMount() {
-        this.setState({products: API.getAvailableGifts()})
+        API.getCharityProjects()
+        .then(products => {
+            this.setState({
+                products: products
+            })
+        });
     }
 
     render() {
