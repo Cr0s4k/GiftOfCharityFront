@@ -17,14 +17,9 @@ class API {
         let charityProject = await fetch(`${ENDPOINT}/charity_projects/${id}`, {
             method: 'GET'
         });
+
+        if(charityProject.status !== 200) throw Error;
         return charityProject.json()
-        // return {
-        //     id: 4,
-        //     name: 'BEF Water Restoration program',
-        //     imageURL: 'http://www.baltana.com/files/wallpapers-8/River-Landscape-HD-Wallpapers-25857.jpg',
-        //     price: 35,
-        //     description: `Every BEF Water Restoration Certificate® created represents 1000 gallons of water restored on your behalf. By purchasing BEF WRCs® you are directly contributing to the restoration of recreational and ecological vitality in critical freshwater ecosystems.`
-        // }
     }
 }
 

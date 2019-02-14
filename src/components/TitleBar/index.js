@@ -4,11 +4,15 @@ import Grid from "@material-ui/core/Grid";
 import './style.css'
 
 class TitleBar extends Component {
+    handleClick = () => {
+      document.location.href = "/"
+    };
+
     render() {
         return(
             <Grid container justify="center" id="mainDiv">
-                <Grid item xs={12}>
-                    <Typography variant="h2"><b>Gift Of Charity</b></Typography>
+                <Grid item xs={12} style={{textAlign: "center"}}>
+                    <Typography id="title" variant="h2" onClick={this.handleClick}><b>Gift Of Charity</b></Typography>
                 </Grid>
                 <Grid item xs={12}>
                     <Typography align="center" variant="h4" gutterBottom>The enhanced charity experience</Typography>
