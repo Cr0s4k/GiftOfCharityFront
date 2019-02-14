@@ -2,7 +2,7 @@ import React from 'react'
 import TitleBar from "../../components/TitleBar";
 import Footer from "../../components/Footer";
 import SpecificItem from "../../components/SpecificItem";
-import API from '../../services/api/app'
+import API from '../../services/API'
 
 class Item extends React.Component{
     constructor(props) {
@@ -13,7 +13,11 @@ class Item extends React.Component{
     }
 
     componentDidMount() {
-        this.setState({item: API.getItemInformation(this.props.match.params.id)});
+        API.getCharityProject(this.props.match.params.id)
+            .then(item => {
+                console.log(item);
+                this.setState({ item: item })
+            });
     }
 
     render() {

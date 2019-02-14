@@ -19,7 +19,7 @@ class SpecificItem extends React.Component {
             <Grid container id="specificItemGrid">
                 <Grid item xs={12} sm={5}>
                     <div>
-                        <img src={this.props.item.imageURL} id="specificItemImage" />
+                        <img src={this.props.item.imageUrl} id="specificItemImage" />
                     </div>
                 </Grid>
                 <Grid item xs={12} sm={7} id="specificItemGridRight">
