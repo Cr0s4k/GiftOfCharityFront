@@ -2,10 +2,11 @@ import React, {Component} from 'react'
 import Typography from "@material-ui/core/Typography";
 import Grid from "@material-ui/core/Grid";
 import './style.css'
+import {withRouter} from "react-router";
 
 class TitleBar extends Component {
     handleClick = () => {
-      document.location.href = "/"
+        this.props.history.push("/")
     };
 
     render() {
@@ -26,4 +27,4 @@ class TitleBar extends Component {
     }
 }
 
-export default TitleBar
+export default withRouter(TitleBar)

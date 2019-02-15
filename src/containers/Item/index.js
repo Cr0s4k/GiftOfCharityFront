@@ -4,6 +4,7 @@ import Footer from "../../components/Footer";
 import SpecificItem from "../../components/SpecificItem";
 import API from '../../services/API'
 import ErrorMessage from '../../components/ErrorMessage'
+import {withRouter} from "react-router";
 
 class Item extends React.Component{
     constructor(props) {
@@ -26,7 +27,7 @@ class Item extends React.Component{
     }
 
     handleCloseError = () => {
-        document.location.href = "/"
+        this.props.history.push("/")
     };
 
     handleError() {
@@ -55,4 +56,4 @@ class Item extends React.Component{
     }
 }
 
-export default Item
+export default withRouter(Item)

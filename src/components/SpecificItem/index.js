@@ -3,6 +3,7 @@ import Grid from "@material-ui/core/Grid";
 import './style.css'
 import {Button} from "@material-ui/core";
 import Typography from "@material-ui/core/Typography";
+import {withRouter} from "react-router";
 
 class SpecificItem extends React.Component {
     constructor(props){
@@ -11,7 +12,7 @@ class SpecificItem extends React.Component {
     }
 
     handleClick() {
-        document.location.href = "/login"
+        this.props.history.push("/login")
     }
 
     render() {
@@ -43,4 +44,4 @@ class SpecificItem extends React.Component {
     }
 }
 
-export default SpecificItem;
+export default withRouter(SpecificItem);

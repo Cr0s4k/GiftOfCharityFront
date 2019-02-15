@@ -7,14 +7,12 @@ import GridListTile from "@material-ui/core/GridListTile";
 import GridListTileBar from "@material-ui/core/GridListTileBar";
 import IconButton from "@material-ui/core/IconButton";
 import {Icon} from "@material-ui/core";
+import {withRouter} from 'react-router'
 
 class HomeProducts extends Component {
-    constructor(props){
-        super(props)
-    }
 
     handleClick(product){
-        document.location.href = `/item/${product.id}`
+        this.props.history.push(`/item/${product.id}`)
     }
 
     render() {
@@ -47,4 +45,4 @@ class HomeProducts extends Component {
     }
 }
 
-export default HomeProducts
+export default withRouter(HomeProducts)
