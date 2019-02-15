@@ -2,43 +2,56 @@ import validator from 'validator'
 
 class Utils {
     static check = (input, newValue, fields) => {
-        if(input === 'name') return Utils.checkName(newValue);
-        else if (input === 'email') return Utils.checkEmail(newValue);
-        else if(input === 'password') return Utils.checkPassword(newValue);
-        else if(input === 'repeatedPassword') return Utils.checkRepeatedPassword(newValue, fields.password.value)
+        if(input === 'address') return {
+            address: {
+                value: newValue,
+                error: Utils.checkStandard(newValue)
+            }
+        };
+        else if (input === 'city') return {
+            city: {
+                value: newValue,
+                error: Utils.checkStandard(newValue)
+            }
+        };
+        else if (input === 'province') return {
+            province: {
+                value: newValue,
+                error: Utils.checkStandard(newValue)
+            }
+        };
+        else if(input === 'country') return {
+            country: {
+                value: newValue,
+                error: Utils.checkStandard(newValue)
+            }
+        };
+        else if(input === 'postcode') return {
+            postcode: {
+                value: newValue,
+                error: Utils.checkPostcode(newValue)
+            }
+        };
+        else if(input === 'email') return {
+            email: {
+                value: newValue,
+                error: Utils.checkEmail(newValue)
+            }
+        };
     };
 
-    static checkName = name => ({
-        name: {
-            value: name,
-            error: !validator.isAscii(name)
-                || !validator.isLength(name, {min: 1, max: 50})
-        }
-    });
+    static checkStandard = text => {
+        return !validator.isAscii(text)
+                || !validator.isLength(text, {min: 1, max: 100})
+    };
 
-    static checkEmail = email => ({
-        email: {
-            value: email,
-            error: !validator.isEmail(email)
-        }
-    });
+    static checkEmail = email => {
+        return !validator.isEmail(email)
+    };
 
-    static checkPassword = pass => ({
-        password: {
-            value: pass,
-            error: !validator.isAscii(pass)
-                || !validator.isLength(pass, {min: 5, max: 50})
-        }
-    });
-
-    static checkRepeatedPassword = (repeatedPass, pass) => ({
-        repeatedPassword: {
-            value: repeatedPass,
-            error: !validator.isAscii(repeatedPass)
-                || !validator.isLength(repeatedPass, {min: 5, max: 50})
-                || pass !== repeatedPass
-        }
-    });
+    static checkPostcode = postcode => {
+        return !validator.isNumeric(postcode)
+    };
 
     static errorInFields = fields => {
         return Object.entries(fields).find(field => field[1].error) !== undefined
