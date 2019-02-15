@@ -3,7 +3,7 @@ import './style.css'
 import TitleBar from '../../components/TitleBar'
 import HomeProducts from "../../components/HomeProducts";
 import HomeSection from "../../components/HomeSection";
-import API from '../../services/api/app'
+import API from '../../services/API'
 import Footer from "../../components/Footer";
 
 class Home extends Component{
