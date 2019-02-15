@@ -12,7 +12,7 @@ class SpecificItem extends React.Component {
     }
 
     handleClick() {
-        this.props.history.push("/login")
+        this.props.history.push(`/item/${this.props.item.id}/buy`)
     }
 
     render() {
