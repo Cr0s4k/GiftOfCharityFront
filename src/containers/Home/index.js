@@ -3,26 +3,34 @@ import './style.css'
 import TitleBar from '../../components/TitleBar'
 import HomeProducts from "../../components/HomeProducts";
 import HomeSection from "../../components/HomeSection";
-import API from '../../services/api/app'
+import API from '../../services/API'
+import Footer from "../../components/Footer";
 
 class Home extends Component{
     constructor(props) {
-        super(props)
+        super(props);
         this.state = {
             products: []
-        }
+        };
+        document.title = "Gift Of Charity"
     }
 
     componentDidMount() {
-        this.setState({products: API.getAvailableGifts()})
+        API.getCharityProjects()
+        .then(products => {
+            this.setState({
+                products: products
+            })
+        });
     }
 
     render() {
         return(
-            <div>
+            <div className="divForFooter">
                 <TitleBar />
                 <HomeSection />
                 <HomeProducts products={this.state.products}/>
+                <Footer />
             </div>
         )
     }

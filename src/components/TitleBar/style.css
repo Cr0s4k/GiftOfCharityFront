@@ -3,3 +3,11 @@
     padding-top: 20px;
     padding-bottom: 20px;
 }
+
+#title {
+    display: inline;
+}
+
+#title:hover {
+    cursor: pointer;
+}

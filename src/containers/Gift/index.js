@@ -5,7 +5,7 @@ import "video-react/dist/video-react.css"
 import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
 import Typography from "@material-ui/core/Typography";
-import API from '../../services/api/app'
+import API from '../../services/API'
 
 class Index extends Component {
     constructor(props){

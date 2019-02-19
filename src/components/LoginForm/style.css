@@ -1,0 +1,22 @@
+#loginFormGrid {
+    background-color: rgb(234,255,241);
+    padding-top: 15px;
+    padding-bottom: 15px;
+    margin-bottom: 10px;
+}
+
+#loginBtn{
+    display: block;
+    margin: 0 auto;
+    margin-top: 20px;
+    background-color: #3c8e3f;
+    width: 100%;
+}
+
+#loginBtn:hover {
+    background-color: #0e6e10;
+}
+
+#loginFormTexts {
+    margin-top: 10px;
+}

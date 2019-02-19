@@ -12,3 +12,9 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+
+.divForFooter {
+  min-height: 93vh;
+  position: relative;
+  padding-bottom: 50px;
+}
