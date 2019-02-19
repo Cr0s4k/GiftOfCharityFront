@@ -20,7 +20,7 @@ class SpecificItem extends React.Component {
             <Grid container id="specificItemGrid">
                 <Grid item xs={12} sm={5}>
                     <div>
-                        <img src={this.props.item.imageUrl} id="specificItemImage" />
+                        <img src={this.props.item.imageUrl} id="specificItemImage" alt="Charity project image"/>
                     </div>
                 </Grid>
                 <Grid item xs={12} sm={7} id="specificItemGridRight">

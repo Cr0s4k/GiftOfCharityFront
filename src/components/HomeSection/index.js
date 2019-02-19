@@ -10,7 +10,7 @@ class HomeSection extends Component {
             <Grid container justify="center" id="homeSectionGrid">
                 <Grid item xs={12} sm={6}>
                     <div>
-                        <img src={homeSectionImage} id={"homeSectionImage"}/>
+                        <img src={homeSectionImage} id={"homeSectionImage"} alt="Tree image"/>
                     </div>
                 </Grid>
                 <Grid item xs={12} sm={6}>
