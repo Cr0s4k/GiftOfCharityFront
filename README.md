@@ -1,3 +1,4 @@
+[![Build Status](https://travis-ci.com/Cr0s4k/GiftOfCharityFront.svg?branch=master)](https://travis-ci.com/Cr0s4k/GiftOfCharityFront)
 # README
 ## General Information
 - Node version: 9.8
