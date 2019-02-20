@@ -16,9 +16,3 @@
 #registerBtn:hover {
     /*background-color: #0e6e10;*/
 }
-
-#uploadBtn {
-    display: block;
-    margin: 0 auto;
-    margin-bottom: 10px;
-}

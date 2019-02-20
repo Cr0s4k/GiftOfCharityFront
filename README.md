@@ -8,4 +8,6 @@
     git push heroku anyBranch:master
     
 ## Environtment Variables
-REACT_APP_BACKEND_URL: Backend url (e.g.: http://127.0.0.1:1232)
+REACT_APP_BACKEND_URL: Backend url (e.g.: http://127.0.0.1:3000)
+
+PORT: Server port (e.g.: 1232)
