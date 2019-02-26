@@ -10,7 +10,6 @@ import DialogTitle from "@material-ui/core/DialogTitle";
 import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogActions from "@material-ui/core/DialogActions";
-import firebase from 'firebase'
 
 class DonationFormStep1 extends React.Component {
     constructor(props) {
@@ -26,13 +25,6 @@ class DonationFormStep1 extends React.Component {
         };
 
         this.uploadInRef = React.createRef();
-        let config = {
-            apiKey: "AIzaSyBNRIz7AMCLZmDGLWKTEIeNyorReFTyuy0",
-            authDomain: "giftofcharity-ab752.firebaseapp.com",
-            dataBaseURL: "https://giftofcharity-ab752.firebaseio.com",
-            storageBucket: "giftofcharity-ab752.appspot.com"
-        };
-        firebase.initializeApp(config);
     }
 
     handleUploadBtn = () => {
@@ -65,7 +57,7 @@ class DonationFormStep1 extends React.Component {
         data.append('file', this.state.file.selectedFile, this.state.file.selectedFile.name);
         let videoUrl;
         try {
-            videoUrl = await API.uploadVideo(data, firebase, (loaded) => {
+            videoUrl = await API.uploadVideo(data, (loaded) => {
                 this.setState({
                     file: {
                         ...this.state.file,

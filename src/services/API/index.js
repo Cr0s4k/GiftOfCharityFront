@@ -1,3 +1,5 @@
+import firebase from 'firebase'
+
 const ENDPOINT = process.env.REACT_APP_BACKEND_URL;
 
 class API {
@@ -22,7 +24,7 @@ class API {
         return charityProject.json()
     }
 
-    static uploadVideo(data, firebase, callback) {
+    static uploadVideo(data, callback) {
         return new Promise((accept, reject) => {
             let file = data.get('file');
             let storage = firebase.storage();

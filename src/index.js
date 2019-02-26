@@ -9,6 +9,15 @@ import {Route} from "react-router";
 import Item from "./containers/Item";
 import Login from "./containers/Login"
 import Donation from "./containers/Donation";
+import firebase from "firebase"
+
+let config = {
+    apiKey: "AIzaSyBNRIz7AMCLZmDGLWKTEIeNyorReFTyuy0",
+    authDomain: "giftofcharity-ab752.firebaseapp.com",
+    dataBaseURL: "https://giftofcharity-ab752.firebaseio.com",
+    storageBucket: "giftofcharity-ab752.appspot.com"
+};
+firebase.initializeApp(config);
 
 ReactDOM.render((
     <BrowserRouter>
