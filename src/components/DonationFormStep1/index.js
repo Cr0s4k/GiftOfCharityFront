@@ -61,7 +61,7 @@ class DonationFormStep1 extends React.Component {
 
     render() {
         return (
-            <React.Fragment>
+            <Grid container item justify="center" style={{display: this.props.hidden ? "none" : "flex"}}>
                 <Grid item sm={5} xs={7}>
                     <Typography variant="h5" gutterBottom align="center">
                         <b>First of all choose a nice video you want to share with your friend! </b>
@@ -85,7 +85,7 @@ class DonationFormStep1 extends React.Component {
                     </div>
                 </Grid>
                 <Grid item sm={12}/>
-            </React.Fragment>
+            </Grid>
         );
     }
 }

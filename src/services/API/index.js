@@ -1,3 +1,5 @@
+import firebase from 'firebase'
+
 const ENDPOINT = process.env.REACT_APP_BACKEND_URL;
 
 class API {
@@ -22,16 +24,32 @@ class API {
         return charityProject.json()
     }
 
-    static async uploadVideo(data, callback) {
-        let sleep = ms => new Promise(r => setTimeout(r, ms));
+    static uploadVideo(data, callback) {
+        return new Promise((accept, reject) => {
+            let file = data.get('file');
+            let config = {
+                apiKey: "AIzaSyBNRIz7AMCLZmDGLWKTEIeNyorReFTyuy0",
+                authDomain: "giftofcharity-ab752.firebaseapp.com",
+                dataBaseURL: "https://giftofcharity-ab752.firebaseio.com",
+                storageBucket: "giftofcharity-ab752.appspot.com"
+            };
+            firebase.initializeApp(config);
 
-        callback(1);
-        await sleep(1000);
-        callback(50);
-        await sleep(1000);
-        callback(100);
-        await sleep(50);
-        return "https://media.w3.org/2010/05/sintel/trailer_hd.mp4"
+            let storage = firebase.storage();
+            let storageRef = storage.ref();
+            let uploadTask = storageRef.child(`videos/${file.name}`).put(file);
+            uploadTask.on(firebase.storage.TaskEvent.STATE_CHANGED, snapshot => {
+                let progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
+                callback(parseInt(progress));
+            }, (error) => {
+                reject(error)
+            }, () => {
+                uploadTask.snapshot.ref.getDownloadURL()
+                    .then(url => {
+                        accept(url)
+                    })
+            })
+        });
     }
 }
 

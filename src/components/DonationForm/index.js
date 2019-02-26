@@ -1,7 +1,7 @@
 import React from 'react'
 import Grid from "@material-ui/core/Grid";
 import './style.css'
-import Utils from './utils'
+// import Utils from './utils'
 import Dialog from "@material-ui/core/Dialog";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import DialogContent from "@material-ui/core/DialogContent";
@@ -34,26 +34,20 @@ class DonationForm extends React.Component {
     render() {
         return (
             <Grid container id="registerFormGrid" justify="center">
-                { this.state.step === 1 &&
-                    <DonationFormStep1
-                        nextStepCallback={this.nextStepCallback}
-                        // style={{display: this.state.step === 1 ? "block": "none"}}
-                    />
-                }
-                { this.state.step === 2 &&
-                    <DonationFormStep2
-                        nextStepCallback={this.nextStepCallback}
-                        previousStepCallback={this.previousStepCallback}
-                        style={{display: this.state.step === 2 ? "block": "none"}}
-                    />
-                }
-                { this.state.step === 3 &&
-                    <DonationFormStep3
-                        nextStepCallback={this.nextStepCallback}
-                        previousStepCallback={this.previousStepCallback}
-                        style={{display: this.state.step === 3 ? "block": "none"}}
-                    />
-                }
+                <DonationFormStep1
+                    nextStepCallback={this.nextStepCallback}
+                    hidden={this.state.step !== 1}
+                />
+                <DonationFormStep2
+                    nextStepCallback={this.nextStepCallback}
+                    previousStepCallback={this.previousStepCallback}
+                    hidden={this.state.step !== 2}
+                />
+                <DonationFormStep3
+                    nextStepCallback={this.nextStepCallback}
+                    previousStepCallback={this.previousStepCallback}
+                    hidden={this.state.step !== 3}
+                />
 
                 {/******* Dialog *******/}
                 <Dialog

@@ -48,7 +48,7 @@ class DonationFormStep2 extends React.Component {
 
     render() {
         return (
-            <>
+            <Grid container item justify="center" style={{display: this.props.hidden ? "none" : "flex"}}>
                 <Grid item sm={5} xs={7}>
                     <Typography variant="h5" gutterBottom align="center">
                         <b>Now give us the place where we are going to send your gift! </b>
@@ -123,7 +123,7 @@ class DonationFormStep2 extends React.Component {
                         </Button>
                     </div>
                 </Grid>
-            </>
+            </Grid>
         );
     }
 }
