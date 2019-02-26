@@ -9,13 +9,14 @@ import DialogContentText from "@material-ui/core/DialogContentText";
 import DonationFormStep1 from "../DonationFormStep1";
 import DonationFormStep2 from "../DonationFormStep2";
 import DonationFormStep3 from "../DonationFormStep3";
+import DonationFormStep4 from "../DonationFormStep4";
 
 class DonationForm extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
             openDialog: false,
-            step: 1,
+            step: 4,
         };
     }
 
@@ -47,6 +48,11 @@ class DonationForm extends React.Component {
                     nextStepCallback={this.nextStepCallback}
                     previousStepCallback={this.previousStepCallback}
                     hidden={this.state.step !== 3}
+                />
+                <DonationFormStep4
+                    nextStepCallback={this.nextStepCallback}
+                    previousStepCallback={this.previousStepCallback}
+                    hidden={this.state.step !== 4}
                 />
 
                 {/******* Dialog *******/}
