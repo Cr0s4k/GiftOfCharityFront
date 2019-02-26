@@ -5,6 +5,12 @@ import Grid from "@material-ui/core/Grid";
 import API from "../../services/API"
 import ReactPlayer from 'react-player'
 import './style.css'
+import Dialog from "@material-ui/core/Dialog";
+import DialogTitle from "@material-ui/core/DialogTitle";
+import DialogContent from "@material-ui/core/DialogContent";
+import DialogContentText from "@material-ui/core/DialogContentText";
+import DialogActions from "@material-ui/core/DialogActions";
+import firebase from 'firebase'
 
 class DonationFormStep1 extends React.Component {
     constructor(props) {
@@ -16,13 +22,33 @@ class DonationFormStep1 extends React.Component {
             },
             progressBarHidden: true,
             videoUrl: null,
+            dialogHidden: true
         };
 
-        this.uploadInRef = React.createRef()
+        this.uploadInRef = React.createRef();
+        let config = {
+            apiKey: "AIzaSyBNRIz7AMCLZmDGLWKTEIeNyorReFTyuy0",
+            authDomain: "giftofcharity-ab752.firebaseapp.com",
+            dataBaseURL: "https://giftofcharity-ab752.firebaseio.com",
+            storageBucket: "giftofcharity-ab752.appspot.com"
+        };
+        firebase.initializeApp(config);
     }
 
     handleUploadBtn = () => {
         this.uploadInRef.current.click()
+    };
+
+    toggleDialog = () => {
+        this.setState({dialogHidden: !this.state.dialogHidden})
+    };
+
+    toggleBar = () => {
+        this.setState({progressBarHidden: !this.state.progressBardHidden})
+    };
+
+    videoToNull = () => {
+        this.setState({videoUrl: null})
     };
 
     displayVideo = (videoUrl) => {
@@ -37,16 +63,23 @@ class DonationFormStep1 extends React.Component {
     handleUpload = async () => {
         const data = new FormData();
         data.append('file', this.state.file.selectedFile, this.state.file.selectedFile.name);
-        let videoUrl = await API.uploadVideo(data, (loaded) => {
-            this.setState({
-                file: {
-                    ...this.state.file,
-                    loaded: loaded
-                }
-            })
-        });
-
-        this.displayVideo(videoUrl);
+        let videoUrl;
+        try {
+            videoUrl = await API.uploadVideo(data, firebase, (loaded) => {
+                this.setState({
+                    file: {
+                        ...this.state.file,
+                        loaded: loaded
+                    }
+                })
+            });
+            this.displayVideo(videoUrl);
+        }
+        catch (e) {
+            this.videoToNull();
+            this.toggleBar();
+            this.toggleDialog();
+        }
     };
 
     handleSelectedFile = evt => {
@@ -71,7 +104,7 @@ class DonationFormStep1 extends React.Component {
                 <Grid item sm={12}/>
                 <Grid item sm={5} xs={7}>
                     <ReactPlayer url={this.state.videoUrl} hidden={this.state.videoUrl == null} controls width="100%" height="auto"/>
-                    <input ref={this.uploadInRef} type="file" multiple={true} style={{display: "none"}} onChange={this.handleSelectedFile}/>
+                    <input ref={this.uploadInRef} type="file" multiple={true} style={{display: "none"}} onChange={this.handleSelectedFile} accept="video/*"/>
                     <LinearProgress variant="determinate" value={this.state.file.loaded} hidden={this.state.progressBarHidden} style={{height: 7}}/>
                     <div id="DonationFormS1BtnContainer">
                         <Button id={"uploadBtn"} variant="contained" color="primary" onClick={this.handleUploadBtn}>
@@ -85,6 +118,25 @@ class DonationFormStep1 extends React.Component {
                     </div>
                 </Grid>
                 <Grid item sm={12}/>
+
+                <Dialog
+                    open={!this.state.dialogHidden}
+                    onClose={this.toggleDialog}
+                    aria-labelledby="alert-dialog-title"
+                    aria-describedby="alert-dialog-description"
+                >
+                    <DialogTitle id="alert-dialog-title">{"Error!"}</DialogTitle>
+                    <DialogContent>
+                        <DialogContentText id="alert-dialog-description">
+                            Something went wrong uploading your video! Remember max size is 200MB.
+                        </DialogContentText>
+                    </DialogContent>
+                    <DialogActions>
+                        <Button onClick={this.toggleDialog} color="primary">
+                            Ok
+                        </Button>
+                    </DialogActions>
+                </Dialog>
             </Grid>
         );
     }

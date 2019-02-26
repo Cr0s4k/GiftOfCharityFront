@@ -1,5 +1,3 @@
-import firebase from 'firebase'
-
 const ENDPOINT = process.env.REACT_APP_BACKEND_URL;
 
 class API {
@@ -24,17 +22,9 @@ class API {
         return charityProject.json()
     }
 
-    static uploadVideo(data, callback) {
+    static uploadVideo(data, firebase, callback) {
         return new Promise((accept, reject) => {
             let file = data.get('file');
-            let config = {
-                apiKey: "AIzaSyBNRIz7AMCLZmDGLWKTEIeNyorReFTyuy0",
-                authDomain: "giftofcharity-ab752.firebaseapp.com",
-                dataBaseURL: "https://giftofcharity-ab752.firebaseio.com",
-                storageBucket: "giftofcharity-ab752.appspot.com"
-            };
-            firebase.initializeApp(config);
-
             let storage = firebase.storage();
             let storageRef = storage.ref();
             let uploadTask = storageRef.child(`videos/${file.name}`).put(file);
