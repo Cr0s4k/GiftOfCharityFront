@@ -12,11 +12,12 @@ import Donation from "./containers/Donation";
 import firebase from "firebase"
 
 let config = {
-    apiKey: "AIzaSyBNRIz7AMCLZmDGLWKTEIeNyorReFTyuy0",
-    authDomain: "giftofcharity-ab752.firebaseapp.com",
-    dataBaseURL: "https://giftofcharity-ab752.firebaseio.com",
-    storageBucket: "giftofcharity-ab752.appspot.com"
+    apiKey: process.env.REACT_APP_FIRE_API_KEY,
+    authDomain: process.env.REACT_APP_FIRE_AUTH_DOMAIN,
+    dataBaseURL: process.env.REACT_APP_FIRE_DATA_BASE_URL,
+    storageBucket: process.env.REACT_APP_FIRE_STORAGE_BUCKET
 };
+
 firebase.initializeApp(config);
 
 ReactDOM.render((

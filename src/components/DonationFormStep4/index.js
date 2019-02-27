@@ -11,8 +11,8 @@ import './style.css'
 class DonationFormStep4 extends React.Component {
     state = {
         client: {
-            sandbox: "AberOmgdLBdCdYUivpnt0Ht38xIDB3H7ckZ8mnMwWC-jhnS7UAhPBO4DiHss8t0qOJnSBtQAu47qEFyl",
-            production: "AberOmgdLBdCdYUivpnt0Ht38xIDB3H7ckZ8mnMwWC-jhnS7UAhPBO4DiHss8t0qOJnSBtQAu47qEFyl"
+            sandbox: process.env.REACT_APP_PAYPAL_SANDBOX,
+            production: process.env.REACT_APP_PAYPAL_PRODUCTION
         },
         quantity: {
             value: 10,
