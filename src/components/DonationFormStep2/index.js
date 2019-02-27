@@ -115,10 +115,10 @@ class DonationFormStep2 extends React.Component {
                     <div id="DonationFormS1BtnContainer">
                         <Button  variant="contained" color="primary" onClick={this.props.previousStepCallback}>
                             <Icon style={{marginBottom: 0, marginLeft: 6}}>navigate_before</Icon>
-                            Previous step
+                            Previous
                         </Button>
                         <Button  variant="contained" color="primary" disabled={!this.state.nextStepBtn} onClick={this.props.nextStepCallback}>
-                            Next step
+                            Next
                             <Icon style={{marginBottom: 0, marginLeft: 6}}>navigate_next</Icon>
                         </Button>
                     </div>

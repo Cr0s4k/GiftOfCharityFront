@@ -25,7 +25,7 @@ class DonationFormStep4 extends React.Component {
             ...this.state,
             ...Utils.check(input, evt.target.value, null)
             // nextStepBtn: !Utils.errorInFields(newFields)
-        }, () => console.log((this.state)));
+        });
     };
 
     render() {
@@ -54,16 +54,16 @@ class DonationFormStep4 extends React.Component {
                     />
                 </Grid>
                 <Grid item sm={12}/>
-                <Grid item container sm={5} xs={7} justify="center" spacing={20} style={{textAlign: "center"}}>
-                    <Grid item sm={8} xs={7}>
+                <Grid item container sm={5} xs={7} justify="center" style={{textAlign: "center"}}>
+                    <Grid item sm={12} xs={12}>
                         <div id="DonationDormS4PaypalDiv" hidden={this.state.quantity.error}>
                             <PaypalBtn client={this.state.client} currency="EUR" total={this.state.quantity.value}/>
                         </div>
                     </Grid>
-                    <Grid item sm={8} xs={7}>
+                    <Grid item sm={12} xs={12}>
                         <Button  variant="contained" color="primary" onClick={this.props.previousStepCallback}>
                             <Icon style={{marginBottom: 0, marginLeft: 6}}>navigate_before</Icon>
-                            Previous step
+                            Previous
                         </Button>
                     </Grid>
                 </Grid>

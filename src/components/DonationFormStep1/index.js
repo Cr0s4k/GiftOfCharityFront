@@ -103,7 +103,7 @@ class DonationFormStep1 extends React.Component {
                             <Icon style={{marginBottom: 0, marginLeft: 6}}>cloud_upload</Icon>
                         </Button>
                         <Button  variant="contained" color="primary" disabled={this.state.videoUrl == null} onClick={this.props.nextStepCallback}>
-                            Next step
+                            Next
                             <Icon style={{marginBottom: 0, marginLeft: 6}}>navigate_next</Icon>
                         </Button>
                     </div>
