@@ -38,6 +38,12 @@ class Utils {
                 error: Utils.checkEmail(newValue)
             }
         };
+        else if(input === 'quantity') return {
+            quantity: {
+                value: newValue,
+                error: Utils.checkQuantity(newValue)
+            }
+        }
     };
 
     static checkStandard = text => {
@@ -55,6 +61,10 @@ class Utils {
 
     static errorInFields = fields => {
         return Object.entries(fields).find(field => field[1].error) !== undefined
+    };
+
+    static checkQuantity = quantity => {
+        return !validator.isNumeric(quantity) || quantity < 1 || quantity > 10000000000
     }
 }
 

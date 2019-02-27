@@ -1,9 +1,0 @@
-#DonationFormS1BtnContainer {
-    display: flex;
-    justify-content: center;
-}
-
-#DonationFormS1BtnContainer > button {
-    margin: 0 5px;
-    margin-top: 10px;
-}
