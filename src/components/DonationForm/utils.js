@@ -64,7 +64,7 @@ class Utils {
     };
 
     static checkQuantity = quantity => {
-        return !validator.isNumeric(quantity) || quantity < 1 || quantity > 10000000000
+        return !validator.isNumeric(quantity) || quantity < 1 || quantity > 10000000000 || !validator.isInt(quantity)
     }
 }
 

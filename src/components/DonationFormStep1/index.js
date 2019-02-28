@@ -11,6 +11,7 @@ import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogActions from "@material-ui/core/DialogActions";
 
 class DonationFormStep1 extends React.Component {
+
     constructor(props) {
         super(props);
         this.state = {
@@ -46,8 +47,6 @@ class DonationFormStep1 extends React.Component {
         this.setState({
             progressBarHidden: true,
             videoUrl: videoUrl
-        }, () => {
-            console.log("Step 1 finished ", videoUrl)
         });
     };
 
@@ -83,6 +82,10 @@ class DonationFormStep1 extends React.Component {
         }, this.handleUpload);
     };
 
+    handleNextBtn = () => {
+        this.props.handleFirstStep(this.state.videoUrl)
+    };
+
     render() {
         return (
             <Grid container item justify="center" style={{display: this.props.hidden ? "none" : "flex"}}>
@@ -102,7 +105,7 @@ class DonationFormStep1 extends React.Component {
                             Upload
                             <Icon style={{marginBottom: 0, marginLeft: 6}}>cloud_upload</Icon>
                         </Button>
-                        <Button  variant="contained" color="primary" disabled={this.state.videoUrl == null} onClick={this.props.nextStepCallback}>
+                        <Button  variant="contained" color="primary" disabled={this.state.videoUrl == null} onClick={this.handleNextBtn}>
                             Next
                             <Icon style={{marginBottom: 0, marginLeft: 6}}>navigate_next</Icon>
                         </Button>

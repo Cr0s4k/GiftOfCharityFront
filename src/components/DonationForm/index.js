@@ -1,7 +1,6 @@
 import React from 'react'
 import Grid from "@material-ui/core/Grid";
 import './style.css'
-// import Utils from './utils'
 import Dialog from "@material-ui/core/Dialog";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import DialogContent from "@material-ui/core/DialogContent";
@@ -16,7 +15,16 @@ class DonationForm extends React.Component {
         super(props);
         this.state = {
             openDialog: false,
-            step: 4,
+            step: 1,
+            data: {
+                videoUrl: null,
+                address: null,
+                city: null,
+                country: null,
+                province: null,
+                postcode: null,
+                email: null
+            }
         };
     }
 
@@ -24,34 +32,72 @@ class DonationForm extends React.Component {
         this.setState({openDialog: open})
     };
 
-    nextStepCallback = () => {
+    nextStep = () => {
         this.setState({step: this.state.step + 1})
     };
 
-    previousStepCallback = () => {
+    previousStep = () => {
         this.setState({step: this.state.step - 1})
+    };
+
+    handleFirstStep = (videoUrl) => {
+        this.setState({
+            data: {
+                ...this.state.data,
+                videoUrl: videoUrl
+            }
+        });
+
+        this.nextStep()
+    };
+
+    handleSecondStep = (next, address, city, country, province, postcode) => {
+        this.setState({
+            data: {
+                ...this.state.data,
+                address: address,
+                city: city,
+                country: country,
+                province: province,
+                postcode: postcode
+            }
+        });
+
+        if (next) this.nextStep();
+        else this.previousStep()
+    };
+
+    handleThirdStep = (next, email) => {
+        this.setState({
+            data:{
+                ...this.state.data,
+                email: email
+            }
+        });
+
+        if (next) this.nextStep();
+        else this.previousStep()
     };
 
     render() {
         return (
             <Grid container id="registerFormGrid" justify="center">
+
                 <DonationFormStep1
-                    nextStepCallback={this.nextStepCallback}
+                    handleFirstStep={this.handleFirstStep}
                     hidden={this.state.step !== 1}
                 />
                 <DonationFormStep2
-                    nextStepCallback={this.nextStepCallback}
-                    previousStepCallback={this.previousStepCallback}
+                    handleSecondStep={this.handleSecondStep}
                     hidden={this.state.step !== 2}
                 />
                 <DonationFormStep3
-                    nextStepCallback={this.nextStepCallback}
-                    previousStepCallback={this.previousStepCallback}
+                    handleThirdStep={this.handleThirdStep}
                     hidden={this.state.step !== 3}
                 />
                 <DonationFormStep4
-                    nextStepCallback={this.nextStepCallback}
-                    previousStepCallback={this.previousStepCallback}
+                    data={this.state.data}
+                    previousStep={this.previousStep}
                     hidden={this.state.step !== 4}
                 />
 

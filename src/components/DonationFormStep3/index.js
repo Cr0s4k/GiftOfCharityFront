@@ -32,6 +32,13 @@ class DonationFormStep3 extends React.Component {
         });
     };
 
+    handleNextBtn = (next) => () => {
+        this.props.handleThirdStep(
+            next,
+            this.state.fields.email.value
+        )
+    };
+
     render() {
         return (
             <Grid container item justify="center" style={{display: this.props.hidden ? "none" : "flex"}}>
@@ -55,11 +62,11 @@ class DonationFormStep3 extends React.Component {
                 <Grid item sm={12}/>
                 <Grid item sm={5} xs={7}>
                     <div id="DonationFormS1BtnContainer">
-                        <Button  variant="contained" color="primary" onClick={this.props.previousStepCallback}>
+                        <Button  variant="contained" color="primary" onClick={this.handleNextBtn(false)}>
                             <Icon style={{marginBottom: 0, marginLeft: 6}}>navigate_before</Icon>
                             Previous
                         </Button>
-                        <Button  variant="contained" color="primary" disabled={!this.state.nextStepBtn} onClick={this.props.nextStepCallback}>
+                        <Button  variant="contained" color="primary" disabled={!this.state.nextStepBtn} onClick={this.handleNextBtn(true)}>
                             Next
                             <Icon style={{marginBottom: 0, marginLeft: 6}}>navigate_next</Icon>
                         </Button>

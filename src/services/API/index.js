@@ -1,4 +1,5 @@
 import firebase from 'firebase'
+import axios from 'axios'
 
 const ENDPOINT = process.env.REACT_APP_BACKEND_URL;
 
@@ -42,6 +43,17 @@ class API {
                     })
             })
         });
+    }
+
+    static async verifyOrder(data) {
+        try {
+            await axios.post(`${ENDPOINT}/donations/verify_order`,  data);
+
+            return 200;
+        }
+        catch (e) {
+            return 400;
+        }
     }
 }
 
