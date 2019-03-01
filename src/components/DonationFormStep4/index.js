@@ -48,16 +48,16 @@ class DonationFormStep4 extends React.Component {
     };
 
     onSuccess = async (payment) => {
-        let res = await API.verifyOrder({
-            orderId: payment.paymentID,
-            amount: this.state.quantity.value
-        });
-        if (res === 200) {
+        try{
+            await API.makeDonation({
+                orderId: payment.paymentID
+            });
             console.log("Pago realizado, creando donación con:");
             console.log(this.props.data);
             this.toggleDialog(this.constants.SUCCESS)()
         }
-        else{
+        catch (e) {
+            console.log(e);
             this.toggleDialog(this.constants.ERROR)()
         }
     };

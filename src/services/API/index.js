@@ -45,15 +45,8 @@ class API {
         });
     }
 
-    static async verifyOrder(data) {
-        try {
-            await axios.post(`${ENDPOINT}/donations/verify_order`,  data);
-
-            return 200;
-        }
-        catch (e) {
-            return 400;
-        }
+    static async makeDonation(data) {
+        await axios.post(`${ENDPOINT}/donations/make_donation`,  data);
     }
 }
 
