@@ -7,12 +7,12 @@ import PaypalBtn from 'react-paypal-express-checkout'
 import Button from "@material-ui/core/Button";
 import Utils from "../DonationForm/utils";
 import './style.css'
-import DialogTitle from "../DonationFormStep1";
 import Dialog from "@material-ui/core/Dialog";
 import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogActions from "@material-ui/core/DialogActions";
 import API from "../../services/API";
+import DialogTitle from "@material-ui/core/DialogTitle";
 
 class DonationFormStep4 extends React.Component {
 
@@ -25,11 +25,19 @@ class DonationFormStep4 extends React.Component {
             value: 10,
             error: false
         },
-        dialogHidden: true
+        errorDialogHidden: true,
+        successDialogHidden: true
     };
 
-    toggleDialog = () => {
-        this.setState({dialogHidden: !this.state.dialogHidden})
+    constants = {
+        SUCCESS: 1,
+        ERROR: 2
+    };
+
+    toggleDialog = (status) => () => {
+        console.log(status);
+        if(status === this.constants.SUCCESS) this.setState({successDialogHidden: !this.state.successDialogHidden});
+        else if(status === this.constants.ERROR) this.setState({errorDialogHidden: !this.state.errorDialogHidden})
     };
 
     handleChange = input => evt => {
@@ -46,15 +54,16 @@ class DonationFormStep4 extends React.Component {
         });
         if (res === 200) {
             console.log("Pago realizado, creando donación con:");
-            console.log(this.props.data)
+            console.log(this.props.data);
+            this.toggleDialog(this.constants.SUCCESS)()
         }
         else{
-            this.toggleDialog()
+            this.toggleDialog(this.constants.ERROR)()
         }
     };
 
     onError = err => {
-        this.toggleDialog()
+        this.toggleDialog(this.constants.ERROR)()
     };
 
     render() {
@@ -104,8 +113,8 @@ class DonationFormStep4 extends React.Component {
                 </Grid>
 
                 <Dialog
-                    open={!this.state.dialogHidden}
-                    onClose={this.toggleDialog}
+                    open={!this.state.errorDialogHidden}
+                    onClose={this.toggleDialog(this.constants.ERROR)}
                     aria-labelledby="alert-dialog-title"
                     aria-describedby="alert-dialog-description"
                 >
@@ -116,7 +125,26 @@ class DonationFormStep4 extends React.Component {
                         </DialogContentText>
                     </DialogContent>
                     <DialogActions>
-                        <Button onClick={this.toggleDialog} color="primary">
+                        <Button onClick={this.toggleDialog(this.constants.ERROR)} color="primary">
+                            Ok
+                        </Button>
+                    </DialogActions>
+                </Dialog>
+
+                <Dialog
+                    open={!this.state.successDialogHidden}
+                    onClose={this.toggleDialog(this.constants.SUCCESS)}
+                    aria-labelledby="alert-dialog-title"
+                    aria-describedby="alert-dialog-description"
+                >
+                    <DialogTitle id="alert-dialog-title">{"Perfect!"}</DialogTitle>
+                    <DialogContent>
+                        <DialogContentText id="alert-dialog-description">
+                            You receiver will soon get a card with its gift!
+                        </DialogContentText>
+                    </DialogContent>
+                    <DialogActions>
+                        <Button onClick={this.toggleDialog(this.constants.SUCCESS)} color="primary">
                             Ok
                         </Button>
                     </DialogActions>

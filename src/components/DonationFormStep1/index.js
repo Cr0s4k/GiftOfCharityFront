@@ -21,7 +21,7 @@ class DonationFormStep1 extends React.Component {
             },
             progressBarHidden: true,
             videoUrl: null,
-            dialogHidden: true
+            errorDialogHidden: true
         };
 
         this.uploadInRef = React.createRef();
@@ -32,11 +32,11 @@ class DonationFormStep1 extends React.Component {
     };
 
     toggleDialog = () => {
-        this.setState({dialogHidden: !this.state.dialogHidden})
+        this.setState({errorDialogHidden: !this.state.errorDialogHidden})
     };
 
     toggleBar = () => {
-        this.setState({progressBarHidden: !this.state.progressBardHidden})
+        this.setState({progressBarHidden: !this.state.progressBarHidden})
     };
 
     videoToNull = () => {
@@ -114,7 +114,7 @@ class DonationFormStep1 extends React.Component {
                 <Grid item sm={12}/>
 
                 <Dialog
-                    open={!this.state.dialogHidden}
+                    open={!this.state.errorDialogHidden}
                     onClose={this.toggleDialog}
                     aria-labelledby="alert-dialog-title"
                     aria-describedby="alert-dialog-description"
