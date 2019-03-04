@@ -12,7 +12,7 @@ class SpecificItem extends React.Component {
     }
 
     handleClick() {
-        this.props.history.push("/login")
+        this.props.history.push(`/item/${this.props.item.id}/buy`)
     }
 
     render() {
@@ -20,7 +20,7 @@ class SpecificItem extends React.Component {
             <Grid container id="specificItemGrid">
                 <Grid item xs={12} sm={5}>
                     <div>
-                        <img src={this.props.item.imageUrl} id="specificItemImage" />
+                        <img src={this.props.item.imageUrl} id="specificItemImage" alt="Charity project"/>
                     </div>
                 </Grid>
                 <Grid item xs={12} sm={7} id="specificItemGridRight">

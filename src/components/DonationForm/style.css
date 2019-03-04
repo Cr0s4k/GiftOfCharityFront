@@ -1,0 +1,28 @@
+#registerFormGrid {
+    background-color: rgb(234,255,241);
+    padding-top: 15px;
+    padding-bottom: 15px;
+    margin-bottom: 10px;
+}
+
+#registerBtn{
+    display: block;
+    margin: 0 auto;
+    margin-top: 20px;
+    /*background-color: #3c8e3f;*/
+    width: 100%;
+}
+
+#registerBtn:hover {
+    /*background-color: #0e6e10;*/
+}
+
+#DonationFormS1BtnContainer {
+    display: flex;
+    justify-content: center;
+}
+
+#DonationFormS1BtnContainer > button {
+    margin: 0 5px;
+    margin-top: 10px;
+}

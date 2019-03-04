@@ -29,8 +29,8 @@ class HomeProducts extends Component {
                                 title={product.name}
                                 subtitle={<span>Price: {product.price} €</span>}
                                 actionIcon={
-                                    <IconButton>
-                                        <Icon onClick={() => this.handleClick(product)} fontSize="large"
+                                    <IconButton onClick={() => this.handleClick(product)}>
+                                        <Icon fontSize="large"
                                               style={{color: "rgb(80, 180, 48)"}}>
                                             add_circle
                                         </Icon>
