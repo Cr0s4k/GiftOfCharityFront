@@ -49,6 +49,11 @@ class API {
         console.log(data);
         await axios.post(`${ENDPOINT}/donations/make_donation`,  data);
     }
+
+    static async getGift(token) {
+        let gift = await axios.get(`${ENDPOINT}/gifts/${token}`)
+        return gift.data
+    }
 }
 
 export default API

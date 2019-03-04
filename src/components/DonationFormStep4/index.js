@@ -35,7 +35,6 @@ class DonationFormStep4 extends React.Component {
     };
 
     toggleDialog = (status) => () => {
-        console.log(status);
         if(status === this.constants.SUCCESS) this.setState({successDialogHidden: !this.state.successDialogHidden});
         else if(status === this.constants.ERROR) this.setState({errorDialogHidden: !this.state.errorDialogHidden})
     };
