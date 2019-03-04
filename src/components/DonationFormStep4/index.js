@@ -53,12 +53,6 @@ class DonationFormStep4 extends React.Component {
                 orderId: payment.paymentID,
                 ...this.props.data
             });
-            console.log("Pago realizado, creando donación con:");
-            console.log({
-                ...this.props.data,
-                orderId: payment.paymentID,
-                amount: this.state.amount.value
-            });
             this.toggleDialog(this.constants.SUCCESS)()
         }
         catch (e) {
@@ -68,6 +62,7 @@ class DonationFormStep4 extends React.Component {
     };
 
     onError = err => {
+        console.log(err);
         this.toggleDialog(this.constants.ERROR)()
     };
 
