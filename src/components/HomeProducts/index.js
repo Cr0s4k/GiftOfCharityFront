@@ -27,7 +27,6 @@ class HomeProducts extends Component {
                             <img src={product.imageUrl} alt={product.name} />
                             <GridListTileBar
                                 title={product.name}
-                                subtitle={<span>Price: {product.price} €</span>}
                                 actionIcon={
                                     <IconButton onClick={() => this.handleClick(product)}>
                                         <Icon fontSize="large"

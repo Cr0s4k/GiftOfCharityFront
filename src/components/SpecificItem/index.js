@@ -25,7 +25,7 @@ class SpecificItem extends React.Component {
                 </Grid>
                 <Grid item xs={12} sm={7} id="specificItemGridRight">
                     <Typography variant="h4" gutterBottom>
-                        <b>{this.props.item.name}</b> - {this.props.item.price}€
+                        <b>{this.props.item.name}</b>
                     </Typography>
                     <Typography variant="h6" gutterBottom>
                         {this.props.item.description}
