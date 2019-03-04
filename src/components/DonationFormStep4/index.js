@@ -21,7 +21,7 @@ class DonationFormStep4 extends React.Component {
             sandbox: process.env.REACT_APP_PAYPAL_SANDBOX,
             production: process.env.REACT_APP_PAYPAL_PRODUCTION
         },
-        quantity: {
+        amount: {
             value: 10,
             error: false
         },
@@ -50,10 +50,15 @@ class DonationFormStep4 extends React.Component {
     onSuccess = async (payment) => {
         try{
             await API.makeDonation({
-                orderId: payment.paymentID
+                orderId: payment.paymentID,
+                ...this.props.data
             });
             console.log("Pago realizado, creando donación con:");
-            console.log(this.props.data);
+            console.log({
+                ...this.props.data,
+                orderId: payment.paymentID,
+                amount: this.state.amount.value
+            });
             this.toggleDialog(this.constants.SUCCESS)()
         }
         catch (e) {
@@ -80,9 +85,9 @@ class DonationFormStep4 extends React.Component {
                     <TextField
                         id="standard-number"
                         label="Amount (€)"
-                        value={this.state.quantity.value}
-                        onChange={this.handleChange('quantity')}
-                        error={this.state.quantity.error}
+                        value={this.state.amount.value}
+                        onChange={this.handleChange('amount')}
+                        error={this.state.amount.error}
                         type="number"
                         InputLabelProps={{
                             shrink: true,
@@ -94,11 +99,11 @@ class DonationFormStep4 extends React.Component {
                 <Grid item sm={12}/>
                 <Grid item container sm={5} xs={7} justify="center" style={{textAlign: "center"}}>
                     <Grid item sm={12} xs={12}>
-                        <div id="DonationDormS4PaypalDiv" hidden={this.state.quantity.error}>
+                        <div id="DonationDormS4PaypalDiv" hidden={this.state.amount.error}>
                             <PaypalBtn
                                 client={this.state.client}
                                 currency="EUR"
-                                total={this.state.quantity.value}
+                                total={this.state.amount.value}
                                 onSuccess={this.onSuccess}
                                 onError={this.onError}
                             />

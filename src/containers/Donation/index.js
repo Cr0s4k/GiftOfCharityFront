@@ -15,7 +15,7 @@ class Register extends React.Component {
         return(
             <div className="divForFooter">
                 <TitleBar/>
-                <DonationForm/>
+                <DonationForm itemId={parseInt(this.props.match.params.id)}/>
                 <Footer/>
             </div>
         )

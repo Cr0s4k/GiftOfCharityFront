@@ -46,6 +46,7 @@ class API {
     }
 
     static async makeDonation(data) {
+        console.log(data);
         await axios.post(`${ENDPOINT}/donations/make_donation`,  data);
     }
 }
