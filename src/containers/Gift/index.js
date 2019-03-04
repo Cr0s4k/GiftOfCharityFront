@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import './style.css';
-import {Player} from "video-react"
-import "video-react/dist/video-react.css"
+// import { Player } from 'video-react';
+// import "video-react/dist/video-react.css";
 import Button from '@material-ui/core/Button';
 import Grid from '@material-ui/core/Grid';
 import Typography from "@material-ui/core/Typography";
@@ -29,12 +29,12 @@ class Index extends Component {
                         <Typography variant="h2" gutterBottom>Completed questionnaire!</Typography>
                     </div>
                 </Grid>
-                <Grid item xs={8}>
-                        <Player
-                            playsInline
-                            src={this.state.videoURL}
-                        />
-                </Grid>
+                {/*<Grid item xs={8}>*/}
+                        {/*<Player*/}
+                            {/*playsInline*/}
+                            {/*src={this.state.videoURL}*/}
+                        {/*/>*/}
+                {/*</Grid>*/}
                 <Grid item xs={12} id="gotoGrid">
                     <Button id="gotoBtn" color="primary" variant="contained">Go to Gift Of Charity</Button>
                 </Grid>
