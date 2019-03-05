@@ -14,6 +14,7 @@ import DialogActions from "@material-ui/core/DialogActions";
 import API from "../../services/API";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import withRouter from "react-router/es/withRouter";
+import GreenBtn from "../GreenBtn";
 
 class DonationFormStep4 extends React.Component {
 
@@ -109,10 +110,10 @@ class DonationFormStep4 extends React.Component {
                         </div>
                     </Grid>
                     <Grid item sm={12} xs={12}>
-                        <Button  variant="contained" color="primary" onClick={this.props.previousStep}>
+                        <GreenBtn  variant="contained" color="primary" onClick={this.props.previousStep}>
                             <Icon style={{marginBottom: 0, marginLeft: 6}}>navigate_before</Icon>
                             Previous
-                        </Button>
+                        </GreenBtn>
                     </Grid>
                 </Grid>
 

@@ -1,9 +1,9 @@
 import React from 'react'
 import Grid from "@material-ui/core/Grid";
 import './style.css'
-import {Button} from "@material-ui/core";
 import Typography from "@material-ui/core/Typography";
 import {withRouter} from "react-router";
+import GreenBtn from "../GreenBtn";
 
 class SpecificItem extends React.Component {
     constructor(props){
@@ -30,14 +30,14 @@ class SpecificItem extends React.Component {
                     <Typography variant="h6" gutterBottom>
                         {this.props.item.description}
                     </Typography>
-                    <Button
+                    <GreenBtn
                         variant="contained"
                         color="primary"
                         id="specificItemBtn"
                         size="large"
                         onClick={this.handleClick}>
                         Give away
-                    </Button>
+                    </GreenBtn>
                 </Grid>
             </Grid>
         );

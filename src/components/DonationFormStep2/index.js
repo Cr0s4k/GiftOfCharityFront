@@ -1,8 +1,9 @@
 import React from 'react'
-import {Button, Icon, Typography} from "@material-ui/core";
+import {Icon, Typography} from "@material-ui/core";
 import TextField from "@material-ui/core/TextField";
 import Grid from "@material-ui/core/Grid";
 import Utils from "../DonationForm/utils";
+import GreenBtn from "../GreenBtn";
 
 class DonationFormStep2 extends React.Component {
     constructor(props) {
@@ -124,14 +125,14 @@ class DonationFormStep2 extends React.Component {
                 <Grid item sm={12}/>
                 <Grid item sm={5} xs={7}>
                     <div id="DonationFormS1BtnContainer">
-                        <Button  variant="contained" color="primary" onClick={this.handleNextBtn(false)}>
+                        <GreenBtn  variant="contained" color="primary" onClick={this.handleNextBtn(false)}>
                             <Icon style={{marginBottom: 0, marginLeft: 6}}>navigate_before</Icon>
                             Previous
-                        </Button>
-                        <Button  variant="contained" color="primary" disabled={!this.state.nextStepBtn} onClick={this.handleNextBtn(true)}>
+                        </GreenBtn>
+                        <GreenBtn  variant="contained" color="primary" disabled={!this.state.nextStepBtn} onClick={this.handleNextBtn(true)}>
                             Next
                             <Icon style={{marginBottom: 0, marginLeft: 6}}>navigate_next</Icon>
-                        </Button>
+                        </GreenBtn>
                     </div>
                 </Grid>
             </Grid>

@@ -17,14 +17,14 @@ class HomeSection extends Component {
                     <Typography variant="h4" gutterBottom>
                         This sounds great! Where do I <b>start</b>?!
                     </Typography>
-                    <ul >
+                    <ol>
                         <li>Go to <b>www.giftofcharity.org</b></li>
                         <li>Pick a great cause → Save the Rain Forest</li>
                         <li>Choose the recipient → Jane Recipientson</li>
                         <li>Record a video message</li>
                         <li>A nicely packaged envelope is sent to Jane’s home address</li>
                         <li>Jane opens the package, which contains a mysterious url!</li>
-                    </ul>
+                    </ol>
                 </Grid>
             </Grid>
         )

@@ -18,3 +18,12 @@ code {
   position: relative;
   padding-bottom: 55px;
 }
+
+.greenBtn {
+  background-color: #3c8e3f;
+}
+
+.greenBtn:hover {
+  background-color: #0e6e10;
+}
+
