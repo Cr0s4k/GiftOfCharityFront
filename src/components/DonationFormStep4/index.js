@@ -13,6 +13,7 @@ import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogActions from "@material-ui/core/DialogActions";
 import API from "../../services/API";
 import DialogTitle from "@material-ui/core/DialogTitle";
+import withRouter from "react-router/es/withRouter";
 
 class DonationFormStep4 extends React.Component {
 
@@ -32,6 +33,10 @@ class DonationFormStep4 extends React.Component {
     constants = {
         SUCCESS: 1,
         ERROR: 2
+    };
+
+    goToHomePage = () => {
+      this.props.history.push("/");
     };
 
     toggleDialog = (status) => () => {
@@ -70,7 +75,7 @@ class DonationFormStep4 extends React.Component {
             <Grid container item justify="center" style={{display: this.props.hidden ? "none" : "flex"}}>
                 <Grid item sm={5} xs={7}>
                     <Typography variant="h5" align="center">
-                        <b>Pay as you want! </b>
+                        <b>Donate as much as you want! </b>
                         <Icon fontSize="large" style={{marginBottom: -7}}>euro_symbol</Icon>
                     </Typography>
                 </Grid>
@@ -138,13 +143,17 @@ class DonationFormStep4 extends React.Component {
                 >
                     <DialogTitle id="alert-dialog-title">{"Perfect!"}</DialogTitle>
                     <DialogContent>
-                        <DialogContentText id="alert-dialog-description">
+                        <DialogContentText id="alert-dialog-description" gutterBottom>
                             You receiver will soon get a card with its gift!
                         </DialogContentText>
+                        <Typography gutterBottom>
+                            We have also sent you an email with your donation information. If you have any problem
+                            dont hesitate to contact with us.
+                        </Typography>
                     </DialogContent>
                     <DialogActions>
-                        <Button onClick={this.toggleDialog(this.constants.SUCCESS)} color="primary">
-                            Ok
+                        <Button onClick={this.goToHomePage} color="primary">
+                            Go to the Home Page
                         </Button>
                     </DialogActions>
                 </Dialog>
@@ -153,4 +162,4 @@ class DonationFormStep4 extends React.Component {
     }
 }
 
-export default DonationFormStep4;
+export default withRouter(DonationFormStep4);
