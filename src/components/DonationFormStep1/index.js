@@ -1,6 +1,6 @@
 import React from 'react'
 import {Button, Icon, Typography} from "@material-ui/core";
-import LinearProgress from "@material-ui/core/LinearProgress";
+import GreenLinearProgress from '../GreenLinearProgress'
 import Grid from "@material-ui/core/Grid";
 import API from "../../services/API"
 import ReactPlayer from 'react-player'
@@ -100,7 +100,7 @@ class DonationFormStep1 extends React.Component {
                 <Grid item sm={5} xs={7}>
                     <ReactPlayer url={this.state.videoUrl} hidden={this.state.videoUrl == null} controls width="100%" height="auto"/>
                     <input ref={this.uploadInRef} type="file" multiple={true} style={{display: "none"}} onChange={this.handleSelectedFile} accept="video/*"/>
-                    <LinearProgress variant="determinate" value={this.state.file.loaded} hidden={this.state.progressBarHidden} style={{height: 7}}/>
+                    <GreenLinearProgress variant="determinate" value={this.state.file.loaded} hidden={this.state.progressBarHidden}/>
                     <div id="DonationFormS1BtnContainer">
                         <GreenBtn id={"uploadBtn"} variant="contained" color="primary" onClick={this.handleUploadBtn}>
                             Upload
