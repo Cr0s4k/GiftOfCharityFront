@@ -4,19 +4,32 @@ import Grid from "@material-ui/core/Grid";
 import GreenButton from '../GreenBtn'
 import withRouter from "react-router/es/withRouter";
 import './style.css'
+import WOW from 'wow.js'
 
 class GiftComponent extends React.Component {
+    state = {
+        videoHidden: true
+    };
+
+    componentDidMount() {
+        new WOW().init()
+    }
+
     handleCloseError = () => {
         this.props.history.push("/")
+    };
+
+    videoIsReady = () => {
+        this.setState({videoHidden: false})
     };
 
     render() {
         return (
             <Grid container justify="center" id="giftGrid">
-                <Grid item>
-                    <ReactPlayer url={this.props.gift.videoUrl} controls width="100%" height="auto"/>
+                <Grid item className="wow bounceIn" hidden={this.state.videoHidden}>
+                    <ReactPlayer  url={this.props.gift.videoUrl} controls width="100%" height="auto" onReady={this.videoIsReady}/>
                 </Grid>
-                <Grid item xs={12}>
+                <Grid item xs={12} className="wow bounceInDown">
                     <GreenButton id="gotoBtn" color="primary" variant="contained" onClick={this.handleCloseError}>Go to Gift Of Charity</GreenButton>
                 </Grid>
             </Grid>

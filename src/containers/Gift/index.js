@@ -5,6 +5,7 @@ import Footer from "../../components/Footer";
 import ErrorMessage from "../../components/ErrorMessage";
 import GiftTitleBar from "../../components/GiftTitleBar";
 import GiftComponent from "../../components/GiftComponent";
+import '../../../node_modules/animate.css/animate.min.css'
 
 class Index extends Component {
     constructor(props){

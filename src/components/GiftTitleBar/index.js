@@ -13,7 +13,7 @@ class TitleBar extends Component {
         return(
             <Grid container justify="center" id="mainDiv">
                 <Grid item xs={12} style={{textAlign: "center"}}>
-                    <Typography id="title" variant="h2" onClick={this.handleClick}><b>Congratulations!</b></Typography>
+                    <Typography id="title" variant="h2" onClick={this.handleClick}><b>GiftOfCharity</b></Typography>
                 </Grid>
                 {/*<Grid item xs={12}>*/}
                     {/*<Typography align="center" variant="h4" gutterBottom>The enhanced charity experience</Typography>*/}
