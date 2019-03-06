@@ -138,7 +138,7 @@ class DonationFormStep4 extends React.Component {
 
                 <Dialog
                     open={!this.state.successDialogHidden}
-                    onClose={this.toggleDialog(this.constants.SUCCESS)}
+                    onClose={this.goToHomePage}
                     aria-labelledby="alert-dialog-title"
                     aria-describedby="alert-dialog-description"
                 >
@@ -149,7 +149,7 @@ class DonationFormStep4 extends React.Component {
                         </DialogContentText>
                         <Typography gutterBottom>
                             We have also sent you an email with your donation information. If you have any problem
-                            dont hesitate to contact with us.
+                            do not hesitate to contact with us.
                         </Typography>
                     </DialogContent>
                     <DialogActions>
