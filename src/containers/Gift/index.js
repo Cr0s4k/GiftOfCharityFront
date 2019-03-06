@@ -1,11 +1,10 @@
 import React, {Component} from 'react';
 import './style.css';
-import Button from '@material-ui/core/Button';
-import Grid from '@material-ui/core/Grid';
 import API from '../../services/API'
 import Footer from "../../components/Footer";
 import ErrorMessage from "../../components/ErrorMessage";
-import ReactPlayer from 'react-player'
+import GiftTitleBar from "../../components/GiftTitleBar";
+import GiftComponent from "../../components/GiftComponent";
 
 class Index extends Component {
     constructor(props){
@@ -27,10 +26,6 @@ class Index extends Component {
             })
     }
 
-    handleCloseError = () => {
-        this.props.history.push("/")
-    };
-
     handleError() {
         document.title = "Error";
         return (
@@ -45,13 +40,9 @@ class Index extends Component {
     render() {
         return (
             <div className="divForFooter">
+                <GiftTitleBar/>
                 { this.state.gift && !this.state.error ?(
-                    <div>
-                        <ReactPlayer url={this.state.gift.videoUrl} controls width="100%" height="auto"/>
-                        <Grid item xs={12} id="gotoGrid">
-                            <Button id="gotoBtn" color="primary" variant="contained" onClick={this.handleCloseError}>Go to Gift Of Charity</Button>
-                        </Grid>
-                    </div>
+                    <GiftComponent gift={this.state.gift}/>
                 ): !this.state.gift && !this.state.error ? (
                     <div/>
                 ): this.handleError()}

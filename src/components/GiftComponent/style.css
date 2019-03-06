@@ -1,0 +1,13 @@
+#gotoBtn{
+    display: block;
+    margin: 0 auto;
+    margin-top: 15px;
+    /*margin-bottom: 20px;*/
+}
+
+#giftGrid{
+    background-color: rgb(234,255,241);
+    padding-top: 15px;
+    padding-bottom: 15px;
+    margin-bottom: 10px;
+}
