@@ -2,7 +2,7 @@ import React from 'react'
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
 import Icon from "@material-ui/core/Icon";
-import TextField from "@material-ui/core/TextField";
+import GreenTextField from '../GreenTextField'
 import PaypalBtn from 'react-paypal-express-checkout'
 import Button from "@material-ui/core/Button";
 import Utils from "../DonationForm/utils";
@@ -82,7 +82,7 @@ class DonationFormStep4 extends React.Component {
                 </Grid>
                 <Grid item sm={12}/>
                 <Grid item sm={2} xs={7}>
-                    <TextField
+                    <GreenTextField
                         id="standard-number"
                         label="Amount (€)"
                         value={this.state.amount.value}

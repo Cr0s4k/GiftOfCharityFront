@@ -15,7 +15,7 @@ class DonationForm extends React.Component {
         super(props);
         this.state = {
             openDialog: false,
-            step: 1,
+            step: 2,
             data: {
                 videoUrl: null,
                 address: null,

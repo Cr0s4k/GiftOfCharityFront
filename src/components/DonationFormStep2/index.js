@@ -4,6 +4,7 @@ import TextField from "@material-ui/core/TextField";
 import Grid from "@material-ui/core/Grid";
 import Utils from "../DonationForm/utils";
 import GreenBtn from "../GreenBtn";
+import GreenTextField from '../GreenTextField'
 
 class DonationFormStep2 extends React.Component {
     constructor(props) {
@@ -69,7 +70,7 @@ class DonationFormStep2 extends React.Component {
                 </Grid>
                 <Grid item sm={12}/>
                 <Grid item sm={5} xs={7}>
-                    <TextField
+                    <GreenTextField
                         label="Address"
                         error={this.state.fields.address.error}
                         onChange={this.handleChange("address")}
@@ -80,7 +81,7 @@ class DonationFormStep2 extends React.Component {
                 </Grid>
                 <Grid item sm={12}/>
                 <Grid item sm={5} xs={7}>
-                    <TextField
+                    <GreenTextField
                         label="City"
                         error={this.state.fields.city.error}
                         onChange={this.handleChange("city")}
@@ -91,7 +92,7 @@ class DonationFormStep2 extends React.Component {
                 </Grid>
                 <Grid item sm={12}/>
                 <Grid item sm={5} xs={7}>
-                    <TextField
+                    <GreenTextField
                         label="Country"
                         error={this.state.fields.country.error}
                         onChange={this.handleChange("country")}
@@ -102,7 +103,7 @@ class DonationFormStep2 extends React.Component {
                 </Grid>
                 <Grid item sm={12}/>
                 <Grid item sm={5} xs={7}>
-                    <TextField
+                    <GreenTextField
                         label="State/Province/Region"
                         error={this.state.fields.province.error}
                         onChange={this.handleChange("province")}
@@ -113,7 +114,7 @@ class DonationFormStep2 extends React.Component {
                 </Grid>
                 <Grid item sm={12}/>
                 <Grid item sm={5} xs={7}>
-                    <TextField
+                    <GreenTextField
                         label="Postcode"
                         error={this.state.fields.postcode.error}
                         onChange={this.handleChange("postcode")}

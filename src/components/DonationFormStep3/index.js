@@ -1,8 +1,7 @@
 import React from 'react'
 import Typography from "@material-ui/core/Typography";
 import Icon from "@material-ui/core/Icon";
-import TextField from "@material-ui/core/TextField";
-import {Button} from "@material-ui/core";
+import GreenTextField from '../GreenTextField'
 import Utils from "../DonationForm/utils";
 import Grid from "@material-ui/core/Grid";
 import GreenBtn from "../GreenBtn";
@@ -51,7 +50,7 @@ class DonationFormStep3 extends React.Component {
                 </Grid>
                 <Grid item sm={12}/>
                 <Grid item sm={5} xs={7}>
-                    <TextField
+                    <GreenTextField
                         label="Your email"
                         error={this.state.fields.email.error}
                         onChange={this.handleChange("email")}
