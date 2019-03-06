@@ -1,6 +1,5 @@
 import React from 'react'
 import {Icon, Typography} from "@material-ui/core";
-import TextField from "@material-ui/core/TextField";
 import Grid from "@material-ui/core/Grid";
 import Utils from "../DonationForm/utils";
 import GreenBtn from "../GreenBtn";
