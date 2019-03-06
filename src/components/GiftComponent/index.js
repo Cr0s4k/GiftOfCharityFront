@@ -26,10 +26,10 @@ class GiftComponent extends React.Component {
     render() {
         return (
             <Grid container justify="center" id="giftGrid">
-                <Grid item className="wow bounceIn" hidden={this.state.videoHidden}>
+                <Grid item className="wowa abounceIn" hidden={this.state.videoHidden}>
                     <ReactPlayer  url={this.props.gift.videoUrl} controls width="100%" height="auto" onReady={this.videoIsReady}/>
                 </Grid>
-                <Grid item xs={12} className="wow bounceInDown">
+                <Grid item xs={12} className="wowa abounceInDown">
                     <GreenButton id="gotoBtn" color="primary" variant="contained" onClick={this.handleCloseError}>Go to Gift Of Charity</GreenButton>
                 </Grid>
             </Grid>
