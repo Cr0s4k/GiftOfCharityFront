@@ -56,6 +56,7 @@ class DonationFormStep4 extends React.Component {
         try{
             await API.makeDonation({
                 orderId: payment.paymentID,
+                amount: this.state.amount.value,
                 ...this.props.data
             });
             this.toggleDialog(this.constants.SUCCESS)()
