@@ -28,7 +28,7 @@ class Utils {
         };
         else if(input === 'postcode') return {
             postcode: {
-                value: newValue,
+                value: parseInt(newValue),
                 error: Utils.checkPostcode(newValue)
             }
         };
@@ -38,9 +38,9 @@ class Utils {
                 error: Utils.checkEmail(newValue)
             }
         };
-        else if(input === 'quantity') return {
-            quantity: {
-                value: newValue,
+        else if(input === 'amount') return {
+            amount: {
+                value: parseInt(newValue),
                 error: Utils.checkQuantity(newValue)
             }
         }

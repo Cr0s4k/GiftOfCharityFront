@@ -1,6 +1,6 @@
 import React from 'react'
 import {Button, Icon, Typography} from "@material-ui/core";
-import LinearProgress from "@material-ui/core/LinearProgress";
+import GreenLinearProgress from '../GreenLinearProgress'
 import Grid from "@material-ui/core/Grid";
 import API from "../../services/API"
 import ReactPlayer from 'react-player'
@@ -9,6 +9,7 @@ import DialogTitle from "@material-ui/core/DialogTitle";
 import DialogContent from "@material-ui/core/DialogContent";
 import DialogContentText from "@material-ui/core/DialogContentText";
 import DialogActions from "@material-ui/core/DialogActions";
+import GreenBtn from "../GreenBtn";
 
 class DonationFormStep1 extends React.Component {
 
@@ -99,16 +100,16 @@ class DonationFormStep1 extends React.Component {
                 <Grid item sm={5} xs={7}>
                     <ReactPlayer url={this.state.videoUrl} hidden={this.state.videoUrl == null} controls width="100%" height="auto"/>
                     <input ref={this.uploadInRef} type="file" multiple={true} style={{display: "none"}} onChange={this.handleSelectedFile} accept="video/*"/>
-                    <LinearProgress variant="determinate" value={this.state.file.loaded} hidden={this.state.progressBarHidden} style={{height: 7}}/>
+                    <GreenLinearProgress variant="determinate" value={this.state.file.loaded} hidden={this.state.progressBarHidden}/>
                     <div id="DonationFormS1BtnContainer">
-                        <Button id={"uploadBtn"} variant="contained" color="primary" onClick={this.handleUploadBtn}>
+                        <GreenBtn id={"uploadBtn"} variant="contained" color="primary" onClick={this.handleUploadBtn}>
                             Upload
                             <Icon style={{marginBottom: 0, marginLeft: 6}}>cloud_upload</Icon>
-                        </Button>
-                        <Button  variant="contained" color="primary" disabled={this.state.videoUrl == null} onClick={this.handleNextBtn}>
+                        </GreenBtn>
+                        <GreenBtn  variant="contained" color="primary" disabled={this.state.videoUrl == null} onClick={this.handleNextBtn}>
                             Next
                             <Icon style={{marginBottom: 0, marginLeft: 6}}>navigate_next</Icon>
-                        </Button>
+                        </GreenBtn>
                     </div>
                 </Grid>
                 <Grid item sm={12}/>

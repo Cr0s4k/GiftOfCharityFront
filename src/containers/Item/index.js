@@ -31,7 +31,7 @@ class Item extends React.Component{
     };
 
     handleError() {
-        document.title = "Error"
+        document.title = "Error";
         return (
             <ErrorMessage
                 title="Error!"

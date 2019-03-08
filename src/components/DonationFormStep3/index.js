@@ -1,10 +1,10 @@
 import React from 'react'
 import Typography from "@material-ui/core/Typography";
 import Icon from "@material-ui/core/Icon";
-import TextField from "@material-ui/core/TextField";
-import {Button} from "@material-ui/core";
+import GreenTextField from '../GreenTextField'
 import Utils from "../DonationForm/utils";
 import Grid from "@material-ui/core/Grid";
+import GreenBtn from "../GreenBtn";
 
 class DonationFormStep3 extends React.Component {
     constructor(props) {
@@ -50,7 +50,7 @@ class DonationFormStep3 extends React.Component {
                 </Grid>
                 <Grid item sm={12}/>
                 <Grid item sm={5} xs={7}>
-                    <TextField
+                    <GreenTextField
                         label="Your email"
                         error={this.state.fields.email.error}
                         onChange={this.handleChange("email")}
@@ -62,14 +62,14 @@ class DonationFormStep3 extends React.Component {
                 <Grid item sm={12}/>
                 <Grid item sm={5} xs={7}>
                     <div id="DonationFormS1BtnContainer">
-                        <Button  variant="contained" color="primary" onClick={this.handleNextBtn(false)}>
+                        <GreenBtn  variant="contained" color="primary" onClick={this.handleNextBtn(false)}>
                             <Icon style={{marginBottom: 0, marginLeft: 6}}>navigate_before</Icon>
                             Previous
-                        </Button>
-                        <Button  variant="contained" color="primary" disabled={!this.state.nextStepBtn} onClick={this.handleNextBtn(true)}>
+                        </GreenBtn>
+                        <GreenBtn  variant="contained" color="primary" disabled={!this.state.nextStepBtn} onClick={this.handleNextBtn(true)}>
                             Next
                             <Icon style={{marginBottom: 0, marginLeft: 6}}>navigate_next</Icon>
-                        </Button>
+                        </GreenBtn>
                     </div>
                 </Grid>
             </Grid>

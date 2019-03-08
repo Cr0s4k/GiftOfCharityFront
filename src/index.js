@@ -27,7 +27,7 @@ ReactDOM.render((
             <Route exact path="/login" component={Login} />
             <Route exact path="/item/:id" component={Item}/>
             <Route exact path="/item/:id/buy" component={Donation} />
-            <Route exact path="/gift/:code" component={Index}/>
+            <Route exact path="/gift/:token" component={Index}/>
         </div>
     </BrowserRouter>), document.getElementById('root'));
 
