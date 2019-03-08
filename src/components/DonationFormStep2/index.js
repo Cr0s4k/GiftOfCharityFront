@@ -1,8 +1,9 @@
 import React from 'react'
-import {Button, Icon, Typography} from "@material-ui/core";
-import TextField from "@material-ui/core/TextField";
+import {Icon, Typography} from "@material-ui/core";
 import Grid from "@material-ui/core/Grid";
 import Utils from "../DonationForm/utils";
+import GreenBtn from "../GreenBtn";
+import GreenTextField from '../GreenTextField'
 
 class DonationFormStep2 extends React.Component {
     constructor(props) {
@@ -68,7 +69,7 @@ class DonationFormStep2 extends React.Component {
                 </Grid>
                 <Grid item sm={12}/>
                 <Grid item sm={5} xs={7}>
-                    <TextField
+                    <GreenTextField
                         label="Address"
                         error={this.state.fields.address.error}
                         onChange={this.handleChange("address")}
@@ -79,7 +80,7 @@ class DonationFormStep2 extends React.Component {
                 </Grid>
                 <Grid item sm={12}/>
                 <Grid item sm={5} xs={7}>
-                    <TextField
+                    <GreenTextField
                         label="City"
                         error={this.state.fields.city.error}
                         onChange={this.handleChange("city")}
@@ -90,7 +91,7 @@ class DonationFormStep2 extends React.Component {
                 </Grid>
                 <Grid item sm={12}/>
                 <Grid item sm={5} xs={7}>
-                    <TextField
+                    <GreenTextField
                         label="Country"
                         error={this.state.fields.country.error}
                         onChange={this.handleChange("country")}
@@ -101,7 +102,7 @@ class DonationFormStep2 extends React.Component {
                 </Grid>
                 <Grid item sm={12}/>
                 <Grid item sm={5} xs={7}>
-                    <TextField
+                    <GreenTextField
                         label="State/Province/Region"
                         error={this.state.fields.province.error}
                         onChange={this.handleChange("province")}
@@ -112,7 +113,7 @@ class DonationFormStep2 extends React.Component {
                 </Grid>
                 <Grid item sm={12}/>
                 <Grid item sm={5} xs={7}>
-                    <TextField
+                    <GreenTextField
                         label="Postcode"
                         error={this.state.fields.postcode.error}
                         onChange={this.handleChange("postcode")}
@@ -124,14 +125,14 @@ class DonationFormStep2 extends React.Component {
                 <Grid item sm={12}/>
                 <Grid item sm={5} xs={7}>
                     <div id="DonationFormS1BtnContainer">
-                        <Button  variant="contained" color="primary" onClick={this.handleNextBtn(false)}>
+                        <GreenBtn  variant="contained" color="primary" onClick={this.handleNextBtn(false)}>
                             <Icon style={{marginBottom: 0, marginLeft: 6}}>navigate_before</Icon>
                             Previous
-                        </Button>
-                        <Button  variant="contained" color="primary" disabled={!this.state.nextStepBtn} onClick={this.handleNextBtn(true)}>
+                        </GreenBtn>
+                        <GreenBtn  variant="contained" color="primary" disabled={!this.state.nextStepBtn} onClick={this.handleNextBtn(true)}>
                             Next
                             <Icon style={{marginBottom: 0, marginLeft: 6}}>navigate_next</Icon>
-                        </Button>
+                        </GreenBtn>
                     </div>
                 </Grid>
             </Grid>

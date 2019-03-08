@@ -1,0 +1,13 @@
+#mainDiv {
+    background-color: rgb(192,237,207);
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+#title {
+    display: inline;
+}
+
+#title:hover {
+    cursor: pointer;
+}
