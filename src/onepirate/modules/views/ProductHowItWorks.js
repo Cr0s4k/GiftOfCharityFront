@@ -78,7 +78,7 @@ function ProductHowItWorks(props) {
                 {/*alt="suitcase"*/}
                 {/*className={classes.image}*/}
                 {/*/>*/}
-                <Icon fontSize="large" className={classes.image}>local_florist_outline</Icon>
+                <Icon fontSize="" className={classes.image}>local_florist_outline</Icon>
                 <Typography variant="h5" align="center">
                   Pick a great cause like
                 </Typography>

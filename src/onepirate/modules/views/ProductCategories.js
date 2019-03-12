@@ -5,6 +5,7 @@ import ButtonBase from '@material-ui/core/ButtonBase';
 import LayoutBody from '../components/LayoutBody';
 import Typography from '../components/Typography';
 import API from "../../../services/API";
+import withRouter from "react-router/es/withRouter";
 
 const styles = theme => ({
   root: {
@@ -99,6 +100,10 @@ class ProductCategories extends React.Component{
       });
   }
 
+  handleClick = (product) => () => {
+    this.props.history.push(`/products/${product.id}`)
+  };
+
   render() {
     return (
       <LayoutBody className={this.classes.root} component="section" width="large" id="products">
@@ -113,6 +118,7 @@ class ProductCategories extends React.Component{
               style={{
                 width: '50%',
               }}
+              onClick={this.handleClick(product)}
             >
               <div
                 className={this.classes.imageSrc}
@@ -144,4 +150,4 @@ ProductCategories.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(ProductCategories);
+export default withStyles(styles)(withRouter(ProductCategories));
