@@ -8,19 +8,27 @@ import AppAppBar from './modules/views/AppAppBar';
 import privacy from './modules/views/markdowns/privacy.md.js';
 import AppFooter from './modules/views/AppFooter';
 
-function Privacy() {
-  return (
-    <React.Fragment>
-      <AppAppBar />
-      <LayoutBody margin marginBottom>
-        <Typography variant="h3" gutterBottom marked="center" align="center">
-          Privacy
-        </Typography>
-        <Markdown>{privacy}</Markdown>
-      </LayoutBody>
-      <AppFooter />
-    </React.Fragment>
-  );
+class Privacy extends React.Component{
+  constructor(props) {
+    super(props);
+    window.scrollTo(0, 0)
+  }
+
+
+  render() {
+    return (
+      <React.Fragment>
+        <AppAppBar />
+        <LayoutBody margin marginBottom>
+          <Typography variant="h3" gutterBottom marked="center" align="center">
+            Privacy
+          </Typography>
+          <Markdown>{privacy}</Markdown>
+        </LayoutBody>
+        <AppFooter />
+      </React.Fragment>
+    );
+  }
 }
 
 export default withRoot(Privacy);

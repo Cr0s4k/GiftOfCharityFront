@@ -5,10 +5,12 @@ import { withStyles } from '@material-ui/core/styles';
 import Link from '@material-ui/core/Link';
 import AppBar from '../components/AppBar';
 import Toolbar, { styles as toolbarStyles } from '../components/Toolbar';
+import withRouter from "react-router/es/withRouter";
 
 const styles = theme => ({
   title: {
     fontSize: 24,
+    cursor: 'pointer'
   },
   placeholder: toolbarStyles(theme).root,
   toolbar: {
@@ -35,51 +37,57 @@ const styles = theme => ({
   },
 });
 
-function AppAppBar(props) {
-  const { classes } = props;
+class AppAppBar extends React.Component{
+  classes = this.props.classes;
 
-  return (
-    <div>
-      <AppBar position="fixed">
-        <Toolbar className={classes.toolbar}>
-          <div className={classes.left} />
-          <Link
-            variant="h6"
-            underline="none"
-            color="inherit"
-            className={classes.title}
-            href="/"
-          >
-            {'giftofcharity'}
-          </Link>
-          <div className={classes.right}>
-            {/*<Link*/}
+  handleClick = () => {
+    this.props.history.push('/')
+  };
+
+  render() {
+    return (
+      <div>
+        <AppBar position="fixed">
+          <Toolbar className={this.classes.toolbar}>
+            <div className={this.classes.left} />
+            <Link
+              variant="h6"
+              underline="none"
+              color="inherit"
+              className={this.classes.title}
+              onClick={this.handleClick}
+            >
+              {'giftofcharity'}
+            </Link>
+            <div className={this.classes.right}>
+              {/*<Link*/}
               {/*color="inherit"*/}
               {/*variant="h6"*/}
               {/*underline="none"*/}
               {/*className={classes.rightLink}*/}
               {/*href="/premium-themes/onepirate/sign-in"*/}
-            {/*>*/}
+              {/*>*/}
               {/*{'Sign In'}*/}
-            {/*</Link>*/}
-            {/*<Link*/}
+              {/*</Link>*/}
+              {/*<Link*/}
               {/*variant="h6"*/}
               {/*underline="none"*/}
               {/*className={classNames(classes.rightLink, classes.linkSecondary)}*/}
               {/*href="/premium-themes/onepirate/sign-up"*/}
-            {/*>*/}
+              {/*>*/}
               {/*{'Sign Up'}*/}
-            {/*</Link>*/}
-          </div>
-        </Toolbar>
-      </AppBar>
-      <div className={classes.placeholder} />
-    </div>
-  );
+              {/*</Link>*/}
+            </div>
+          </Toolbar>
+        </AppBar>
+        <div className={this.classes.placeholder} />
+      </div>
+    );
+  }
 }
 
 AppAppBar.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(AppAppBar);
+export default withStyles(styles)(withRouter(AppAppBar));
