@@ -38,8 +38,9 @@ const styles = theme => ({
     fontWeight: theme.typography.fontWeightMedium,
   },
   image: {
-    width: 36,
-    height: 36,
+    fontSize: 55,
+    width: 55,
+    height: 55,
     marginTop: theme.spacing.unit * 4,
     marginBottom: theme.spacing.unit * 4,
   },
@@ -78,7 +79,7 @@ function ProductHowItWorks(props) {
                 {/*alt="suitcase"*/}
                 {/*className={classes.image}*/}
                 {/*/>*/}
-                <Icon fontSize="" className={classes.image}>local_florist_outline</Icon>
+                <Icon className={classes.image}>local_florist_outline</Icon>
                 <Typography variant="h5" align="center">
                   Pick a great cause like
                 </Typography>
@@ -92,7 +93,7 @@ function ProductHowItWorks(props) {
                 {/*alt="graph"*/}
                 {/*className={classes.image}*/}
                 {/*/>*/}
-                <Icon fontSize="large" className={classes.image}>person_outline</Icon>
+                <Icon className={classes.image}>person_outline</Icon>
                 <Typography variant="h5" align="center">
                   Choose the recipient
                 </Typography>
@@ -120,7 +121,7 @@ function ProductHowItWorks(props) {
                 {/*alt="clock"*/}
                 {/*className={classes.image}*/}
                 {/*/>*/}
-                <Icon fontSize="large" className={classes.image}>email_outline</Icon>
+                <Icon className={classes.image}>email_outline</Icon>
                 <Typography variant="h5" align="center">
                   A card which contains a mysterious url is sent to the receiver!
                 </Typography>

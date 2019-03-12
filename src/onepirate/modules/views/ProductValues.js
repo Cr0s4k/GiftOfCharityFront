@@ -26,6 +26,8 @@ const styles = theme => ({
   },
   image: {
     height: 55,
+    width: 55,
+    fontSize: 55
   },
   title: {
     marginTop: theme.spacing.unit * 5,
@@ -57,7 +59,7 @@ function ProductValues(props) {
                 {/*src="/static/themes/onepirate/productValues1.svg"*/}
                 {/*alt="suitcase"*/}
               {/*/>*/}
-              <Icon fontSize="large" className={classes.image}>euro_symbol</Icon>
+              <Icon className={classes.image}>euro_symbol</Icon>
               <Typography variant="h6" className={classes.title}>
                 Free donation
               </Typography>
@@ -73,7 +75,7 @@ function ProductValues(props) {
                 {/*src="/static/themes/onepirate/productValues2.svg"*/}
                 {/*alt="graph"*/}
               {/*/>*/}
-              <Icon fontSize="large" className={classes.image}>card_giftcard</Icon>
+              <Icon className={classes.image}>card_giftcard</Icon>
               <Typography variant="h6" className={classes.title}>
                 New experiences
               </Typography>
@@ -89,7 +91,7 @@ function ProductValues(props) {
                 {/*src="/static/themes/onepirate/productValues3.svg"*/}
                 {/*alt="clock"*/}
               {/*/>*/}
-              <Icon fontSize="large" className={classes.image}>check_circle</Icon>
+              <Icon className={classes.image}>check_circle</Icon>
               <Typography variant="h6" className={classes.title}>
                 Quizzes
               </Typography>
