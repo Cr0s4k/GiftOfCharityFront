@@ -14,6 +14,7 @@ import firebase from "firebase"
 import NewHome from './onepirate/Home'
 import Terms from './onepirate/Terms'
 import Privacy from './onepirate/Privacy'
+import Product from './onepirate/Product'
 
 let config = {
     apiKey: process.env.REACT_APP_FIRE_API_KEY,
@@ -26,7 +27,7 @@ firebase.initializeApp(config);
 
 ReactDOM.render((
     <BrowserRouter>
-        <div>
+        <>
             {/*<Route exact path="/" component={Home} />*/}
             {/*<Route exact path="/login" component={Login} />*/}
             {/*<Route exact path="/item/:id" component={Item}/>*/}
@@ -35,7 +36,8 @@ ReactDOM.render((
             <Route exact path="/" component={NewHome} />
             <Route exact path="/terms" component={Terms} />
             <Route exact path="/privacy" component={Privacy} />
-        </div>
+            <Route exact path="/products/:id" component={Product} />
+        </>
     </BrowserRouter>), document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change

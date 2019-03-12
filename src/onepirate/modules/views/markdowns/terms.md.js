@@ -1,5 +1,4 @@
-let string;
-export default string = `
+export default `
 Last modified: October 7th, 2018.
 
 ## 1. Services

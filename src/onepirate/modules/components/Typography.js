@@ -26,6 +26,13 @@ const styles = theme => ({
     margin: `${theme.spacing.unit}px auto 0`,
     backgroundColor: theme.palette.secondary.main,
   },
+  markedH4Left: {
+    height: 4,
+    width: 55,
+    display: 'block',
+    margin: theme.spacing.unit / 2,
+    backgroundColor: theme.palette.secondary.main,
+  },
   markedH6Left: {
     height: 2,
     width: 28,
