@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import classNames from 'classnames';
 import { withStyles } from '@material-ui/core/styles';
 import LayoutBody from '../components/LayoutBody';
+import Icon from "@material-ui/core/Icon";
 
 const styles = theme => ({
   root: {
@@ -46,6 +47,7 @@ const styles = theme => ({
   arrowDown: {
     position: 'absolute',
     bottom: theme.spacing.unit * 4,
+    color: theme.palette.secondary.main
   },
 });
 
@@ -64,13 +66,14 @@ function ProductHeroLayout(props) {
         {children}
         <div className={classes.backdrop} />
         <div className={classNames(classes.background, backgroundClassName)} />
-        <img
-          className={classes.arrowDown}
-          src="/images/productHeroArrowDown.png"
-          height="16"
-          width="12"
-          alt="arrow down"
-        />
+        {/*<img*/}
+          {/*className={classes.arrowDown}*/}
+          {/*src="/images/productHeroArrowDown.png"*/}
+          {/*height="16"*/}
+          {/*width="12"*/}
+          {/*alt="arrow down"*/}
+        {/*/>*/}
+        <Icon fontSize="large" className={classes.arrowDown}>arrow_downward</Icon>
       </LayoutBody>
     </section>
   );

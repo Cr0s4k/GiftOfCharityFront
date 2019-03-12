@@ -54,7 +54,7 @@ function ProductHero(props) {
           <Link {...linkProps} href="#products" variant="button" />
         )}
       >
-        Register
+        Choose a project
       </Button>
       <Typography variant="body2" color="inherit" className={classes.more}>
         Discover the experience

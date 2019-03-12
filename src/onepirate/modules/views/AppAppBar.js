@@ -53,23 +53,23 @@ function AppAppBar(props) {
             {'giftofcharity'}
           </Link>
           <div className={classes.right}>
-            <Link
-              color="inherit"
-              variant="h6"
-              underline="none"
-              className={classes.rightLink}
-              href="/premium-themes/onepirate/sign-in"
-            >
-              {'Sign In'}
-            </Link>
-            <Link
-              variant="h6"
-              underline="none"
-              className={classNames(classes.rightLink, classes.linkSecondary)}
-              href="/premium-themes/onepirate/sign-up"
-            >
-              {'Sign Up'}
-            </Link>
+            {/*<Link*/}
+              {/*color="inherit"*/}
+              {/*variant="h6"*/}
+              {/*underline="none"*/}
+              {/*className={classes.rightLink}*/}
+              {/*href="/premium-themes/onepirate/sign-in"*/}
+            {/*>*/}
+              {/*{'Sign In'}*/}
+            {/*</Link>*/}
+            {/*<Link*/}
+              {/*variant="h6"*/}
+              {/*underline="none"*/}
+              {/*className={classNames(classes.rightLink, classes.linkSecondary)}*/}
+              {/*href="/premium-themes/onepirate/sign-up"*/}
+            {/*>*/}
+              {/*{'Sign Up'}*/}
+            {/*</Link>*/}
           </div>
         </Toolbar>
       </AppBar>

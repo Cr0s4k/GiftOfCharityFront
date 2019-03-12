@@ -4,6 +4,7 @@ import { withStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import LayoutBody from '../components/LayoutBody';
 import Typography from '../components/Typography';
+import Icon from "@material-ui/core/Icon";
 
 const styles = theme => ({
   root: {
@@ -51,49 +52,49 @@ function ProductValues(props) {
         <Grid container spacing={40}>
           <Grid item xs={12} md={4}>
             <div className={classes.item}>
-              <img
-                className={classes.image}
-                src="/static/themes/onepirate/productValues1.svg"
-                alt="suitcase"
-              />
+              {/*<img*/}
+                {/*className={classes.image}*/}
+                {/*src="/static/themes/onepirate/productValues1.svg"*/}
+                {/*alt="suitcase"*/}
+              {/*/>*/}
+              <Icon fontSize="large" className={classes.image}>euro_symbol</Icon>
               <Typography variant="h6" className={classes.title}>
-                The best luxury hotels
+                Free donation
               </Typography>
               <Typography variant="h5">
-                {'From the latest trendy boutique hotel to the iconic palace with XXL pool'}
-                {', go for a mini-vacation just a few subway stops away from your home.'}
+                {'Donate as much as you want! We do not pressure our clients'}
               </Typography>
             </div>
           </Grid>
           <Grid item xs={12} md={4}>
             <div className={classes.item}>
-              <img
-                className={classes.image}
-                src="/static/themes/onepirate/productValues2.svg"
-                alt="graph"
-              />
+              {/*<img*/}
+                {/*className={classes.image}*/}
+                {/*src="/static/themes/onepirate/productValues2.svg"*/}
+                {/*alt="graph"*/}
+              {/*/>*/}
+              <Icon fontSize="large" className={classes.image}>card_giftcard</Icon>
               <Typography variant="h6" className={classes.title}>
                 New experiences
               </Typography>
               <Typography variant="h5">
-                {'Privatize a pool, take a Japanese bath or wake up in 900m2 of garden… '}
-                {'your Sundays will not be alike.'}
+                {'Give an experience to the person you want!'}
               </Typography>
             </div>
           </Grid>
           <Grid item xs={12} md={4}>
             <div className={classes.item}>
-              <img
-                className={classes.image}
-                src="/static/themes/onepirate/productValues3.svg"
-                alt="clock"
-              />
+              {/*<img*/}
+                {/*className={classes.image}*/}
+                {/*src="/static/themes/onepirate/productValues3.svg"*/}
+                {/*alt="clock"*/}
+              {/*/>*/}
+              <Icon fontSize="large" className={classes.image}>check_circle</Icon>
               <Typography variant="h6" className={classes.title}>
-                Exclusive rates
+                Quizzes
               </Typography>
               <Typography variant="h5">
-                {'By registering, you will access specially negotiated rates '}
-                {'that you will not find anywhere else.'}
+                {'We will also send a nice quiz to the receiver!'}
               </Typography>
             </div>
           </Grid>
