@@ -57,10 +57,10 @@ const LANGUAGES = [
     code: 'en-US',
     name: 'English',
   },
-  {
-    code: 'fr-FR',
-    name: 'Français',
-  },
+  // {
+  //   code: 'fr-FR',
+  //   name: 'Français',
+  // },
 ];
 
 function AppFooter(props) {
@@ -79,10 +79,10 @@ function AppFooter(props) {
               spacing={16}
             >
               <Grid item className={classes.icons}>
-                <a href="https://material-ui.com/" className={classes.icon}>
+                <a href="/" className={classes.icon}>
                   <img src="/images/appFooterFacebook.png" alt="Facebook" />
                 </a>
-                <a href="https://twitter.com/MaterialUI" className={classes.icon}>
+                <a href="/" className={classes.icon}>
                   <img src="/images/appFooterTwitter.png" alt="Twitter" />
                 </a>
               </Grid>

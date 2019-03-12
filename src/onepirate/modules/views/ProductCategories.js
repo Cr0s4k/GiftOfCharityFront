@@ -113,7 +113,7 @@ class ProductCategories extends React.Component{
         <div className={this.classes.images}>
           {this.state.products.map(product => (
             <ButtonBase
-              key={product.title}
+              key={product.id}
               className={this.classes.imageWrapper}
               style={{
                 width: '50%',
