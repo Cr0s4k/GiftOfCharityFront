@@ -4,6 +4,7 @@ import { withStyles } from '@material-ui/core/styles';
 import ButtonBase from '@material-ui/core/ButtonBase';
 import LayoutBody from '../components/LayoutBody';
 import Typography from '../components/Typography';
+import API from "../../../services/API";
 
 const styles = theme => ({
   root: {
@@ -83,103 +84,60 @@ const styles = theme => ({
   },
 });
 
-function ProductCategories(props) {
-  const { classes } = props;
+class ProductCategories extends React.Component{
+  classes = this.props.classes;
+  state = {
+    products: []
+  };
 
-  const images = [
-    {
-      url:
-        'https://images.unsplash.com/photo-1534081333815-ae5019106622?auto=format&fit=crop&w=400&q=80',
-      title: 'Snorkeling',
-      width: '50%',
-    },
-    {
-      url:
-        'https://images.unsplash.com/photo-1531299204812-e6d44d9a185c?auto=format&fit=crop&w=400&q=80',
-      title: 'Massage',
-      width: '50%',
-    },
-    {
-      url:
-        'https://images.unsplash.com/photo-1476480862126-209bfaa8edc8?auto=format&fit=crop&w=400&q=80',
-      title: 'Hiking',
-      width: '50%',
-    },
-    {
-      url:
-        'https://images.unsplash.com/photo-1453747063559-36695c8771bd?auto=format&fit=crop&w=400&q=80',
-      title: 'Tour',
-      width: '50%',
-    },
-    // {
-    //   url:
-    //     'https://images.unsplash.com/photo-1523309996740-d5315f9cc28b?auto=format&fit=crop&w=400&q=80',
-    //   title: 'Gastronomy',
-    //   width: '38%',
-    // },
-    // {
-    //   url:
-    //     'https://images.unsplash.com/photo-1534452203293-494d7ddbf7e0?auto=format&fit=crop&w=400&q=80',
-    //   title: 'Shopping',
-    //   width: '24%',
-    // },
-    // {
-    //   url:
-    //     'https://images.unsplash.com/photo-1506941433945-99a2aa4bd50a?auto=format&fit=crop&w=400&q=80',
-    //   title: 'Walking',
-    //   width: '40%',
-    // },
-    // {
-    //   url:
-    //     'https://images.unsplash.com/photo-1533727937480-da3a97967e95?auto=format&fit=crop&w=400&q=80',
-    //   title: 'Fitness',
-    //   width: '20%',
-    // },
-    // {
-    //   url:
-    //     'https://images.unsplash.com/photo-1518136247453-74e7b5265980?auto=format&fit=crop&w=400&q=80',
-    //   title: 'Reading',
-    //   width: '40%',
-    // },
-  ];
+  componentDidMount() {
+    API.getCharityProjects()
+      .then(products => {
+        this.setState({
+          products: products
+        })
+      });
+  }
 
-  return (
-    <LayoutBody className={classes.root} component="section" width="large" id="products">
-      <Typography variant="h4" marked="center" align="center" component="h2">
-        For all tastes and all desires
-      </Typography>
-      <div className={classes.images}>
-        {images.map(image => (
-          <ButtonBase
-            key={image.title}
-            className={classes.imageWrapper}
-            style={{
-              width: image.width,
-            }}
-          >
-            <div
-              className={classes.imageSrc}
+  render() {
+    return (
+      <LayoutBody className={this.classes.root} component="section" width="large" id="products">
+        <Typography variant="h4" marked="center" align="center" component="h2">
+          For all tastes and all desires
+        </Typography>
+        <div className={this.classes.images}>
+          {this.state.products.map(product => (
+            <ButtonBase
+              key={product.title}
+              className={this.classes.imageWrapper}
               style={{
-                backgroundImage: `url(${image.url})`,
+                width: '50%',
               }}
-            />
-            <div className={classes.imageBackdrop} />
-            <div className={classes.imageButton}>
-              <Typography
-                component="h3"
-                variant="h6"
-                color="inherit"
-                className={classes.imageTitle}
-              >
-                {image.title}
-                <div className={classes.imageMarked} />
-              </Typography>
-            </div>
-          </ButtonBase>
-        ))}
-      </div>
-    </LayoutBody>
-  );
+            >
+              <div
+                className={this.classes.imageSrc}
+                style={{
+                  backgroundImage: `url(${product.imageUrl})`,
+                }}
+              />
+              <div className={this.classes.imageBackdrop} />
+              <div className={this.classes.imageButton}>
+                <Typography
+                  component="h3"
+                  variant="h6"
+                  color="inherit"
+                  className={this.classes.imageTitle}
+                >
+                  {product.name}
+                  <div className={this.classes.imageMarked} />
+                </Typography>
+              </div>
+            </ButtonBase>
+          ))}
+        </div>
+      </LayoutBody>
+    );
+  }
 }
 
 ProductCategories.propTypes = {

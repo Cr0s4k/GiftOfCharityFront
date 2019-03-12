@@ -89,7 +89,7 @@ class ProductCTA extends React.Component {
                   Receive offers
                 </Typography>
                 <Typography variant="h5">
-                  Taste the holidays of the everyday close to home.
+                  Be aware is there is a new charity project available.
                 </Typography>
                 <TextField noBorder className={classes.textField} placeholder="Your email" />
                 <Button
@@ -117,7 +117,7 @@ class ProductCTA extends React.Component {
         <Snackbar
           open={this.state.open}
           onClose={this.handleClose}
-          message="We will send you our best offers, once a week."
+          message="We will send you an email if there is a new available project."
         />
       </LayoutBody>
     );
