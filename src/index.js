@@ -1,15 +1,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import Index from './containers/Gift';
-import Home from './containers/Home'
+// import './index.css';
+// import Index from './containers/Gift';
+// import Home from './containers/Home'
 import * as serviceWorker from './serviceWorker';
 import { BrowserRouter } from 'react-router-dom'
 import {Route} from "react-router";
-import Item from "./containers/Item";
-import Login from "./containers/Login"
-import Donation from "./containers/Donation";
+// import Item from "./containers/Item";
+// import Login from "./containers/Login"
+// import Donation from "./containers/Donation";
 import firebase from "firebase"
+
+import newHome from './onepirate/Home'
 
 let config = {
     apiKey: process.env.REACT_APP_FIRE_API_KEY,
@@ -23,11 +25,12 @@ firebase.initializeApp(config);
 ReactDOM.render((
     <BrowserRouter>
         <div>
-            <Route exact path="/" component={Home} />
-            <Route exact path="/login" component={Login} />
-            <Route exact path="/item/:id" component={Item}/>
-            <Route exact path="/item/:id/buy" component={Donation} />
-            <Route exact path="/gift/:token" component={Index}/>
+            {/*<Route exact path="/" component={Home} />*/}
+            {/*<Route exact path="/login" component={Login} />*/}
+            {/*<Route exact path="/item/:id" component={Item}/>*/}
+            {/*<Route exact path="/item/:id/buy" component={Donation} />*/}
+            {/*<Route exact path="/gift/:token" component={Index}/>*/}
+            <Route exact path="/" component={newHome} />
         </div>
     </BrowserRouter>), document.getElementById('root'));
 
