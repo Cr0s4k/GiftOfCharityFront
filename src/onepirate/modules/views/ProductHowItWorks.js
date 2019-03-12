@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { withStyles } from '@material-ui/core/styles';
+import {withStyles} from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
 import Link from '@material-ui/core/Link';
 import LayoutBody from '../components/LayoutBody';
@@ -55,7 +55,7 @@ const styles = theme => ({
 });
 
 function ProductHowItWorks(props) {
-  const { classes } = props;
+  const {classes} = props;
 
   return (
     <section className={classes.root}>
@@ -74,9 +74,9 @@ function ProductHowItWorks(props) {
               <div className={classes.item}>
                 <div className={classes.number}>1.</div>
                 {/*<img*/}
-                  {/*src="/static/themes/onepirate/productHowItWorks1.svg"*/}
-                  {/*alt="suitcase"*/}
-                  {/*className={classes.image}*/}
+                {/*src="/static/themes/onepirate/productHowItWorks1.svg"*/}
+                {/*alt="suitcase"*/}
+                {/*className={classes.image}*/}
                 {/*/>*/}
                 <Icon fontSize="large" className={classes.image}>local_florist_outline</Icon>
                 <Typography variant="h5" align="center">
@@ -88,9 +88,9 @@ function ProductHowItWorks(props) {
               <div className={classes.item}>
                 <div className={classes.number}>2.</div>
                 {/*<img*/}
-                  {/*src="/static/themes/onepirate/productHowItWorks2.svg"*/}
-                  {/*alt="graph"*/}
-                  {/*className={classes.image}*/}
+                {/*src="/static/themes/onepirate/productHowItWorks2.svg"*/}
+                {/*alt="graph"*/}
+                {/*className={classes.image}*/}
                 {/*/>*/}
                 <Icon fontSize="large" className={classes.image}>person_outline</Icon>
                 <Typography variant="h5" align="center">
@@ -102,9 +102,9 @@ function ProductHowItWorks(props) {
               <div className={classes.item}>
                 <div className={classes.number}>3.</div>
                 {/*<img*/}
-                  {/*src="/static/themes/onepirate/productHowItWorks3.svg"*/}
-                  {/*alt="clock"*/}
-                  {/*className={classes.image}*/}
+                {/*src="/static/themes/onepirate/productHowItWorks3.svg"*/}
+                {/*alt="clock"*/}
+                {/*className={classes.image}*/}
                 {/*/>*/}
                 <Icon fontSize="large" className={classes.image}>play_circle_outline</Icon>
                 <Typography variant="h5" align="center">
@@ -116,9 +116,9 @@ function ProductHowItWorks(props) {
               <div className={classes.item}>
                 <div className={classes.number}>3.</div>
                 {/*<img*/}
-                    {/*src="/static/themes/onepirate/productHowItWorks3.svg"*/}
-                    {/*alt="clock"*/}
-                    {/*className={classes.image}*/}
+                {/*src="/static/themes/onepirate/productHowItWorks3.svg"*/}
+                {/*alt="clock"*/}
+                {/*className={classes.image}*/}
                 {/*/>*/}
                 <Icon fontSize="large" className={classes.image}>email_outline</Icon>
                 <Typography variant="h5" align="center">
@@ -134,7 +134,7 @@ function ProductHowItWorks(props) {
           variant="contained"
           className={classes.button}
           component={linkProps => (
-            <Link {...linkProps} href="/premium-themes/onepirate/sign-up" variant="button" />
+            <Link {...linkProps} href="#products" variant="button"/>
           )}
         >
           Get started

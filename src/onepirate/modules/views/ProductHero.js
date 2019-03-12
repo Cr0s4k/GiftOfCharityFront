@@ -18,6 +18,7 @@ const styles = theme => ({
   },
   button: {
     minWidth: 200,
+    textAlign: 'center'
   },
   h5: {
     marginBottom: theme.spacing.unit * 4,
@@ -50,7 +51,7 @@ function ProductHero(props) {
         size="large"
         className={classes.button}
         component={linkProps => (
-          <Link {...linkProps} href="/" variant="button" />
+          <Link {...linkProps} href="#products" variant="button" />
         )}
       >
         Register

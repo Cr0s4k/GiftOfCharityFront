@@ -107,7 +107,7 @@ class ProductCTA extends React.Component {
             <Hidden smDown>
               <div className={classes.imageDots} />
               <img
-                src="https://images.unsplash.com/photo-1527853787696-f7be74f2e39a?auto=format&fit=crop&w=750&q=80"
+                src="/images/seeds.jpg"
                 alt="call to action"
                 className={classes.image}
               />

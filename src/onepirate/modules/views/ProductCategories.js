@@ -144,7 +144,7 @@ function ProductCategories(props) {
   ];
 
   return (
-    <LayoutBody className={classes.root} component="section" width="large">
+    <LayoutBody className={classes.root} component="section" width="large" id="products">
       <Typography variant="h4" marked="center" align="center" component="h2">
         For all tastes and all desires
       </Typography>
