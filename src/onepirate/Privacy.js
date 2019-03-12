@@ -5,7 +5,7 @@ import Markdown from './modules/components/Markdown';
 import Typography from './modules/components/Typography';
 import LayoutBody from './modules/components/LayoutBody';
 import AppAppBar from './modules/views/AppAppBar';
-import privacy from './modules/views/privacy.md';
+import privacy from './modules/views/privacy.md.js';
 import AppFooter from './modules/views/AppFooter';
 
 function Privacy() {

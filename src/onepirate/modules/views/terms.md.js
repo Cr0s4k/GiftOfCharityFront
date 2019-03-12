@@ -1,3 +1,5 @@
+let string;
+export default string = `
 Last modified: October 7th, 2018.
 
 ## 1. Services
@@ -146,4 +148,4 @@ You acknowledge and agree that any Material-UI names, trademarks, service marks,
 
 - 16.10 Except for payments due under these Terms, neither party will be responsible for any delay or failure to perform that is attributable in whole or in part to any cause beyond its reasonable control, including, without limitation, acts of God (fire, storm, floods, earthquakes, etc.); civil disturbances; disruption of telecommunications, power or other essential services; interruption or termination of service by any service providers used by Material-UI to host the Services or to link its servers to the Internet; labor disturbances; vandalism; cable cut; computer viruses or other similar occurrences; or any malicious or unlawful acts of any third party.
 
-- 16.11 We are each independent contractors with respect to the subject matter of these Terms. Nothing contained in these Terms will be deemed or construed in any manner whatsoever to create a partnership, joint venture, employment, agency, fiduciary, or other similar relationship between us, and neither of us can bind the other contractually.
+- 16.11 We are each independent contractors with respect to the subject matter of these Terms. Nothing contained in these Terms will be deemed or construed in any manner whatsoever to create a partnership, joint venture, employment, agency, fiduciary, or other similar relationship between us, and neither of us can bind the other contractually.`

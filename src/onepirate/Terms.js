@@ -5,7 +5,7 @@ import Markdown from './modules/components/Markdown';
 import Typography from './modules/components/Typography';
 import LayoutBody from './modules/components/LayoutBody';
 import AppAppBar from './modules/views/AppAppBar';
-import terms from './modules/views/terms.md';
+import terms from './modules/views/terms.md.js';
 import AppFooter from './modules/views/AppFooter';
 
 function Terms() {

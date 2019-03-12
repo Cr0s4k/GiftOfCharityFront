@@ -45,8 +45,5 @@
   "engines": {
     "node": "9.8",
     "npm": "5.6"
-  },
-  "devDependencies": {
-    "raw-loader": "^1.0.0"
   }
 }
