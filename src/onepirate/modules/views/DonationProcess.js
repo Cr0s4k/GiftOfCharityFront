@@ -25,9 +25,9 @@ const styles = theme => ({
   },
   layoutBody: {
     marginTop: theme.spacing.unit * 10,
-    marginBottom: theme.spacing.unit * 15,
+    marginBottom: theme.spacing.unit * 5,
     position: 'relative',
-    display: 'flex',
+    // display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
   },
@@ -138,7 +138,6 @@ class ProductInformation extends React.Component{
                     <div>
                       <Button
                         color="secondary"
-                        // variant="contained"
                         disabled={this.state.activeStep === 0}
                         onClick={this.handleBack}
                         className={classes.button}
