@@ -7,6 +7,7 @@ import Typography from "../components/Typography";
 import Button from '../components/Button'
 import Grid from "@material-ui/core/Grid";
 import Link from "@material-ui/core/Link";
+import API from "../../../services/API";
 
 const styles = theme => ({
   root: {
@@ -27,7 +28,8 @@ const styles = theme => ({
   },
   description: {
     marginBottom: theme.spacing.unit * 7,
-    fontSize: 18
+    fontSize: 18,
+    textAlign: 'justify'
   },
   image: {
     width: '100%',
@@ -43,40 +45,58 @@ const styles = theme => ({
 class ProductInformation extends React.Component{
   classes = this.props.classes;
 
+  state = {
+    product: null
+  };
+
   // handleClick = () => {
   //   this.props.history.push('/')
   // };
+
+  componentDidMount() {
+    API.getCharityProject(this.props.match.params.id)
+      .then(product => {
+        this.setState({ product: product });
+        document.title = product.name
+      })
+      .catch(e => {
+        this.setState({error: true})
+      })
+  }
 
   render() {
     return (
       <section className={this.classes.root}>
         <LayoutBody className={this.classes.layoutBody} width="large">
-          <div>
-            <Grid container spacing={40} justify='center'>
-              <Grid item xs={12} md={6}>
-                <img className={this.classes.image} src='https://images.pexels.com/photos/904807/pexels-photo-904807.jpeg?cs=srgb&dl=branches-daylight-environment-904807.jpg&fm=jpg'/>
+          {this.state.product &&
+            <div>
+              <Grid container spacing={40} justify='center'>
+                <Grid item xs={12} md={6}>
+                  <img alt='A product' className={this.classes.image}
+                       src={this.state.product.imageUrl}/>
+                </Grid>
+                <Grid item xs={12} md={6}>
+                  <Typography variant="h4" marked='left' className={this.classes.title} component="h2">
+                    {this.state.product.name}
+                  </Typography>
+                  <Typography variant="body1" marked="center" className={this.classes.description} component="h2">
+                    {this.state.product.description}
+                  </Typography>
+                  <Button
+                    color="secondary"
+                    size="large"
+                    variant="contained"
+                    className={this.classes.button}
+                    component={linkProps => (
+                      <Link {...linkProps} href="#products" variant="button"/>
+                    )}
+                  >
+                    Give away
+                  </Button>
+                </Grid>
               </Grid>
-              <Grid item xs={12} md={6}>
-                <Typography variant="h4" marked='left' className={this.classes.title} component="h2">
-                  Save rain forest
-                </Typography>
-                <Typography variant="body1" marked="center" className={this.classes.description} component="h2">
-                  Using drones and working with government agencies, two indigenous communities in Peru have gone from losing 5% of their land to 0% deforestation. Indigenous communities are protecting the rainforest even as they face pressure and violence from illegal coca growing, drug trafficking and logging.
-                </Typography>
-                <Button
-                  color="secondary"
-                  size="large"
-                  variant="contained"
-                  className={this.classes.button}
-                  component={linkProps => (
-                    <Link {...linkProps} href="#products" variant="button"/>
-                  )}
-                >
-                  Give away
-                </Button>
-              </Grid>
-            </Grid>
-          </div>
+            </div>
+          }
         </LayoutBody>
       </section>
     );
