@@ -1,20 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-// import './index.css';
-// import Index from './containers/Gift';
-// import Home from './containers/Home'
 import * as serviceWorker from './serviceWorker';
 import { BrowserRouter } from 'react-router-dom'
 import {Route} from "react-router";
-// import Item from "./containers/Item";
-// import Login from "./containers/Login"
-// import Donation from "./containers/Donation";
 import firebase from "firebase"
 
 import NewHome from './onepirate/Home'
 import Terms from './onepirate/Terms'
 import Privacy from './onepirate/Privacy'
 import Product from './onepirate/Product'
+import Donation from './onepirate/Donation'
 
 let config = {
     apiKey: process.env.REACT_APP_FIRE_API_KEY,
@@ -37,6 +32,7 @@ ReactDOM.render((
             <Route exact path="/terms" component={Terms} />
             <Route exact path="/privacy" component={Privacy} />
             <Route exact path="/products/:id" component={Product} />
+            <Route exact path="/products/:id/donate" component={Donation} />
         </>
     </BrowserRouter>), document.getElementById('root'));
 

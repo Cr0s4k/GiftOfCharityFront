@@ -51,9 +51,9 @@ class ProductInformation extends React.Component{
     openSnack: false
   };
 
-  // handleClick = () => {
-  //   this.props.history.push('/')
-  // };
+  handleClick = id => () => {
+    this.props.history.push(`/products/${id}/donate`)
+  };
 
   handleCloseSnack = () => {
     this.setState({openSnack: false})
@@ -94,7 +94,7 @@ class ProductInformation extends React.Component{
                     variant="contained"
                     className={this.classes.button}
                     component={linkProps => (
-                      <Link {...linkProps} href="#products" variant="button"/>
+                      <Link {...linkProps} onClick={this.handleClick(this.state.product.id)} variant="button"/>
                     )}
                   >
                     Give away
