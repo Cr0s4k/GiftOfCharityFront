@@ -8,6 +8,7 @@ import Button from '../components/Button'
 import Grid from "@material-ui/core/Grid";
 import Link from "@material-ui/core/Link";
 import API from "../../../services/API";
+import Snackbar from "../components/Snackbar";
 
 const styles = theme => ({
   root: {
@@ -46,12 +47,17 @@ class ProductInformation extends React.Component{
   classes = this.props.classes;
 
   state = {
-    product: null
+    product: null,
+    openSnack: false
   };
 
   // handleClick = () => {
   //   this.props.history.push('/')
   // };
+
+  handleCloseSnack = () => {
+    this.setState({openSnack: false})
+  };
 
   componentDidMount() {
     API.getCharityProject(this.props.match.params.id)
@@ -60,7 +66,7 @@ class ProductInformation extends React.Component{
         document.title = product.name
       })
       .catch(e => {
-        this.setState({error: true})
+        this.setState({openSnack: true})
       })
   }
 
@@ -97,6 +103,11 @@ class ProductInformation extends React.Component{
               </Grid>
             </div>
           }
+          <Snackbar
+            open={this.state.openSnack}
+            onClose={this.handleCloseSnack}
+            message="The charity project you are trying to find it doesn't exists!"
+          />
         </LayoutBody>
       </section>
     );
