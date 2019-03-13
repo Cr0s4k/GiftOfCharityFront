@@ -12,10 +12,16 @@ const styles = theme => ({
   button: {
     display: 'block',
     margin: '0 auto'
+  },
+  icon: {
+    marginTop: 0,
+    marginLeft: 6,
+    top: 5,
+    position: 'relative'
   }
 });
 
-class DonationStep1 extends React.Component {
+class DonationStepVideo extends React.Component {
   state = {
     file: null,
     loading: false,
@@ -24,7 +30,46 @@ class DonationStep1 extends React.Component {
 
   constructor(props) {
     super(props);
+    this.uploadInRef = React.createRef();
   }
+
+
+  videoToNull = () => {
+    this.setState({videoUrl: null, loading: false})
+  };
+
+  displayVideo = (videoUrl) => {
+    this.setState({
+      loading: false,
+      videoUrl: videoUrl
+    });
+  };
+
+  handleUpload = async () => {
+    const data = new FormData();
+    data.append('file', this.state.file, this.state.file.name);
+    let videoUrl;
+    try {
+      this.setState({loading: true})
+      videoUrl = await API.uploadVideo(data);
+      this.displayVideo(videoUrl);
+    }
+    catch (e) {
+      console.log(e);
+      this.videoToNull();
+    }
+  };
+
+  handleSelectedFile = evt => {
+    this.setState({
+      file: evt.target.files[0],
+      loading: false
+    }, this.handleUpload);
+  };
+
+  handleUploadBtn = () => {
+    this.uploadInRef.current.click()
+  };
 
   render() {
     const {classes} = this.props;
@@ -33,7 +78,7 @@ class DonationStep1 extends React.Component {
       <>
         <Grid item sm={12} xs={12}>
           <Typography variant="h5" align="center" component='h2' gutterBottom>
-            Now give us the place where we are going to send your gift!
+            First of all choose a nice video you want to share with your friend!
           </Typography>
         </Grid>
         <Grid item sm={12}/>
@@ -48,7 +93,7 @@ class DonationStep1 extends React.Component {
           </div>
           <Button className={classes.button} variant="contained" color="primary" onClick={this.handleUploadBtn}>
             Upload
-            <Icon style={{marginTop: 0, marginLeft: 6, top: 5, position: 'relative'}}>cloud_upload</Icon>
+            <Icon className={classes.icon}>cloud_upload</Icon>
           </Button>
         </Grid>
       </>
@@ -56,4 +101,4 @@ class DonationStep1 extends React.Component {
   }
 }
 
-export default withStyles(styles)(DonationStep1);
+export default withStyles(styles)(DonationStepVideo);

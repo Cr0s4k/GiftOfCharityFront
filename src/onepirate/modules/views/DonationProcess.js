@@ -12,8 +12,10 @@ import Stepper from "@material-ui/core/Stepper";
 import Step from "@material-ui/core/Step";
 import StepLabel from "../components/StepLabel";
 import StepContent from "@material-ui/core/StepContent";
-import DonationStep1 from "./DonationStep1";
-import DonationStep2 from "./DonationStep2";
+import DonationStepVideo from "./DonationStepVideo";
+import DonationStepReceiver from "./DonationStepReceiver";
+import DonationStepDonor from "./DonationStepDonor";
+import DonationStepPayment from "./DonationStepPayment";
 
 const styles = theme => ({
   root: {
@@ -80,14 +82,17 @@ class ProductInformation extends React.Component{
 
   getStepContent = (index) => {
     if(index === 0) return (
-      <DonationStep1 />
+      <DonationStepVideo />
     );
     else if(index === 1) return (
-      <DonationStep2 />
+      <DonationStepReceiver />
     );
-    else return (
-      <div></div>
+    else if(index === 2) return (
+      <DonationStepDonor />
     );
+    else if(index === 3) return (
+      <DonationStepPayment />
+    )
   };
 
   handleNext = () => {
