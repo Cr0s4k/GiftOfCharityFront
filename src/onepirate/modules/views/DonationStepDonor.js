@@ -23,10 +23,13 @@ class DonationStepDonor extends React.Component {
   };
 
   componentDidMount() {
-    if(this.props.data) {
-      this.setState(this.props.data)
-    }
+    if(this.props.data)
+      this.setState(this.props.data, () => {
+        this.props.changeNextBtn(!Utils.errorOrEmptyFields(this.state.fields))
+      });
+    else this.props.changeNextBtn(false)
   }
+
 
   componentWillUnmount() {
     this.props.update(this.state)
@@ -38,8 +41,9 @@ class DonationStepDonor extends React.Component {
       ...Utils.check(input, evt.target.value, this.state.fields)
     };
     this.setState({
-      fields: newFields,
-      // nextStepBtn: !Utils.errorInFields(newFields)
+      fields: newFields
+    }, () => {
+      this.props.changeNextBtn(!Utils.errorOrEmptyFields(this.state.fields))
     });
   };
 

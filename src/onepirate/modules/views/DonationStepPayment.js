@@ -19,16 +19,21 @@ const styles = theme => ({
 
 class DonationStep3 extends React.Component {
   state = {
-    amount: {
-      value: 10,
-      error: false
+    fields: {
+      amount: {
+        value: 10,
+        error: false
+      }
     }
   };
 
   componentDidMount() {
-    if(this.props.data) {
-      this.setState(this.props.data)
-    }
+    if(this.props.data)
+      this.setState(this.props.data, () => {
+        this.props.changeNextBtn(!Utils.errorOrEmptyFields(this.state.fields))
+      });
+    else this.props.changeNextBtn(false)
+
   }
 
   componentWillUnmount() {
@@ -56,9 +61,9 @@ class DonationStep3 extends React.Component {
             <GreenTextField
               id="standard-number"
               label="Amount (€)"
-              value={this.state.amount.value}
+              value={this.state.fields.amount.value}
               onChange={this.handleChange('amount')}
-              error={this.state.amount.error}
+              error={this.state.fields.amount.error}
               type="number"
               InputLabelProps={{
                 shrink: true,
@@ -77,10 +82,11 @@ class DonationStep3 extends React.Component {
                 // onError={this.onError}
                 style={{
                   shape: 'rect',
-                  size: 'medium',
+                  size: 'large',
                   fundingicons: true,
                 }}
               />
+
             </div>
           </Grid>
         </Grid>

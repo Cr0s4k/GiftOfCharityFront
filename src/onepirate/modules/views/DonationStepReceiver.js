@@ -39,9 +39,11 @@ class DonationStepReceiver extends React.Component {
   };
 
   componentDidMount() {
-    if(this.props.data) {
-      this.setState(this.props.data)
-    }
+    if(this.props.data)
+      this.setState(this.props.data, () => {
+        this.props.changeNextBtn(!Utils.errorOrEmptyFields(this.state.fields))
+      });
+    else this.props.changeNextBtn(false)
   }
 
   componentWillUnmount() {
@@ -55,7 +57,8 @@ class DonationStepReceiver extends React.Component {
     };
     this.setState({
       fields: newFields,
-      // nextStepBtn: !Utils.errorInFields(newFields)
+    }, () => {
+      this.props.changeNextBtn(!Utils.errorOrEmptyFields(this.state.fields))
     });
   };
 

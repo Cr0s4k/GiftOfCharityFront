@@ -28,7 +28,7 @@ class Utils {
         };
         else if(input === 'postcode') return {
             postcode: {
-                value: parseInt(newValue),
+                value: newValue,
                 error: Utils.checkPostcode(newValue)
             }
         };
@@ -59,13 +59,13 @@ class Utils {
         return !validator.isNumeric(postcode)
     };
 
-    static errorInFields = fields => {
-        return Object.entries(fields).find(field => field[1].error) !== undefined
-    };
-
     static checkQuantity = quantity => {
         return !validator.isNumeric(quantity) || quantity < 1 || quantity > 10000000000 || !validator.isInt(quantity)
-    }
+    };
+
+    static errorOrEmptyFields = fields => {
+        return Object.entries(fields).find(field => field[1].error || field[1].value === '') !== undefined
+    };
 }
 
 export default Utils;

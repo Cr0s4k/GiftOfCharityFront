@@ -92,7 +92,11 @@ class ProductInformation extends React.Component{
       updateStepPayment: (newState) => {
         this.setState({data:{stepPayment: newState}})
       },
-    }
+      changeNextBtn: (nextBtn) => {
+        this.setState({nextBtn: nextBtn})
+      }
+    },
+    nextBtn: false
   };
 
   handleCloseSnack = () => {
@@ -112,16 +116,32 @@ class ProductInformation extends React.Component{
 
   getStepContent = (index) => {
     if(index === 0) return (
-      <DonationStepVideo data={this.state.data.stepVideo} update={this.state.actions.updateStepVideo}/>
+      <DonationStepVideo
+        data={this.state.data.stepVideo}
+        update={this.state.actions.updateStepVideo}
+        changeNextBtn={this.state.actions.changeNextBtn}
+      />
     );
     else if(index === 1) return (
-      <DonationStepReceiver data={this.state.data.stepReceiver} update={this.state.actions.updateStepReceiver}/>
+      <DonationStepReceiver
+        data={this.state.data.stepReceiver}
+        update={this.state.actions.updateStepReceiver}
+        changeNextBtn={this.state.actions.changeNextBtn}
+      />
     );
     else if(index === 2) return (
-      <DonationStepDonor data={this.state.data.stepDonor} update={this.state.actions.updateStepDonor}/>
+      <DonationStepDonor
+        data={this.state.data.stepDonor}
+        update={this.state.actions.updateStepDonor}
+        changeNextBtn={this.state.actions.changeNextBtn}
+      />
     );
     else if(index === 3) return (
-      <DonationStepPayment data={this.state.data.stepPayment} update={this.state.actions.updateStepPayment}/>
+      <DonationStepPayment
+        data={this.state.data.stepPayment}
+        update={this.state.actions.updateStepPayment}
+        changeNextBtn={this.state.actions.changeNextBtn}
+      />
     )
   };
 
@@ -179,6 +199,7 @@ class ProductInformation extends React.Component{
                         variant="contained"
                         onClick={this.handleNext}
                         className={classes.button}
+                        disabled={!this.state.nextBtn}
                       >
                         {this.state.activeStep === this.state.steps.length - 1 ? 'Finish' : 'Next'}
                       </Button>

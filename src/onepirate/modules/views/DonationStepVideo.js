@@ -34,9 +34,13 @@ class DonationStepVideo extends React.Component {
   }
 
   componentDidMount() {
-    if(this.props.data) {
-      this.setState(this.props.data)
-    }
+    if(this.props.data)
+      this.setState(this.props.data, () => {
+        this.props.changeNextBtn(this.state.videoUrl !== null)
+      });
+    else this.props.changeNextBtn(false)
+
+
   }
 
   componentWillUnmount() {
@@ -44,13 +48,17 @@ class DonationStepVideo extends React.Component {
   }
 
   videoToNull = () => {
-    this.setState({videoUrl: null, loading: false})
+    this.setState({videoUrl: null, loading: false}, () => {
+      this.props.changeNextBtn(this.state.videoUrl !== null)
+    })
   };
 
   displayVideo = (videoUrl) => {
     this.setState({
       loading: false,
       videoUrl: videoUrl
+    }, () => {
+      this.props.changeNextBtn(this.state.videoUrl !== null)
     });
   };
 
