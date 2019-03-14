@@ -10,6 +10,7 @@ import Terms from './onepirate/Terms'
 import Privacy from './onepirate/Privacy'
 import Product from './onepirate/Product'
 import Donation from './onepirate/Donation'
+import Gift from './onepirate/Gift'
 
 let config = {
     apiKey: process.env.REACT_APP_FIRE_API_KEY,
@@ -27,12 +28,12 @@ ReactDOM.render((
             {/*<Route exact path="/login" component={Login} />*/}
             {/*<Route exact path="/item/:id" component={Item}/>*/}
             {/*<Route exact path="/item/:id/buy" component={Donation} />*/}
-            {/*<Route exact path="/gift/:token" component={Index}/>*/}
             <Route exact path="/" component={NewHome} />
             <Route exact path="/terms" component={Terms} />
             <Route exact path="/privacy" component={Privacy} />
             <Route exact path="/products/:id" component={Product} />
             <Route exact path="/products/:id/donate" component={Donation} />
+            <Route exact path="/gift/:token" component={Gift}/>
         </>
     </BrowserRouter>), document.getElementById('root'));
 
