@@ -50,7 +50,7 @@ const styles = theme => ({
   }
 });
 
-class ProductInformation extends React.Component{
+class DonationProcess extends React.Component{
   classes = this.props.classes;
 
   state = {
@@ -81,16 +81,28 @@ class ProductInformation extends React.Component{
     },
     actions: {
       updateStepVideo: (newState) => {
-        this.setState({data:{stepVideo: newState}})
+        this.setState({data:{
+          ...this.state.data,
+          stepVideo: newState
+        }})
       },
       updateStepReceiver: (newState) => {
-        this.setState({data:{stepReceiver: newState}})
+        this.setState({data:{
+          ...this.state.data,
+          stepReceiver: newState
+        }})
       },
       updateStepDonor: (newState) => {
-        this.setState({data:{stepDonor: newState}})
+        this.setState({data:{
+          ...this.state.data,
+          stepDonor: newState,
+        }})
       },
       updateStepPayment: (newState) => {
-        this.setState({data:{stepPayment: newState}})
+        this.setState({data:{
+          ...this.state.data,
+          stepPayment: newState
+        }})
       },
       changeNextBtn: (nextBtn) => {
         this.setState({nextBtn: nextBtn})
@@ -220,8 +232,8 @@ class ProductInformation extends React.Component{
   }
 }
 
-ProductInformation.propTypes = {
+DonationProcess.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(withRouter(ProductInformation));
+export default withStyles(styles)(withRouter(DonationProcess));

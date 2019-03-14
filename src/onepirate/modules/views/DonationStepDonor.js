@@ -61,6 +61,7 @@ class DonationStepDonor extends React.Component {
           <Grid item sm={6} xs={7}>
             <GreenTextField
               label="Your email"
+              value={this.state.fields.email.value}
               error={this.state.fields.email.error}
               onChange={this.handleChange("email")}
               margin="normal"
