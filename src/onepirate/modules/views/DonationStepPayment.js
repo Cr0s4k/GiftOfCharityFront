@@ -41,9 +41,7 @@ class DonationStep3 extends React.Component {
 
   componentDidMount() {
     if(this.props.data)
-      this.setState(this.props.data, () => {
-        // this.props.changeNextBtn(!Utils.errorOrEmptyFields(this.state.fields))
-      });
+      this.setState(this.props.data);
     this.props.changeNextBtn(false)
 
   }
@@ -54,7 +52,7 @@ class DonationStep3 extends React.Component {
 
   handleChange = input => evt => {
     this.setState({
-      ...Utils.check(input, evt.target.value, this.state.fields)
+      fields: {...Utils.check(input, evt.target.value, this.state.fields)}
     });
   };
 
@@ -101,11 +99,11 @@ class DonationStep3 extends React.Component {
           </Grid>
           <Grid item sm={12}/>
           <Grid item sm={12}>
-            <div className={classes.paypalContainer}>
+            <div className={classes.paypalContainer} hidden={this.state.fields.amount.error}>
               <PaypalBtn
                 client={this.state.client}
                 currency="EUR"
-                total={this.state.fields.amount.value}
+                total={parseInt(this.state.fields.amount.value)}
                 onSuccess={this.onSuccess}
                 // onError={this.onError}
                 style={{

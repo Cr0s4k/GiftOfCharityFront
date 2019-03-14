@@ -177,7 +177,7 @@ class DonationProcess extends React.Component{
       });
     }
     else if(newActiveStep > this.state.steps.length){
-      console.log('REDIRECT')
+      this.props.history.push('/');
     }
     else{
       this.setState({activeStep: newActiveStep})
