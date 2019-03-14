@@ -55,6 +55,7 @@ class DonationProcess extends React.Component{
 
   state = {
     product: null,
+    snackMessage: '',
     openSnack: false,
     activeStep: 0,
     steps: [
@@ -96,6 +97,9 @@ class DonationProcess extends React.Component{
       },
       changeNextBtn: (nextBtn) => {
         this.setState({nextBtn: nextBtn})
+      },
+      enableGoToHomePageBtn: () => {
+        this.handleNext()
       }
     },
     nextBtn: false
@@ -123,7 +127,7 @@ class DonationProcess extends React.Component{
         document.title = product.name
       })
       .catch(e => {
-        this.setState({openSnack: true})
+        this.setState({openSnack: true, snakMessage: 'The charity project you are trying to find it doesn\'t exists!'})
       })
   }
 
@@ -153,6 +157,7 @@ class DonationProcess extends React.Component{
       <DonationStepPayment
         data={this.state.data.stepPayment}
         update={this.state.actions.updateStepPayment}
+        enableGoToHomePageBtn={this.state.actions.enableGoToHomePageBtn}
         changeNextBtn={this.state.actions.changeNextBtn}
         donationInformation={this.getDonationInformation()}
       />
@@ -160,10 +165,23 @@ class DonationProcess extends React.Component{
   };
 
   handleNext = () => {
-    this.setState(state => ({
-      activeStep: state.activeStep + 1,
-    }));
-    window.scrollTo(0,0)
+    window.scrollTo(0,0);
+    let newActiveStep = this.state.activeStep + 1;
+    if(newActiveStep === this.state.steps.length) {
+      this.setState({
+        activeStep: newActiveStep,
+        snackMessage: 'You receiver will soon get a card with its gift! We have also sent you an email with your ' +
+          'donation information. If you have any problem do not hesitate to contact with us.',
+        openSnack: true,
+        nextBtn: true
+      });
+    }
+    else if(newActiveStep > this.state.steps.length){
+      console.log('REDIRECT')
+    }
+    else{
+      this.setState({activeStep: newActiveStep})
+    }
   };
 
   handleBack = () => {
@@ -202,7 +220,7 @@ class DonationProcess extends React.Component{
                     <div>
                       <Button
                         color="secondary"
-                        disabled={this.state.activeStep === 0}
+                        disabled={this.state.activeStep === 0 || this.state.activeStep > this.state.steps.length - 1}
                         onClick={this.handleBack}
                         className={classes.button}
                       >
@@ -215,7 +233,7 @@ class DonationProcess extends React.Component{
                         className={classes.button}
                         disabled={!this.state.nextBtn}
                       >
-                        {this.state.activeStep === this.state.steps.length - 1 ? 'Finish' : 'Next'}
+                        {this.state.activeStep >= this.state.steps.length - 1 ? 'Finish' : 'Next'}
                       </Button>
                     </div>
                   </div>
@@ -226,7 +244,7 @@ class DonationProcess extends React.Component{
           <Snackbar
             open={this.state.openSnack}
             onClose={this.handleCloseSnack}
-            message="The charity project you are trying to find it doesn't exists!"
+            message={this.state.snackMessage}
           />
         </LayoutBody>
       </section>

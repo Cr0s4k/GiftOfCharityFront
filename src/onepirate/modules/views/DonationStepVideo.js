@@ -7,6 +7,7 @@ import Typography from "../components/Typography";
 import withStyles from "@material-ui/core/es/styles/withStyles";
 import API from "../../../services/API";
 import CircularProgress from "@material-ui/core/CircularProgress";
+import Snackbar from "../components/Snackbar";
 
 const styles = theme => ({
   button: {
@@ -18,7 +19,8 @@ const styles = theme => ({
     marginLeft: 6,
     top: 5,
     position: 'relative'
-  }
+  },
+  openSnak: false
 });
 
 class DonationStepVideo extends React.Component {
@@ -33,14 +35,16 @@ class DonationStepVideo extends React.Component {
     this.uploadInRef = React.createRef();
   }
 
+  handleCloseSnack = () => {
+    this.setState({openSnack: false})
+  };
+
   componentDidMount() {
     if(this.props.data)
       this.setState(this.props.data, () => {
         this.props.changeNextBtn(this.state.videoUrl !== null)
       });
     else this.props.changeNextBtn(false)
-
-
   }
 
   componentWillUnmount() {
@@ -72,7 +76,7 @@ class DonationStepVideo extends React.Component {
       this.displayVideo(videoUrl);
     }
     catch (e) {
-      console.log(e);
+      this.setState({openSnack: true})
       this.videoToNull();
     }
   };
@@ -108,11 +112,16 @@ class DonationStepVideo extends React.Component {
           <div style={{textAlign: 'center'}} hidden={!this.state.loading}>
             <CircularProgress/>
           </div>
-          <Button className={classes.button} variant="contained" color="primary" onClick={this.handleUploadBtn}>
+          <Button className={classes.button} variant="contained" color="secondary" onClick={this.handleUploadBtn}>
             Upload
             <Icon className={classes.icon}>cloud_upload</Icon>
           </Button>
         </Grid>
+        <Snackbar
+          open={this.state.openSnack}
+          onClose={this.handleCloseSnack}
+          message="Something went wrong uploading your video! Remember max size is 200MB and its name cannot be longer than 100 characters."
+        />
       </>
     );
   }

@@ -6,6 +6,7 @@ import GreenTextField from "../../../components/GreenTextField";
 import PaypalBtn from 'react-paypal-express-checkout'
 import Utils from "../../../components/DonationForm/utils";
 import API from "../../../services/API";
+import Snackbar from "../components/Snackbar";
 
 const styles = theme => ({
   button: {
@@ -29,15 +30,21 @@ class DonationStep3 extends React.Component {
         value: 10,
         error: false
       }
-    }
+    },
+    openSnack: false,
+    snackMessage: ''
+  };
+
+  handleCloseSnack = () => {
+    this.setState({openSnack: false})
   };
 
   componentDidMount() {
     if(this.props.data)
       this.setState(this.props.data, () => {
-        this.props.changeNextBtn(!Utils.errorOrEmptyFields(this.state.fields))
+        // this.props.changeNextBtn(!Utils.errorOrEmptyFields(this.state.fields))
       });
-    else this.props.changeNextBtn(false)
+    this.props.changeNextBtn(false)
 
   }
 
@@ -58,12 +65,12 @@ class DonationStep3 extends React.Component {
         amount: parseInt(this.state.fields.amount.value),
         ...this.props.donationInformation
       });
-      console.log('ok')
-      // this.toggleDialog(this.constants.SUCCESS)()
+
+      this.props.enableGoToHomePageBtn();
     }
     catch (e) {
       console.log(e);
-      // this.toggleDialog(this.constants.ERROR)()
+      this.setState({openSnack: true})
     }
   };
 
@@ -111,6 +118,11 @@ class DonationStep3 extends React.Component {
             </div>
           </Grid>
         </Grid>
+        <Snackbar
+          open={this.state.openSnack}
+          onClose={this.handleCloseSnack}
+          message='Something went wrong... Try again!'
+        />
       </>
     );
   }
