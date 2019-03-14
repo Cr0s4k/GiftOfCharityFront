@@ -4,17 +4,31 @@ import Typography from "../components/Typography";
 import withStyles from "@material-ui/core/es/styles/withStyles";
 import GreenTextField from "../../../components/GreenTextField";
 import PaypalBtn from 'react-paypal-express-checkout'
+import Utils from "../../../components/DonationForm/utils";
 
 const styles = theme => ({
   button: {
     display: 'block',
     margin: '0 auto'
+  },
+  paypalContainer: {
+    textAlign: 'center',
+    marginTop: 5
   }
 });
 
 class DonationStep3 extends React.Component {
   state = {
+    amount: {
+      value: 10,
+      error: false
+    }
+  };
 
+  handleChange = input => evt => {
+    this.setState({
+      ...Utils.check(input, evt.target.value, this.state.fields)
+    });
   };
 
   render() {
@@ -24,17 +38,17 @@ class DonationStep3 extends React.Component {
       <>
         <Grid item sm={12} xs={12}>
           <Typography variant="h5" align="center" component='h2' gutterBottom>
-            Now give us the place where we are going to send your gift!
+            Donate as much as you want!
           </Typography>
         </Grid>
         <Grid item sm={12} container justify='center'>
-          <Grid item sm={5} xs={7}>
+          <Grid item sm={5} xs={5}>
             <GreenTextField
               id="standard-number"
               label="Amount (€)"
-              // value={this.state.amount.value}
-              // onChange={this.handleChange('amount')}
-              // error={this.state.amount.error}
+              value={this.state.amount.value}
+              onChange={this.handleChange('amount')}
+              error={this.state.amount.error}
               type="number"
               InputLabelProps={{
                 shrink: true,
@@ -44,13 +58,18 @@ class DonationStep3 extends React.Component {
           </Grid>
           <Grid item sm={12}/>
           <Grid item sm={12}>
-            <div>
+            <div className={classes.paypalContainer}>
               <PaypalBtn
                 // client={this.state.client}
                 currency="EUR"
                 // total={this.state.amount.value}
                 // onSuccess={this.onSuccess}
                 // onError={this.onError}
+                style={{
+                  shape: 'rect',
+                  size: 'medium',
+                  fundingicons: true,
+                }}
               />
             </div>
           </Grid>
