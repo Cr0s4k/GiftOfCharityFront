@@ -5,6 +5,7 @@ import withStyles from "@material-ui/core/es/styles/withStyles";
 import GreenTextField from "../../../components/GreenTextField";
 import PaypalBtn from 'react-paypal-express-checkout'
 import Utils from "../../../components/DonationForm/utils";
+import API from "../../../services/API";
 
 const styles = theme => ({
   button: {
@@ -19,6 +20,10 @@ const styles = theme => ({
 
 class DonationStep3 extends React.Component {
   state = {
+    client: {
+      sandbox: process.env.REACT_APP_PAYPAL_SANDBOX,
+      production: process.env.REACT_APP_PAYPAL_PRODUCTION
+    },
     fields: {
       amount: {
         value: 10,
@@ -44,6 +49,22 @@ class DonationStep3 extends React.Component {
     this.setState({
       ...Utils.check(input, evt.target.value, this.state.fields)
     });
+  };
+
+  onSuccess = async (payment) => {
+    try{
+      await API.makeDonation({
+        orderId: payment.paymentID,
+        amount: parseInt(this.state.fields.amount.value),
+        ...this.props.donationInformation
+      });
+      console.log('ok')
+      // this.toggleDialog(this.constants.SUCCESS)()
+    }
+    catch (e) {
+      console.log(e);
+      // this.toggleDialog(this.constants.ERROR)()
+    }
   };
 
   render() {
@@ -75,10 +96,10 @@ class DonationStep3 extends React.Component {
           <Grid item sm={12}>
             <div className={classes.paypalContainer}>
               <PaypalBtn
-                // client={this.state.client}
+                client={this.state.client}
                 currency="EUR"
-                // total={this.state.amount.value}
-                // onSuccess={this.onSuccess}
+                total={this.state.fields.amount.value}
+                onSuccess={this.onSuccess}
                 // onError={this.onError}
                 style={{
                   shape: 'rect',

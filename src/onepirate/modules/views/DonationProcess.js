@@ -64,16 +64,6 @@ class DonationProcess extends React.Component{
       'Donation'
     ],
     data: {
-      // videoUrl: null,
-      // address: null,
-      // city: null,
-      // country: null,
-      // province: null,
-      // postcode: null,
-      // email: null,
-      // itemId: this.props.match.id,
-      // orderId: null,
-      // amount: null
       stepVideo: undefined,
       stepReceiver: undefined,
       stepDonor: undefined,
@@ -110,6 +100,17 @@ class DonationProcess extends React.Component{
     },
     nextBtn: false
   };
+
+  getDonationInformation = () => ({
+    videoUrl: this.state.data.stepVideo ? this.state.data.stepVideo.videoUrl : null,
+    address: this.state.data.stepReceiver ? this.state.data.stepReceiver.fields.address.value : null,
+    city: this.state.data.stepReceiver? this.state.data.stepReceiver.fields.city.value : null,
+    country: this.state.data.stepReceiver ? this.state.data.stepReceiver.fields.country.value : null,
+    province: this.state.data.stepReceiver ? this.state.data.stepReceiver.fields.province.value : null,
+    postcode: this.state.data.stepReceiver ? parseInt(this.state.data.stepReceiver.fields.postcode.value) : null,
+    email: this.state.data.stepDonor ? this.state.data.stepDonor.fields.email.value : null,
+    itemId: parseInt(this.props.match.params.id),
+  });
 
   handleCloseSnack = () => {
     this.setState({openSnack: false})
@@ -153,6 +154,7 @@ class DonationProcess extends React.Component{
         data={this.state.data.stepPayment}
         update={this.state.actions.updateStepPayment}
         changeNextBtn={this.state.actions.changeNextBtn}
+        donationInformation={this.getDonationInformation()}
       />
     )
   };
