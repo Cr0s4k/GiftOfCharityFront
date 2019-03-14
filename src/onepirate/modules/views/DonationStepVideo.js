@@ -101,7 +101,7 @@ class DonationStepVideo extends React.Component {
         <Grid item sm={12}/>
         <Grid item sm={12} xs={12}>
           <div style={{width: '60%', margin: '0 auto'}}>
-            <ReactPlayer url='https://firebasestorage.googleapis.com/v0/b/giftofcharity-ab752.appspot.com/o/videos%2FCongratulations!!!!.mp4?alt=media&amp;token=dc8a876a-2dc3-47c2-a5bd-478c38b6baf0'
+            <ReactPlayer url={this.state.videoUrl}
                          hidden={this.state.videoUrl == null} controls width="100%" height="auto"/>
           </div>
           <input ref={this.uploadInRef} type="file" multiple={true} style={{display: "none"}} onChange={this.handleSelectedFile} accept="video/*"/>
