@@ -127,7 +127,7 @@ class DonationProcess extends React.Component{
         document.title = product.name
       })
       .catch(e => {
-        this.setState({openSnack: true, snakMessage: 'The charity project you are trying to find it doesn\'t exists!'})
+        this.setState({openSnack: true, snackMessage: 'The charity project you are trying to find it doesn\'t exists!'})
       })
   }
 
@@ -161,7 +161,7 @@ class DonationProcess extends React.Component{
         changeNextBtn={this.state.actions.changeNextBtn}
         donationInformation={this.getDonationInformation()}
       />
-    )
+    );
   };
 
   handleNext = () => {
