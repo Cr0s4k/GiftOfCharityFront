@@ -7,6 +7,7 @@ import PaypalBtn from 'react-paypal-express-checkout'
 import Utils from "../../../components/DonationForm/utils";
 import API from "../../../services/API";
 import Snackbar from "../components/Snackbar";
+import CircularProgress from "@material-ui/core/CircularProgress";
 
 const styles = theme => ({
   button: {
@@ -32,7 +33,8 @@ class DonationStep3 extends React.Component {
       }
     },
     openSnack: false,
-    snackMessage: ''
+    snackMessage: '',
+    loading: false
   };
 
   handleCloseSnack = () => {
@@ -58,6 +60,7 @@ class DonationStep3 extends React.Component {
 
   onSuccess = async (payment) => {
     try{
+      this.setState({loading: true});
       await API.makeDonation({
         orderId: payment.paymentID,
         amount: parseInt(this.state.fields.amount.value),
@@ -69,6 +72,9 @@ class DonationStep3 extends React.Component {
     catch (e) {
       console.log(e);
       this.setState({openSnack: true})
+    }
+    finally {
+      this.setState({loading: false})
     }
   };
 
@@ -83,38 +89,45 @@ class DonationStep3 extends React.Component {
           </Typography>
         </Grid>
         <Grid item sm={12} container justify='center'>
-          <Grid item sm={5} xs={5}>
-            <GreenTextField
-              id="standard-number"
-              label="Amount (€)"
-              value={this.state.fields.amount.value}
-              onChange={this.handleChange('amount')}
-              error={this.state.fields.amount.error}
-              type="number"
-              InputLabelProps={{
-                shrink: true,
-              }}
-              margin="normal"
-            />
-          </Grid>
-          <Grid item sm={12}/>
-          <Grid item sm={12}>
-            <div className={classes.paypalContainer} hidden={this.state.fields.amount.error}>
-              <PaypalBtn
-                client={this.state.client}
-                currency="EUR"
-                total={parseInt(this.state.fields.amount.value)}
-                onSuccess={this.onSuccess}
-                // onError={this.onError}
-                style={{
-                  shape: 'rect',
-                  size: 'large',
-                  fundingicons: true,
-                }}
-              />
-
+          {this.state.loading ?
+            <div style={{textAlign: 'center'}}>
+              <CircularProgress/>
             </div>
-          </Grid>
+            :
+            <>
+              <Grid item sm={5} xs={5}>
+                <GreenTextField
+                  id="standard-number"
+                  label="Amount (€)"
+                  value={this.state.fields.amount.value}
+                  onChange={this.handleChange('amount')}
+                  error={this.state.fields.amount.error}
+                  type="number"
+                  InputLabelProps={{
+                    shrink: true,
+                  }}
+                  margin="normal"
+                />
+              </Grid>
+              <Grid item sm={12}/>
+              <Grid item sm={12}>
+                <div className={classes.paypalContainer} hidden={this.state.fields.amount.error}>
+                  <PaypalBtn
+                    client={this.state.client}
+                    currency="EUR"
+                    total={parseInt(this.state.fields.amount.value)}
+                    onSuccess={this.onSuccess}
+                    // onError={this.onError}
+                    style={{
+                      shape: 'rect',
+                      size: 'large',
+                      fundingicons: true,
+                    }}
+                  />
+                </div>
+              </Grid>
+            </>
+          }
         </Grid>
         <Snackbar
           open={this.state.openSnack}
