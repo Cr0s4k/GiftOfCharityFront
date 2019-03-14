@@ -33,6 +33,15 @@ class DonationStepVideo extends React.Component {
     this.uploadInRef = React.createRef();
   }
 
+  componentDidMount() {
+    if(this.props.data) {
+      this.setState(this.props.data)
+    }
+  }
+
+  componentWillUnmount() {
+    this.props.update(this.state)
+  }
 
   videoToNull = () => {
     this.setState({videoUrl: null, loading: false})

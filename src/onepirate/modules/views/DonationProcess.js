@@ -62,7 +62,37 @@ class ProductInformation extends React.Component{
       'Receiver',
       'You',
       'Donation'
-    ]
+    ],
+    data: {
+      // videoUrl: null,
+      // address: null,
+      // city: null,
+      // country: null,
+      // province: null,
+      // postcode: null,
+      // email: null,
+      // itemId: this.props.match.id,
+      // orderId: null,
+      // amount: null
+      stepVideo: undefined,
+      stepReceiver: undefined,
+      stepDonor: undefined,
+      stepPayment: undefined
+    },
+    actions: {
+      updateStepVideo: (newState) => {
+        this.setState({data:{stepVideo: newState}})
+      },
+      updateStepReceiver: (newState) => {
+        this.setState({data:{stepReceiver: newState}})
+      },
+      updateStepDonor: (newState) => {
+        this.setState({data:{stepDonor: newState}})
+      },
+      updateStepPayment: (newState) => {
+        this.setState({data:{stepPayment: newState}})
+      },
+    }
   };
 
   handleCloseSnack = () => {
@@ -82,16 +112,16 @@ class ProductInformation extends React.Component{
 
   getStepContent = (index) => {
     if(index === 0) return (
-      <DonationStepVideo />
+      <DonationStepVideo data={this.state.data.stepVideo} update={this.state.actions.updateStepVideo}/>
     );
     else if(index === 1) return (
-      <DonationStepReceiver />
+      <DonationStepReceiver data={this.state.data.stepReceiver} update={this.state.actions.updateStepReceiver}/>
     );
     else if(index === 2) return (
-      <DonationStepDonor />
+      <DonationStepDonor data={this.state.data.stepDonor} update={this.state.actions.updateStepDonor}/>
     );
     else if(index === 3) return (
-      <DonationStepPayment />
+      <DonationStepPayment data={this.state.data.stepPayment} update={this.state.actions.updateStepPayment}/>
     )
   };
 

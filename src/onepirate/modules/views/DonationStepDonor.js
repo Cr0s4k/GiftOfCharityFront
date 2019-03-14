@@ -22,6 +22,16 @@ class DonationStepDonor extends React.Component {
     }
   };
 
+  componentDidMount() {
+    if(this.props.data) {
+      this.setState(this.props.data)
+    }
+  }
+
+  componentWillUnmount() {
+    this.props.update(this.state)
+  }
+
   handleChange = input => evt => {
     let newFields = {
       ...this.state.fields,

@@ -38,6 +38,16 @@ class DonationStepReceiver extends React.Component {
     }
   };
 
+  componentDidMount() {
+    if(this.props.data) {
+      this.setState(this.props.data)
+    }
+  }
+
+  componentWillUnmount() {
+    this.props.update(this.state)
+  }
+
   handleChange = input => evt => {
     let newFields = {
       ...this.state.fields,
@@ -63,6 +73,7 @@ class DonationStepReceiver extends React.Component {
           <Grid item sm={6} xs={7}>
             <GreenTextField
               label="Address"
+              value={this.state.fields.address.value}
               error={this.state.fields.address.error}
               onChange={this.handleChange("address")}
               margin="normal"
@@ -73,6 +84,7 @@ class DonationStepReceiver extends React.Component {
           <Grid item sm={6} xs={7}>
             <GreenTextField
               label="City"
+              value={this.state.fields.city.value}
               error={this.state.fields.city.error}
               onChange={this.handleChange("city")}
               margin="normal"
@@ -83,6 +95,7 @@ class DonationStepReceiver extends React.Component {
           <Grid item sm={6} xs={7}>
             <GreenTextField
               label="Country"
+              value={this.state.fields.country.value}
               error={this.state.fields.country.error}
               onChange={this.handleChange("country")}
               margin="normal"
@@ -93,6 +106,7 @@ class DonationStepReceiver extends React.Component {
           <Grid item sm={6} xs={7}>
             <GreenTextField
               label="State/Province/Region"
+              value={this.state.fields.province.value}
               error={this.state.fields.province.error}
               onChange={this.handleChange("province")}
               margin="normal"
@@ -103,6 +117,7 @@ class DonationStepReceiver extends React.Component {
           <Grid item sm={6} xs={7}>
             <GreenTextField
               label="Postcode"
+              value={this.state.fields.postcode.value}
               error={this.state.fields.postcode.error}
               onChange={this.handleChange("postcode")}
               margin="normal"

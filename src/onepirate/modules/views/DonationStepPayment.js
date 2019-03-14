@@ -25,6 +25,16 @@ class DonationStep3 extends React.Component {
     }
   };
 
+  componentDidMount() {
+    if(this.props.data) {
+      this.setState(this.props.data)
+    }
+  }
+
+  componentWillUnmount() {
+    this.props.update(this.state)
+  }
+
   handleChange = input => evt => {
     this.setState({
       ...Utils.check(input, evt.target.value, this.state.fields)
