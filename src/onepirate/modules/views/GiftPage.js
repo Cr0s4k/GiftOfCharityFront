@@ -19,6 +19,7 @@ class GiftPage extends React.Component{
   classes = this.props.classes;
 
   state = {
+    gift: null
   };
 
   // handleClick = id => () => {
@@ -26,8 +27,10 @@ class GiftPage extends React.Component{
   // };
 
   componentDidMount() {
+    console.log('Pole?');
     API.getGift(this.props.match.params.token)
       .then(gift => {
+        console.log(gift)
         this.setState({ gift: gift});
       })
       .catch(e => {
@@ -39,7 +42,7 @@ class GiftPage extends React.Component{
     return (
       <section className={this.classes.root}>
         <LayoutBody className={this.classes.layoutBody} width="large">
-          {this.state.product &&
+          {this.state.gift &&
             <div>
               <Grid container spacing={40} justify='center'>
                 Pole
