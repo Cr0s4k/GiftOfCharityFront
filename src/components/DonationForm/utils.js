@@ -43,7 +43,13 @@ class Utils {
                 value: parseInt(newValue),
                 error: Utils.checkQuantity(newValue)
             }
-        }
+        };
+        else if (input === 'donorName') return {
+            donorName: {
+                value: newValue,
+                error: Utils.checkStandard(newValue)
+            }
+        };
     };
 
     static checkStandard = text => {

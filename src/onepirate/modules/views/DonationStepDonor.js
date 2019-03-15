@@ -18,6 +18,10 @@ class DonationStepDonor extends React.Component {
       email: {
         value: '',
         error: false
+      },
+      donorName: {
+        value: '',
+        error: false
       }
     }
   };
@@ -58,6 +62,17 @@ class DonationStepDonor extends React.Component {
           </Typography>
         </Grid>
         <Grid item sm={12} container justify='center'>
+          <Grid item sm={6} xs={7}>
+            <GreenTextField
+              label="Your name"
+              value={this.state.fields.donorName.value}
+              error={this.state.fields.donorName.error}
+              onChange={this.handleChange("donorName")}
+              margin="normal"
+              variant="filled"
+            />
+          </Grid>
+          <Grid item sm={12}/>
           <Grid item sm={6} xs={7}>
             <GreenTextField
               label="Your email"

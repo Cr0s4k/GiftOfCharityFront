@@ -113,6 +113,7 @@ class DonationProcess extends React.Component{
     province: this.state.data.stepReceiver ? this.state.data.stepReceiver.fields.province.value : null,
     postcode: this.state.data.stepReceiver ? parseInt(this.state.data.stepReceiver.fields.postcode.value) : null,
     email: this.state.data.stepDonor ? this.state.data.stepDonor.fields.email.value : null,
+    donorName: this.state.data.stepDonor ? this.state.data.stepDonor.fields.donorName.value : null,
     itemId: parseInt(this.props.match.params.id),
   });
 
