@@ -5,9 +5,42 @@ import withRouter from "react-router/es/withRouter";
 import LayoutBody from "../components/LayoutBody";
 import Grid from "@material-ui/core/Grid";
 import API from "../../../services/API";
+import ReactPlayer from "react-player";
+import Button from "../components/Button";
+import Typography from "../components/Typography";
+import Link from "@material-ui/core/Link";
 
 const styles = theme => ({
-
+  root: {
+    display: 'flex',
+    backgroundColor: theme.palette.secondary.light,
+    overflow: 'hidden',
+  },
+  layoutBody: {
+    marginTop: theme.spacing.unit * 10,
+    marginBottom: theme.spacing.unit * 10,
+    position: 'relative',
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+  },
+  button: {
+    display: 'block',
+    margin: '0 auto',
+    // marginTop: theme.spacing.unit * 6
+  },
+  title: {
+    textAlign: 'center',
+    marginBottom: theme.spacing.unit * 3,
+  },
+  message: {
+    marginBottom: theme.spacing.unit * 7,
+    fontSize: 18,
+    textAlign: 'center'
+  },
+  link: {
+    cursor: 'pointer'
+  }
 });
 
 class GiftPage extends React.Component{
@@ -22,15 +55,18 @@ class GiftPage extends React.Component{
     gift: null
   };
 
-  // handleClick = id => () => {
-  //   this.props.history.push(`/products/${id}/donate`)
-  // };
+  handleClick = () => {
+    this.props.history.push(`/`)
+  };
+
+  handleLink = () => {
+    this.props.history.push(`/products/${this.state.gift.charityProject.id}`)
+  };
 
   componentDidMount() {
-    console.log('Pole?');
     API.getGift(this.props.match.params.token)
       .then(gift => {
-        console.log(gift)
+        console.log(gift);
         this.setState({ gift: gift});
       })
       .catch(e => {
@@ -45,7 +81,28 @@ class GiftPage extends React.Component{
           {this.state.gift &&
             <div>
               <Grid container spacing={40} justify='center'>
-                Pole
+                <Grid item sm={12} xs={12}>
+                  {/*<Typography variant="h4" marked='center' className={this.classes.title} component="h2">*/}
+                    {/*Here is a gift for you*/}
+                  {/*</Typography>*/}
+                  <Typography variant="h4" marked='center' className={this.classes.title} component="h2">
+                    {this.state.gift.donorName} has a message for you
+                  </Typography>
+                  <div style={{width: '70%', margin: '0 auto'}}>
+                    <ReactPlayer url={this.state.gift.videoUrl} controls width="100%" height="auto"/>
+                  </div>
+                </Grid>
+                <Grid item sm={6} xs={6}>
+                  <Typography variant="body1" marked="center" className={this.classes.message} component="h2">
+                    <b>{this.state.gift.donorName}</b> has donated {this.state.gift.amount}€ in your name! Thanks to you, <b>GiftOfCharity </b>
+                    will donate that money to a charity project called <Link className={this.classes.link} onClick={this.handleLink}><b>{this.state.gift.charityProject.name}</b></Link>.
+                  </Typography>
+                </Grid>
+                <Grid item sm={12} xs={12}>
+                  <Button className={this.classes.button} variant="contained" color="secondary" onClick={this.handleClick}>
+                    More about <b>GiftOfCharity</b>
+                  </Button>
+                </Grid>
               </Grid>
             </div>
           }
