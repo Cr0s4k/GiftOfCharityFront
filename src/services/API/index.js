@@ -31,10 +31,7 @@ class API {
             let storage = firebase.storage();
             let storageRef = storage.ref();
             let uploadTask = storageRef.child(`videos/${file.name}`).put(file);
-            uploadTask.on(firebase.storage.TaskEvent.STATE_CHANGED, snapshot => {
-                let progress = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-                callback(parseInt(progress));
-            }, (error) => {
+            uploadTask.on(firebase.storage.TaskEvent.STATE_CHANGED, null, (error) => {
                 reject(error)
             }, () => {
                 uploadTask.snapshot.ref.getDownloadURL()

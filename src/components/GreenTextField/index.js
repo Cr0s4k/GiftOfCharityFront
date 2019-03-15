@@ -3,6 +3,9 @@ import withStyles from "@material-ui/core/es/styles/withStyles";
 import TextField from "@material-ui/core/TextField";
 
 const styles = {
+    root: {
+        width: '100%'
+    },
     cssLabel: {
         '&$cssFocused': {
             color: "#0e6e10",
@@ -29,6 +32,9 @@ class GreenTextField extends React.Component {
         return (
             <TextField
                 {...props}
+                classes={{
+                    root: this.props.classes.root
+                }}
                 InputLabelProps={{
                     classes: {
                         root: this.props.classes.cssLabel,
