@@ -24,7 +24,7 @@ class DonationForm extends React.Component {
                 province: null,
                 postcode: null,
                 email: null,
-                itemId: this.props.itemId
+                itemId: this.props.itemId,
             }
         };
     }
