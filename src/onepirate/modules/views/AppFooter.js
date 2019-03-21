@@ -82,7 +82,7 @@ class AppFooter extends React.Component{
       <Typography component="footer" className={this.classes.root}>
         <LayoutBody className={this.classes.layoutBody} width="large">
           <Grid container spacing={40}>
-            <Grid item xs={6} sm={4} md={2}>
+            <Grid item xs={12} sm={12} md={4}>
               <Grid
                 container
                 direction="column"
