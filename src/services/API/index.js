@@ -48,7 +48,11 @@ class API {
     }
 
     static async getGift(token) {
-        let gift = await axios.get(`${ENDPOINT}/gifts/${token}`)
+        let gift = await axios.get(`${ENDPOINT}/gifts`, {
+            params: {
+                token: token
+            }
+        });
         return gift.data
     }
 }
