@@ -15,6 +15,10 @@ const styles = theme => ({
 class DonationStepReceiver extends React.Component {
   state = {
     fields: {
+      receiverName: {
+        value: '',
+        error: false
+      },
       address: {
         value: '',
         error: false
@@ -73,6 +77,17 @@ class DonationStepReceiver extends React.Component {
           </Typography>
         </Grid>
         <Grid item sm={12} container justify='center'>
+          <Grid item sm={6} xs={7}>
+            <GreenTextField
+              label="Receiver Name"
+              value={this.state.fields.receiverName.value}
+              error={this.state.fields.receiverName.error}
+              onChange={this.handleChange("receiverName")}
+              margin="normal"
+              variant="filled"
+            />
+          </Grid>
+          <Grid item sm={12}/>
           <Grid item sm={6} xs={7}>
             <GreenTextField
               label="Address"

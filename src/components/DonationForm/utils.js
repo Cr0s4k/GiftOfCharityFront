@@ -50,6 +50,12 @@ class Utils {
                 error: Utils.checkStandard(newValue)
             }
         };
+        else if (input === 'receiverName') return {
+            receiverName: {
+                value: newValue,
+                error: Utils.checkStandard(newValue)
+            }
+        };
     };
 
     static checkStandard = text => {
