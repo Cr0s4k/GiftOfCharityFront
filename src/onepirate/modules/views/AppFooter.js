@@ -82,15 +82,15 @@ class AppFooter extends React.Component{
       <Typography component="footer" className={this.classes.root}>
         <LayoutBody className={this.classes.layoutBody} width="large">
           <Grid container spacing={40}>
-            <Grid item xs={12} sm={12} md={4}>
+            <Grid item xs={12} sm={12} md={2}>
               <Grid
                 container
-                direction="column"
+                // direction="column"
                 justify="flex-end"
                 className={this.classes.iconsWrapper}
                 spacing={16}
               >
-                <Grid item className={this.classes.icons}>
+                <Grid item xs={12} className={this.classes.icons}>
                   <a href="/" className={this.classes.icon}>
                     <img src="/images/appFooterFacebook.png" alt="Facebook" />
                   </a>
@@ -98,7 +98,7 @@ class AppFooter extends React.Component{
                     <img src="/images/appFooterTwitter.png" alt="Twitter" />
                   </a>
                 </Grid>
-                <Grid item>© 2018 GiftOfCharity</Grid>
+                <Grid item xs={12}>© 2018 GiftOfCharity</Grid>
               </Grid>
             </Grid>
             <Grid item xs={6} sm={4} md={2}>
