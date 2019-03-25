@@ -242,7 +242,7 @@ class DonationProcess extends React.Component{
                   {this.state.activeStep === this.state.steps.length &&
                   <MediaQuery query='(max-width: 750px)'>
                     <div className={this.classes.lastMessageMobile}>
-                      <img src={donationProcessImg} className={this.classes.lastMessageImage}/>
+                      <img alt="World" src={donationProcessImg} className={this.classes.lastMessageImage}/>
                       <Typography variant="h5" marked='left' component="h2">
                         Thanks for your donation, your <b>gift</b> is on the way!
                       </Typography>
@@ -283,7 +283,7 @@ class DonationProcess extends React.Component{
         {this.state.activeStep === this.state.steps.length &&
         <MediaQuery query='(min-width: 750px)'>
           <div className={this.classes.lastMessage}>
-            <img src={donationProcessImg} className={this.classes.lastMessageImage}/>
+            <img alt="World" src={donationProcessImg} className={this.classes.lastMessageImage}/>
             <Typography variant="h5" marked='left' component="h2">
               Thanks for your donation, your <b>gift</b> is on the way!
             </Typography>
