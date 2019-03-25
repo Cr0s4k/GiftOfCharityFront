@@ -16,7 +16,7 @@ import DonationStepVideo from "./DonationStepVideo";
 import DonationStepReceiver from "./DonationStepReceiver";
 import DonationStepDonor from "./DonationStepDonor";
 import DonationStepPayment from "./DonationStepPayment";
-import HomeSection from '../../../images/homeSection.png'
+import donationProcessImg from '../../../images/donationProcess.png'
 import MediaQuery from 'react-responsive'
 
 const styles = theme => ({
@@ -57,7 +57,7 @@ const styles = theme => ({
     left: '20%',
     textAlign: 'center'
   },
-  lastMessageM: {
+  lastMessageMobile: {
     position: 'relative',
     top: -33,
     textAlign: 'center',
@@ -241,8 +241,8 @@ class DonationProcess extends React.Component{
                 <Grid item xs={12} md={12}>
                   {this.state.activeStep === this.state.steps.length &&
                   <MediaQuery query='(max-width: 750px)'>
-                    <div className={this.classes.lastMessageM}>
-                      <img src={HomeSection} className={this.classes.lastMessageImage}/>
+                    <div className={this.classes.lastMessageMobile}>
+                      <img src={donationProcessImg} className={this.classes.lastMessageImage}/>
                       <Typography variant="h5" marked='left' component="h2">
                         Thanks for your donation, your <b>gift</b> is on the way!
                       </Typography>
@@ -283,7 +283,7 @@ class DonationProcess extends React.Component{
         {this.state.activeStep === this.state.steps.length &&
         <MediaQuery query='(min-width: 750px)'>
           <div className={this.classes.lastMessage}>
-            <img src={HomeSection} className={this.classes.lastMessageImage}/>
+            <img src={donationProcessImg} className={this.classes.lastMessageImage}/>
             <Typography variant="h5" marked='left' component="h2">
               Thanks for your donation, your <b>gift</b> is on the way!
             </Typography>
