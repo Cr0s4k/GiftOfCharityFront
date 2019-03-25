@@ -1,7 +1,7 @@
 import React, {Component} from 'react'
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
-import homeSectionImage from '../../images/homeSection.png'
+import homeSectionImage from '../../images/donationProcess.png'
 import './styles.css'
 
 class HomeSection extends Component {

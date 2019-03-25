@@ -68,6 +68,7 @@ class DonationStepVideo extends React.Component {
 
   handleUpload = async () => {
     const data = new FormData();
+    console.log(this.state.file)
     data.append('file', this.state.file, this.state.file.name);
     let videoUrl;
     try {
@@ -82,10 +83,11 @@ class DonationStepVideo extends React.Component {
   };
 
   handleSelectedFile = evt => {
-    this.setState({
-      file: evt.target.files[0],
-      loading: false
-    }, this.handleUpload);
+    if(evt.target.files[0])
+      this.setState({
+        file: evt.target.files[0],
+        loading: false
+      }, this.handleUpload);
   };
 
   handleUploadBtn = () => {
