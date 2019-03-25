@@ -16,6 +16,8 @@ import DonationStepVideo from "./DonationStepVideo";
 import DonationStepReceiver from "./DonationStepReceiver";
 import DonationStepDonor from "./DonationStepDonor";
 import DonationStepPayment from "./DonationStepPayment";
+import HomeSection from '../../../images/homeSection.png'
+import MediaQuery from 'react-responsive'
 
 const styles = theme => ({
   root: {
@@ -47,6 +49,25 @@ const styles = theme => ({
   },
   stepper: {
     backgroundColor: 'transparent'
+  },
+  lastMessage: {
+    position: 'absolute',
+    top: '18%',
+    width: '60%',
+    left: '20%',
+    textAlign: 'center'
+  },
+  lastMessageM: {
+    position: 'relative',
+    top: -33,
+    textAlign: 'center',
+  },
+  lastMessageImage: {
+    display: 'block',
+    width: 300,
+    height: 300,
+    margin: '0 auto',
+    marginBottom: 5
   }
 });
 
@@ -218,6 +239,16 @@ class DonationProcess extends React.Component{
                   </Stepper>
                 </Grid>
                 <Grid item xs={12} md={12}>
+                  {this.state.activeStep === this.state.steps.length &&
+                  <MediaQuery query='(max-width: 750px)'>
+                    <div className={this.classes.lastMessageM}>
+                      <img src={HomeSection} className={this.classes.lastMessageImage}/>
+                      <Typography variant="h5" marked='left' component="h2">
+                        Thanks for your donation, your <b>gift</b> is on the way!
+                      </Typography>
+                    </div>
+                  </MediaQuery>
+                  }
                   <div className={classes.actionsContainer}>
                     <div>
                       <Button
@@ -249,6 +280,16 @@ class DonationProcess extends React.Component{
             message={this.state.snackMessage}
           />
         </LayoutBody>
+        {this.state.activeStep === this.state.steps.length &&
+        <MediaQuery query='(min-width: 750px)'>
+          <div className={this.classes.lastMessage}>
+            <img src={HomeSection} className={this.classes.lastMessageImage}/>
+            <Typography variant="h5" marked='left' component="h2">
+              Thanks for your donation, your <b>gift</b> is on the way!
+            </Typography>
+          </div>
+        </MediaQuery>
+        }
       </section>
     );
   }

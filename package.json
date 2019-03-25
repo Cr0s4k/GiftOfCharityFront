@@ -17,6 +17,7 @@
     "react-dom": "^16.8.1",
     "react-paypal-express-checkout": "^1.0.5",
     "react-player": "^1.9.3",
+    "react-responsive": "^6.1.1",
     "react-router": "^4.3.1",
     "react-router-dom": "^4.3.1",
     "react-scripts": "2.1.3",
