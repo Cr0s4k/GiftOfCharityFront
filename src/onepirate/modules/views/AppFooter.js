@@ -82,7 +82,7 @@ class AppFooter extends React.Component{
       <Typography component="footer" className={this.classes.root}>
         <LayoutBody className={this.classes.layoutBody} width="large">
           <Grid container spacing={40}>
-            <Grid item xs={12} sm={12} md={2}>
+            <Grid item xs={5} sm={5} md={2}>
               <Grid
                 container
                 // direction="column"
@@ -101,7 +101,7 @@ class AppFooter extends React.Component{
                 <Grid item xs={12}>© 2018 GiftOfCharity</Grid>
               </Grid>
             </Grid>
-            <Grid item xs={6} sm={4} md={2}>
+            <Grid item xs={5} sm={5} md={2}>
               <Typography variant="h6" marked="left" gutterBottom>
                 Legal
               </Typography>
@@ -114,45 +114,6 @@ class AppFooter extends React.Component{
                 </li>
               </ul>
             </Grid>
-            <Grid item xs={6} sm={8} md={4}>
-              <Typography variant="h6" marked="left" gutterBottom>
-                Language
-              </Typography>
-              <TextField
-                select
-                SelectProps={{
-                  native: true,
-                }}
-                className={this.classes.language}
-              >
-                {LANGUAGES.map(language => (
-                  <option value={language.code} key={language.code}>
-                    {language.name}
-                  </option>
-                ))}
-              </TextField>
-            </Grid>
-            {/*<Grid item>*/}
-            {/*<Typography variant="caption">*/}
-            {/*{'Icons made by '}*/}
-            {/*<Link href="http://www.freepik.com" title="Freepik">*/}
-            {/*Freepik*/}
-            {/*</Link>*/}
-            {/*{' from '}*/}
-            {/*<Link href="https://www.flaticon.com/" title="Flaticon">*/}
-            {/*www.flaticon.com*/}
-            {/*</Link>*/}
-            {/*{' is licensed by '}*/}
-            {/*<Link*/}
-            {/*href="http://creativecommons.org/licenses/by/3.0/"*/}
-            {/*title="Creative Commons BY 3.0"*/}
-            {/*target="_blank"*/}
-            {/*rel="noopener noreferrer"*/}
-            {/*>*/}
-            {/*CC 3.0 BY*/}
-            {/*</Link>*/}
-            {/*</Typography>*/}
-            {/*</Grid>*/}
           </Grid>
         </LayoutBody>
       </Typography>
