@@ -7,7 +7,6 @@ import Grid from '@material-ui/core/Grid';
 import Link from '@material-ui/core/Link';
 import LayoutBody from '../components/LayoutBody';
 import Typography from '../components/Typography';
-import TextField from '../components/TextField';
 import withRouter from "react-router/es/withRouter";
 
 const styles = theme => ({
@@ -58,17 +57,6 @@ const styles = theme => ({
     }
   }
 });
-
-const LANGUAGES = [
-  {
-    code: 'en-US',
-    name: 'English',
-  },
-  // {
-  //   code: 'fr-FR',
-  //   name: 'Français',
-  // },
-];
 
 class AppFooter extends React.Component{
   classes = this.props.classes;
