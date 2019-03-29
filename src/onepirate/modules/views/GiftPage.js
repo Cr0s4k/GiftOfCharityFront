@@ -64,14 +64,20 @@ class GiftPage extends React.Component{
   };
 
   componentDidMount() {
-    API.getGift(this.props.match.params.token)
-      .then(gift => {
-        console.log(gift);
-        this.setState({ gift: gift});
-      })
-      .catch(e => {
-        this.props.history.push('/');
-      })
+    if(this.props.match.params.token){
+      API.getGift(this.props.match.params.token)
+        .then(gift => {
+          console.log(gift);
+          this.setState({ gift: gift});
+        })
+        .catch(e => {
+          this.props.history.push('/');
+        })
+    }
+    else {
+      console.log(this.props)
+      this.setState({gift: this.props.location.state.gift})
+    }
   }
 
   render() {

@@ -1,0 +1,80 @@
+import React from 'react'
+import Grid from "@material-ui/core/Grid";
+import Typography from "../components/Typography";
+import withStyles from "@material-ui/core/es/styles/withStyles";
+import Link from "@material-ui/core/Link";
+import Button from "../components/Button";
+import withRouter from "react-router/es/withRouter";
+import LinkRouter from 'react-router-dom/Link'
+
+const styles = theme => ({
+  button: {
+    marginTop: theme.spacing.unit,
+  }
+});
+
+class DonationStepDemo extends React.Component {
+  classes = this.props.classes;
+
+  constructor(props) {
+    super(props);
+    props.changeNextBtn(true)
+  }
+
+  getGift = () => {
+    let donationInformation = this.props.donationInformation;
+    return {
+      gift: {
+        donorName: donationInformation.donorName,
+        videoUrl: donationInformation.videoUrl,
+        amount: 10,
+        charityProject: {
+          name: 'Pole'
+        }
+      }
+    }
+  };
+
+  render() {
+
+    return (
+      <>
+        <Grid item sm={12} xs={12}>
+          <Typography variant="h5" align="center" component='h2' gutterBottom>
+            See what your friend will receive!
+          </Typography>
+        </Grid>
+        <Grid item sm={12} container justify='center'>
+          <Button
+            color="secondary"
+            size="large"
+            variant="contained"
+            className={this.classes.button}
+            component={linkProps => (
+              <Link
+                {...linkProps}
+                variant="button"
+                component={linkRouterProps => (
+                  <LinkRouter
+                    {...linkRouterProps}
+                    to={{
+                      pathname: "/gifts-demo",
+                      state: {
+                        pole: true
+                      }
+                    }}
+                    target="_blank"
+                  />
+                )}
+              />
+            )}
+          >
+            OPEN DEMO
+          </Button>
+        </Grid>
+      </>
+    );
+  }
+}
+
+export default withStyles(styles)(withRouter(DonationStepDemo));

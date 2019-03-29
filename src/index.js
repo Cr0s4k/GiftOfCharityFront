@@ -33,7 +33,8 @@ ReactDOM.render((
             <Route exact path="/privacy" component={Privacy} />
             <Route exact path="/products/:id" component={Product} />
             <Route exact path="/products/:id/donate" component={Donation} />
-            <Route exact path="/gift/:token" component={Gift}/>
+            <Route exact path="/gifts/:token" component={Gift}/>
+            <Route exact path="/gifts-demo" component={Gift}/>
         </>
     </BrowserRouter>), document.getElementById('root'));
 

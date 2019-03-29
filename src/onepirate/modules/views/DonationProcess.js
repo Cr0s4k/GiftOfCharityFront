@@ -15,6 +15,7 @@ import StepContent from "@material-ui/core/StepContent";
 import DonationStepVideo from "./DonationStepVideo";
 import DonationStepReceiver from "./DonationStepReceiver";
 import DonationStepDonor from "./DonationStepDonor";
+import DonationStepDemo from "./DonationStepDemo"
 import DonationStepPayment from "./DonationStepPayment";
 import donationProcessImg from '../../../images/donationProcess.png'
 import MediaQuery from 'react-responsive'
@@ -78,11 +79,12 @@ class DonationProcess extends React.Component{
     product: null,
     snackMessage: '',
     openSnack: false,
-    activeStep: 0,
+    activeStep: 3,
     steps: [
       'Video',
       'Receiver',
       'You',
+      'Demo',
       'Donation'
     ],
     data: {
@@ -177,6 +179,12 @@ class DonationProcess extends React.Component{
       />
     );
     else if(index === 3) return (
+      <DonationStepDemo
+        changeNextBtn={this.state.actions.changeNextBtn}
+        donationInformation={this.getDonationInformation()}
+      />
+    );
+    else if(index === 4) return (
       <DonationStepPayment
         data={this.state.data.stepPayment}
         update={this.state.actions.updateStepPayment}
