@@ -77,7 +77,7 @@ class DonationStepReceiver extends React.Component {
           </Typography>
         </Grid>
         <Grid item sm={12} container justify='center'>
-          <Grid item sm={6} xs={7}>
+          <Grid item sm={6} xs={12}>
             <GreenTextField
               label="Receiver Name"
               value={this.state.fields.receiverName.value}
@@ -88,7 +88,7 @@ class DonationStepReceiver extends React.Component {
             />
           </Grid>
           <Grid item sm={12}/>
-          <Grid item sm={6} xs={7}>
+          <Grid item sm={6} xs={12}>
             <GreenTextField
               label="Address"
               value={this.state.fields.address.value}
@@ -99,7 +99,7 @@ class DonationStepReceiver extends React.Component {
             />
           </Grid>
           <Grid item sm={12}/>
-          <Grid item sm={6} xs={7}>
+          <Grid item sm={6} xs={12}>
             <GreenTextField
               label="City"
               value={this.state.fields.city.value}
@@ -110,7 +110,7 @@ class DonationStepReceiver extends React.Component {
             />
           </Grid>
           <Grid item sm={12}/>
-          <Grid item sm={6} xs={7}>
+          <Grid item sm={6} xs={12}>
             <GreenTextField
               label="Country"
               value={this.state.fields.country.value}
@@ -121,7 +121,7 @@ class DonationStepReceiver extends React.Component {
             />
           </Grid>
           <Grid item sm={12}/>
-          <Grid item sm={6} xs={7}>
+          <Grid item sm={6} xs={12}>
             <GreenTextField
               label="State/Province/Region"
               value={this.state.fields.province.value}
@@ -132,7 +132,7 @@ class DonationStepReceiver extends React.Component {
             />
           </Grid>
           <Grid item sm={12}/>
-          <Grid item sm={6} xs={7}>
+          <Grid item sm={6} xs={12}>
             <GreenTextField
               label="Postcode"
               value={this.state.fields.postcode.value}
