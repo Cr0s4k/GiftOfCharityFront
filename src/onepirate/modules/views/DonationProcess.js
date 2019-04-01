@@ -138,6 +138,7 @@ class DonationProcess extends React.Component{
     email: this.state.data.stepDonor ? this.state.data.stepDonor.fields.email.value : null,
     donorName: this.state.data.stepDonor ? this.state.data.stepDonor.fields.donorName.value : null,
     receiverName: this.state.data.stepReceiver ? this.state.data.stepReceiver.fields.receiverName.value : null,
+    product: this.state.product,
     itemId: parseInt(this.props.match.params.id),
   });
 
