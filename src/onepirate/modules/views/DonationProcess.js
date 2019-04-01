@@ -15,6 +15,7 @@ import StepContent from "@material-ui/core/StepContent";
 import DonationStepVideo from "./DonationStepVideo";
 import DonationStepReceiver from "./DonationStepReceiver";
 import DonationStepDonor from "./DonationStepDonor";
+import DonationStepDemo from "./DonationStepDemo"
 import DonationStepPayment from "./DonationStepPayment";
 import donationProcessImg from '../../../images/donationProcess.png'
 import MediaQuery from 'react-responsive'
@@ -83,6 +84,7 @@ class DonationProcess extends React.Component{
       'Video',
       'Receiver',
       'You',
+      'Demo',
       'Donation'
     ],
     data: {
@@ -92,25 +94,25 @@ class DonationProcess extends React.Component{
       stepPayment: undefined
     },
     actions: {
-      updateStepVideo: (newState) => {
+      updateStepVideo: newState => {
         this.setState({data:{
           ...this.state.data,
           stepVideo: newState
         }})
       },
-      updateStepReceiver: (newState) => {
+      updateStepReceiver: newState => {
         this.setState({data:{
           ...this.state.data,
           stepReceiver: newState
         }})
       },
-      updateStepDonor: (newState) => {
+      updateStepDonor: newState => {
         this.setState({data:{
           ...this.state.data,
           stepDonor: newState,
         }})
       },
-      updateStepPayment: (newState) => {
+      updateStepPayment: newState => {
         this.setState({data:{
           ...this.state.data,
           stepPayment: newState
@@ -136,6 +138,8 @@ class DonationProcess extends React.Component{
     email: this.state.data.stepDonor ? this.state.data.stepDonor.fields.email.value : null,
     donorName: this.state.data.stepDonor ? this.state.data.stepDonor.fields.donorName.value : null,
     receiverName: this.state.data.stepReceiver ? this.state.data.stepReceiver.fields.receiverName.value : null,
+    product: this.state.product,
+    amount: this.state.data.stepPayment ? this.state.data.stepPayment.fields.amount.value : 10,
     itemId: parseInt(this.props.match.params.id),
   });
 
@@ -177,6 +181,12 @@ class DonationProcess extends React.Component{
       />
     );
     else if(index === 3) return (
+      <DonationStepDemo
+        changeNextBtn={this.state.actions.changeNextBtn}
+        donationInformation={this.getDonationInformation()}
+      />
+    );
+    else if(index === 4) return (
       <DonationStepPayment
         data={this.state.data.stepPayment}
         update={this.state.actions.updateStepPayment}
