@@ -79,7 +79,7 @@ class DonationProcess extends React.Component{
     product: null,
     snackMessage: '',
     openSnack: false,
-    activeStep: 0,
+    activeStep: 4,
     steps: [
       'Video',
       'Receiver',
