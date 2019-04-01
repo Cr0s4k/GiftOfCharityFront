@@ -63,11 +63,15 @@ class GiftPage extends React.Component{
     this.props.history.push(`/products/${this.state.gift.charityProject.id}`)
   };
 
+  loadGiftFromLS = () => {
+    console.log(localStorage.getItem('gift'));
+    this.setState({gift: JSON.parse(localStorage.getItem('gift'))})
+  };
+
   componentDidMount() {
-    if(this.props.match.params.token){
+    if(this.props.match.params.token){ // If it is not a demo
       API.getGift(this.props.match.params.token)
         .then(gift => {
-          console.log(gift);
           this.setState({ gift: gift});
         })
         .catch(e => {
@@ -75,8 +79,7 @@ class GiftPage extends React.Component{
         })
     }
     else {
-      console.log(this.props)
-      this.setState({gift: this.props.location.state.gift})
+      this.loadGiftFromLS()
     }
   }
 

@@ -23,20 +23,21 @@ class DonationStepDemo extends React.Component {
 
   getGift = () => {
     let donationInformation = this.props.donationInformation;
-    return {
-      gift: {
-        donorName: donationInformation.donorName,
-        videoUrl: donationInformation.videoUrl,
-        amount: 10,
-        charityProject: {
-          name: 'Pole'
-        }
+    return ({
+      donorName: donationInformation.donorName,
+      videoUrl: donationInformation.videoUrl,
+      amount: 10,
+      charityProject: {
+        name: 'Pole'
       }
-    }
+    })
+  };
+
+  handleBtn = () => {
+    localStorage.setItem('gift', JSON.stringify(this.getGift()))
   };
 
   render() {
-
     return (
       <>
         <Grid item sm={12} xs={12}>
@@ -46,6 +47,7 @@ class DonationStepDemo extends React.Component {
         </Grid>
         <Grid item sm={12} container justify='center'>
           <Button
+            onClick={this.handleBtn}
             color="secondary"
             size="large"
             variant="contained"
@@ -57,12 +59,7 @@ class DonationStepDemo extends React.Component {
                 component={linkRouterProps => (
                   <LinkRouter
                     {...linkRouterProps}
-                    to={{
-                      pathname: "/gifts-demo",
-                      state: {
-                        pole: true
-                      }
-                    }}
+                    to="/gifts-demo"
                     target="_blank"
                   />
                 )}
