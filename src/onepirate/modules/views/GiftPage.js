@@ -68,8 +68,10 @@ class GiftPage extends React.Component{
     this.setState({gift: JSON.parse(localStorage.getItem('gift'))})
   };
 
+  isADemo = () => !this.props.match.params.token;
+
   componentDidMount() {
-    if(this.props.match.params.token){ // If it is not a demo
+    if(!this.isADemo()){ // If it is not a demo
       API.getGift(this.props.match.params.token)
         .then(gift => {
           this.setState({ gift: gift});
@@ -79,7 +81,11 @@ class GiftPage extends React.Component{
         })
     }
     else {
-      this.loadGiftFromLS()
+      this.loadGiftFromLS();
+      window.addEventListener("beforeunload", ev => { // Remove gift if windows is closed
+        ev.preventDefault();
+        localStorage.removeItem('gift')
+      });
     }
   }
 
