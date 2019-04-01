@@ -28,7 +28,7 @@ class DonationStepVideo extends React.Component {
   state = {
     file: null,
     loading: false,
-    videoUrl: "https://firebasestorage.googleapis.com/v0/b/giftofcharity-ab752.appspot.com/o/videos%2FCongratulations!!!!.mp4?alt=media&token=b4b84bea-8c34-4015-86fd-dad88ac5ae78"
+    videoUrl: null
   };
 
   constructor(props) {
