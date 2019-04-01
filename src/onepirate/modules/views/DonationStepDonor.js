@@ -62,7 +62,7 @@ class DonationStepDonor extends React.Component {
           </Typography>
         </Grid>
         <Grid item sm={12} container justify='center'>
-          <Grid item sm={6} xs={7}>
+          <Grid item sm={6} xs={12}>
             <GreenTextField
               label="Your name"
               value={this.state.fields.donorName.value}
@@ -73,7 +73,7 @@ class DonationStepDonor extends React.Component {
             />
           </Grid>
           <Grid item sm={12}/>
-          <Grid item sm={6} xs={7}>
+          <Grid item sm={6} xs={12}>
             <GreenTextField
               label="Your email"
               value={this.state.fields.email.value}

@@ -8,6 +8,7 @@ import withStyles from "@material-ui/core/es/styles/withStyles";
 import API from "../../../services/API";
 import CircularProgress from "@material-ui/core/CircularProgress";
 import Snackbar from "../components/Snackbar";
+import MediaQuery from "react-responsive";
 
 const styles = theme => ({
   button: {
@@ -106,10 +107,24 @@ class DonationStepVideo extends React.Component {
         </Grid>
         <Grid item sm={12}/>
         <Grid item sm={12} xs={12}>
-          <div style={{width: '60%', margin: '0 auto'}}>
-            <ReactPlayer url={this.state.videoUrl}
-                         hidden={this.state.videoUrl == null} controls width="100%" height="auto"/>
-          </div>
+          <MediaQuery minWidth={500}>
+            <div style={{width: '60%', margin: '0 auto'}}>
+              <ReactPlayer url={this.state.videoUrl}
+                           hidden={this.state.videoUrl == null}
+                           controls width="100%"
+                           height="auto"
+              />
+            </div>
+          </MediaQuery>
+          <MediaQuery maxWidth={500}>
+            <div style={{width: '100%', margin: '0 auto'}}>
+              <ReactPlayer url={this.state.videoUrl}
+                           hidden={this.state.videoUrl == null}
+                           controls width="100%"
+                           height="auto"
+              />
+            </div>
+          </MediaQuery>
           <input ref={this.uploadInRef} type="file" multiple={true} style={{display: "none"}} onChange={this.handleSelectedFile} accept="video/*"/>
           <div style={{textAlign: 'center'}} hidden={!this.state.loading}>
             <CircularProgress/>

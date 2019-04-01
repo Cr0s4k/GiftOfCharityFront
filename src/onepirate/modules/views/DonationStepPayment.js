@@ -8,6 +8,7 @@ import Utils from "../../../components/DonationForm/utils";
 import API from "../../../services/API";
 import Snackbar from "../components/Snackbar";
 import CircularProgress from "@material-ui/core/CircularProgress";
+import MediaQuery from 'react-responsive'
 
 const styles = theme => ({
   button: {
@@ -94,7 +95,7 @@ class DonationStep3 extends React.Component {
             </div>
             :
             <>
-              <Grid item sm={5} xs={5}>
+              <Grid item sm={5} xs={10}>
                 <GreenTextField
                   id="standard-number"
                   label="Amount (€)"
@@ -108,21 +109,38 @@ class DonationStep3 extends React.Component {
                   margin="normal"
                 />
               </Grid>
+              <br/>
               <Grid item sm={12}/>
               <Grid item sm={12}>
                 <div className={classes.paypalContainer} hidden={this.state.fields.amount.error}>
-                  <PaypalBtn
-                    client={this.state.client}
-                    currency="EUR"
-                    total={parseInt(this.state.fields.amount.value)}
-                    onSuccess={this.onSuccess}
-                    // onError={this.onError}
-                    style={{
-                      shape: 'rect',
-                      size: 'large',
-                      fundingicons: true,
-                    }}
-                  />
+                  <MediaQuery maxWidth={500}>
+                    <PaypalBtn
+                      client={this.state.client}
+                      currency="EUR"
+                      total={parseInt(this.state.fields.amount.value)}
+                      onSuccess={this.onSuccess}
+                      // onError={this.onError}
+                      style={{
+                        shape: 'rect',
+                        size: 'medium',
+                        fundingicons: true,
+                      }}
+                    />
+                  </MediaQuery>
+                  <MediaQuery minWidth={500}>
+                    <PaypalBtn
+                      client={this.state.client}
+                      currency="EUR"
+                      total={parseInt(this.state.fields.amount.value)}
+                      onSuccess={this.onSuccess}
+                      // onError={this.onError}
+                      style={{
+                        shape: 'rect',
+                        size: 'large',
+                        fundingicons: true,
+                      }}
+                    />
+                  </MediaQuery>
                 </div>
               </Grid>
             </>
