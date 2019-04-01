@@ -34,7 +34,7 @@ const styles = theme => ({
     marginBottom: theme.spacing.unit * 3,
   },
   message: {
-    marginBottom: theme.spacing.unit * 7,
+    marginBottom: theme.spacing.unit * 1,
     fontSize: 18,
     textAlign: 'center'
   },
@@ -107,7 +107,7 @@ class GiftPage extends React.Component{
                     <ReactPlayer url={this.state.gift.videoUrl} controls width="100%" height="auto"/>
                   </div>
                 </Grid>
-                <Grid item sm={6} xs={6}>
+                <Grid item sm={6} xs={11}>
                   <Typography variant="body1" marked="center" className={this.classes.message} component="h2">
                     <b>{this.state.gift.donorName}</b> has donated {this.state.gift.amount}€ in your name! Thanks to you, <b>GiftOfCharity </b>
                     will donate that money to a charity project called <Link className={this.classes.link} onClick={this.handleLink}><b>{this.state.gift.charityProject.name}</b></Link>.
