@@ -94,25 +94,25 @@ class DonationProcess extends React.Component{
       stepPayment: undefined
     },
     actions: {
-      updateStepVideo: (newState) => {
+      updateStepVideo: newState => {
         this.setState({data:{
           ...this.state.data,
           stepVideo: newState
         }})
       },
-      updateStepReceiver: (newState) => {
+      updateStepReceiver: newState => {
         this.setState({data:{
           ...this.state.data,
           stepReceiver: newState
         }})
       },
-      updateStepDonor: (newState) => {
+      updateStepDonor: newState => {
         this.setState({data:{
           ...this.state.data,
           stepDonor: newState,
         }})
       },
-      updateStepPayment: (newState) => {
+      updateStepPayment: newState => {
         this.setState({data:{
           ...this.state.data,
           stepPayment: newState
@@ -139,6 +139,7 @@ class DonationProcess extends React.Component{
     donorName: this.state.data.stepDonor ? this.state.data.stepDonor.fields.donorName.value : null,
     receiverName: this.state.data.stepReceiver ? this.state.data.stepReceiver.fields.receiverName.value : null,
     product: this.state.product,
+    amount: this.state.data.stepPayment ? this.state.data.stepPayment.fields.amount.value : 10,
     itemId: parseInt(this.props.match.params.id),
   });
 

@@ -26,7 +26,7 @@ class DonationStepDemo extends React.Component {
     return ({
       donorName: donationInformation.donorName,
       videoUrl: donationInformation.videoUrl,
-      amount: 10,
+      amount: donationInformation.amount,
       charityProject: donationInformation.product
     })
   };

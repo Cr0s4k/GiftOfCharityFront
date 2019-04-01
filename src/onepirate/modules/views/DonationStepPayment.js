@@ -45,7 +45,6 @@ class DonationStep3 extends React.Component {
     if(this.props.data)
       this.setState(this.props.data);
     this.props.changeNextBtn(false)
-
   }
 
   componentWillUnmount() {
