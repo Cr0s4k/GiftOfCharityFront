@@ -63,7 +63,7 @@ function ProductValues(props) {
               <Typography variant="h6" className={classes.title}>
                 Free donation
               </Typography>
-              <Typography variant="h5">
+              <Typography variant="h5" align='center'>
                 {'Donate as much as you want! We do not pressure our clients'}
               </Typography>
             </div>
@@ -79,8 +79,8 @@ function ProductValues(props) {
               <Typography variant="h6" className={classes.title}>
                 New experiences
               </Typography>
-              <Typography variant="h5">
-                {'Give an experience to the person you want!'}
+              <Typography variant="h5" align='center'>
+                {'Give a nice experience to the person you want!'}
               </Typography>
             </div>
           </Grid>
@@ -95,8 +95,8 @@ function ProductValues(props) {
               <Typography variant="h6" className={classes.title}>
                 Quizzes
               </Typography>
-              <Typography variant="h5">
-                {'We will also send a nice quiz to the receiver!'}
+              <Typography variant="h5" align='center'>
+                {'We will also send a quiz to the receiver, so he can see one of the reasons of  your donation!'}
               </Typography>
             </div>
           </Grid>

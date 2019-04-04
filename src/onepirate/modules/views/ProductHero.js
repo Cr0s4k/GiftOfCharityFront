@@ -43,7 +43,7 @@ function ProductHero(props) {
           The enhanced charity experience
       </Typography>
       <Typography color="inherit" align="center" variant="h5" className={classes.h5}>
-          By adding a digital experience turn a commendable gift into a great one!
+          By adding a digital experience, turn a commendable gift into a great one!
       </Typography>
       <Button
         color="secondary"
