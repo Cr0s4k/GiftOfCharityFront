@@ -89,7 +89,7 @@ class ProductCTA extends React.Component {
                   Receive offers
                 </Typography>
                 <Typography variant="h5">
-                  Be aware is there is a new charity project available.
+                  Be aware if there is a new charity project available.
                 </Typography>
                 <TextField noBorder className={classes.textField} placeholder="Your email" />
                 <Button
