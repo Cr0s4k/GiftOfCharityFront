@@ -62,9 +62,9 @@ class DonationStep3 extends React.Component {
     try{
       this.setState({loading: true});
       await API.makeDonation({
+        ...this.props.donationInformation,
         orderId: payment.paymentID,
-        amount: parseInt(this.state.fields.amount.value),
-        ...this.props.donationInformation
+        amount: parseInt(this.state.fields.amount.value)
       });
 
       this.props.enableGoToHomePageBtn();
