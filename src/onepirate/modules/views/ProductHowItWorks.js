@@ -81,7 +81,7 @@ function ProductHowItWorks(props) {
                 {/*/>*/}
                 <Icon className={classes.image}>local_florist_outline</Icon>
                 <Typography variant="h5" align="center">
-                  Pick a great cause like
+                  Pick a great cause
                 </Typography>
               </div>
             </Grid>
