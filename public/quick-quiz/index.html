@@ -26,7 +26,8 @@
   <script src="quiz.js"></script>
   <script>
     $(function() {
-      $('#quiz').quiz("unicorns.json");
+      var questionnaire = JSON.parse(localStorage.getItem('questionnaire'));
+      $('#quiz').quiz(questionnaire);
     });
   </script>
 </body>

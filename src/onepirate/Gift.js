@@ -17,7 +17,7 @@ class Index extends React.Component{
       <React.Fragment>
         <AppAppBar />
         <GiftPage />
-        <ProductSmokingHero />
+        {/*<ProductSmokingHero />*/}
         <AppFooter />
       </React.Fragment>
     );
