@@ -49,6 +49,10 @@ class GiftPage extends React.Component{
   constructor(props) {
     super(props);
     document.title = 'Congratulations!'
+
+    window.addEventListener('message', () => {
+      this.setState({questionnaire: false})
+    });
   }
 
   classes = this.props.classes;

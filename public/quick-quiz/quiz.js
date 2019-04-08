@@ -295,6 +295,16 @@ var $indicators = $('<ol>')
     })
     .appendTo($restart_button);
 
+  $("<button>")
+    .attr('class', 'quiz-button btn')
+    .text("Continue")
+    .click(function() {
+      // state.correct = 0;
+      // $quiz.carousel(0);
+      window.parent.postMessage('pole', '*');
+    })
+    .appendTo($restart_button);
+
   $quiz.carousel({
     "interval" : false
   });
