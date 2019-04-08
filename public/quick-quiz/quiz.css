@@ -1,6 +1,11 @@
+* {
+  font-family: 'Work Sans', sans-serif;
+}
+
 html, body {
   width: 100%;
   font-family: Lato;
+  background-color: #e8f5e9;
 }
 
 .quiz-question {
@@ -10,7 +15,7 @@ html, body {
   margin: 0 auto;
   text-align: center;
   margin-top: 30px;
-  font-size: 32px;
+  font-size: 28px;
   margin-bottom: 20px;
 }
 
@@ -42,11 +47,10 @@ html, body {
 }
 
 .quiz-button.btn:hover {
-  background-color: #0096D2;
+  /*background-color: #0096D2;*/
+  background-color: #65a868;
   color: #fff;
 }
-
-
 
 .question-image {
     width: 100%;
@@ -94,7 +98,7 @@ html, body {
 }
 
 .quiz-title {
-  font-size: 60px;
+  font-size: 55px;
   font-weight: 300;
   margin-top: 100px;
   margin-bottom: 30px;
@@ -149,7 +153,7 @@ html, body {
   margin-right: 10px;
 }
 .progress-circles li.dark{
-  background: #1696d2;
+  background: #65a868;
 }
 
 
