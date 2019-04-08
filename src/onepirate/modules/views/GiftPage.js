@@ -9,6 +9,8 @@ import ReactPlayer from "react-player";
 import Button from "../components/Button";
 import Typography from "../components/Typography";
 import Link from "@material-ui/core/Link";
+import Iframe from 'react-iframe'
+import questionnaire from '../../forest'
 
 const styles = theme => ({
   root: {
@@ -47,12 +49,17 @@ class GiftPage extends React.Component{
   constructor(props) {
     super(props);
     document.title = 'Congratulations!'
+
+    window.addEventListener('message', () => {
+      this.setState({questionnaire: false})
+    });
   }
 
   classes = this.props.classes;
 
   state = {
-    gift: null
+    gift: null,
+    questionnaire: null
   };
 
   handleClick = () => {
@@ -75,6 +82,9 @@ class GiftPage extends React.Component{
       API.getGift(this.props.match.params.token)
         .then(gift => {
           this.setState({ gift: gift});
+          //lets save the questionnaire in local storage
+          localStorage.setItem("questionnaire", JSON.stringify(questionnaire))
+          this.setState({questionnaire: true})
         })
         .catch(e => {
           this.props.history.push('/');
@@ -91,38 +101,52 @@ class GiftPage extends React.Component{
 
   render() {
     return (
-      <section className={this.classes.root}>
-        <LayoutBody className={this.classes.layoutBody} width="large">
-          {this.state.gift &&
-            <div>
-              <Grid container spacing={40} justify='center'>
-                <Grid item sm={12} xs={12}>
-                  {/*<Typography variant="h4" marked='center' className={this.classes.title} component="h2">*/}
+      <>
+        {this.state.questionnaire ? (
+          <Iframe url="/quick-quiz/"
+            // width="450px"
+                  height="630px"
+            // id="myId"
+            // className="myClassname"
+                  display="initial"
+                  position="relative"
+                  allowFullScreen
+          />
+        ) : (
+          <section className={this.classes.root}>
+            <LayoutBody className={this.classes.layoutBody} width="large">
+              {this.state.gift &&
+              <div>
+                <Grid container spacing={40} justify='center'>
+                  <Grid item sm={12} xs={12}>
+                    {/*<Typography variant="h4" marked='center' className={this.classes.title} component="h2">*/}
                     {/*Here is a gift for you*/}
-                  {/*</Typography>*/}
-                  <Typography variant="h4" marked='center' className={this.classes.title} component="h2">
-                    {this.state.gift.donorName} has a message for you
-                  </Typography>
-                  <div style={{width: '70%', margin: '0 auto'}}>
-                    <ReactPlayer url={this.state.gift.videoUrl} controls width="100%" height="auto"/>
-                  </div>
+                    {/*</Typography>*/}
+                    <Typography variant="h4" marked='center' className={this.classes.title} component="h2">
+                      {this.state.gift.donorName} has a message for you
+                    </Typography>
+                    <div style={{width: '70%', margin: '0 auto'}}>
+                      <ReactPlayer url={this.state.gift.videoUrl} controls width="100%" height="auto"/>
+                    </div>
+                  </Grid>
+                  <Grid item sm={6} xs={11}>
+                    <Typography variant="body1" marked="center" className={this.classes.message} component="h2">
+                      <b>{this.state.gift.donorName}</b> has donated {this.state.gift.amount}€ in your name! Thanks to you, <b>GiftOfCharity </b>
+                      will donate that money to a charity project called <Link className={this.classes.link} onClick={this.handleLink}><b>{this.state.gift.charityProject.name}</b></Link>.
+                    </Typography>
+                  </Grid>
+                  <Grid item sm={12} xs={12}>
+                    <Button className={this.classes.button} variant="contained" color="secondary" onClick={this.handleClick}>
+                      More about <b>GiftOfCharity</b>
+                    </Button>
+                  </Grid>
                 </Grid>
-                <Grid item sm={6} xs={11}>
-                  <Typography variant="body1" marked="center" className={this.classes.message} component="h2">
-                    <b>{this.state.gift.donorName}</b> has donated {this.state.gift.amount}€ in your name! Thanks to you, <b>GiftOfCharity </b>
-                    will donate that money to a charity project called <Link className={this.classes.link} onClick={this.handleLink}><b>{this.state.gift.charityProject.name}</b></Link>.
-                  </Typography>
-                </Grid>
-                <Grid item sm={12} xs={12}>
-                  <Button className={this.classes.button} variant="contained" color="secondary" onClick={this.handleClick}>
-                    More about <b>GiftOfCharity</b>
-                  </Button>
-                </Grid>
-              </Grid>
-            </div>
-          }
-        </LayoutBody>
-      </section>
+              </div>
+              }
+            </LayoutBody>
+          </section>
+        )}
+      </>
     );
   }
 }
