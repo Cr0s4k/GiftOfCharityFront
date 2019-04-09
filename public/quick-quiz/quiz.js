@@ -301,7 +301,7 @@ var $indicators = $('<ol>')
     .click(function() {
       // state.correct = 0;
       // $quiz.carousel(0);
-      window.parent.postMessage('pole', '*');
+      window.parent.postMessage('END_QUIZ', '*');
     })
     .appendTo($restart_button);
 

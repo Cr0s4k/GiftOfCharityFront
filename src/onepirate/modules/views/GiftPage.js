@@ -49,8 +49,8 @@ class GiftPage extends React.Component{
     super(props);
     document.title = 'Congratulations!'
 
-    window.addEventListener('message', () => {
-      this.setState({questionnaire: false})
+    window.addEventListener('message', evt => {
+      if(evt.data === 'END_QUIZ') this.setState({questionnaire: false})
     });
   }
 
