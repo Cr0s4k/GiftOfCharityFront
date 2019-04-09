@@ -10,7 +10,6 @@ import Button from "../components/Button";
 import Typography from "../components/Typography";
 import Link from "@material-ui/core/Link";
 import Iframe from 'react-iframe'
-import questionnaire from '../../forest'
 
 const styles = theme => ({
   root: {
@@ -50,8 +49,8 @@ class GiftPage extends React.Component{
     super(props);
     document.title = 'Congratulations!'
 
-    window.addEventListener('message', () => {
-      this.setState({questionnaire: false})
+    window.addEventListener('message', evt => {
+      if(evt.data === 'END_QUIZ') this.setState({questionnaire: false})
     });
   }
 
@@ -71,20 +70,24 @@ class GiftPage extends React.Component{
   };
 
   loadGiftFromLS = () => {
-    console.log(localStorage.getItem('gift'));
-    this.setState({gift: JSON.parse(localStorage.getItem('gift'))})
+    let gift = JSON.parse(localStorage.getItem('gift'));
+    this.setState({gift: gift});
+    if (gift != null) this.enableQuestionnaire(gift.questionnaire)
   };
 
   isADemo = () => !this.props.match.params.token;
+
+  enableQuestionnaire = questionnaire => {
+    localStorage.setItem("questionnaire", JSON.stringify(questionnaire));
+    this.setState({questionnaire: true})
+  };
 
   componentDidMount() {
     if(!this.isADemo()){ // If it is not a demo
       API.getGift(this.props.match.params.token)
         .then(gift => {
           this.setState({ gift: gift});
-          //lets save the questionnaire in local storage
-          localStorage.setItem("questionnaire", JSON.stringify(questionnaire))
-          this.setState({questionnaire: true})
+          this.enableQuestionnaire(gift.questionnaire)
         })
         .catch(e => {
           this.props.history.push('/');

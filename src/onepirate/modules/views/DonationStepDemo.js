@@ -6,6 +6,7 @@ import Link from "@material-ui/core/Link";
 import Button from "../components/Button";
 import withRouter from "react-router/es/withRouter";
 import LinkRouter from 'react-router-dom/Link'
+import API from "../../../services/API";
 
 const styles = theme => ({
   button: {
@@ -16,9 +17,22 @@ const styles = theme => ({
 class DonationStepDemo extends React.Component {
   classes = this.props.classes;
 
+  state = {
+    questionnaire: null
+  };
+
   constructor(props) {
     super(props);
     props.changeNextBtn(true)
+  }
+
+  componentDidMount() {
+    API.getQuestionnaire(this.props.donationInformation.product.questionnaireId)
+      .then(questionnaire => {
+        this.setState({
+          questionnaire: questionnaire
+        })
+      })
   }
 
   getGift = () => {
@@ -27,7 +41,8 @@ class DonationStepDemo extends React.Component {
       donorName: donationInformation.donorName,
       videoUrl: donationInformation.videoUrl,
       amount: donationInformation.amount,
-      charityProject: donationInformation.product
+      charityProject: donationInformation.product,
+      questionnaire: this.state.questionnaire
     })
   };
 

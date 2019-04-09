@@ -301,7 +301,7 @@ var $indicators = $('<ol>')
     .click(function() {
       // state.correct = 0;
       // $quiz.carousel(0);
-      window.parent.postMessage('pole', '*');
+      window.parent.postMessage('END_QUIZ', '*');
     })
     .appendTo($restart_button);
 
@@ -320,7 +320,6 @@ function resultsText(state) {
 
   var ratio = state.correct / state.total;
   var text;
-
   switch (true) {
     case (ratio === 1):
       text = "Wow&mdash;perfect score!";
@@ -331,7 +330,7 @@ function resultsText(state) {
     case (ratio > 0.60):
       text = "Pretty good, we'll say that's a pass.";
       break;
-    case (ratio > 0.5):
+    case (ratio >= 0.5):
       text = "Well, at least you got half of them right&hellip;";
       break;
     case (ratio < 0.5 && ratio !== 0):
