@@ -28,8 +28,9 @@
   <script src="quiz.js"></script>
   <script>
     $(function() {
-      var questionnaire = JSON.parse(localStorage.getItem('questionnaire'));
-      $('#quiz').quiz(questionnaire);
+      window.addEventListener('message', evt => {
+        $('#quiz').quiz(JSON.parse(evt.data));
+      });
     });
   </script>
 </body>

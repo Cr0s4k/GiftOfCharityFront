@@ -9,7 +9,7 @@ import ReactPlayer from "react-player";
 import Button from "../components/Button";
 import Typography from "../components/Typography";
 import Link from "@material-ui/core/Link";
-import Iframe from 'react-iframe'
+import QuestionnaireIframe from "../components/QuestionnaireIframe";
 
 const styles = theme => ({
   root: {
@@ -51,10 +51,6 @@ class GiftPage extends React.Component{
   constructor(props) {
     super(props);
     document.title = 'Congratulations!'
-
-    window.addEventListener('message', evt => {
-      if(evt.data === 'END_QUIZ') this.setState({questionnaire: false})
-    });
   }
 
   classes = this.props.classes;
@@ -81,8 +77,7 @@ class GiftPage extends React.Component{
   isADemo = () => !this.props.match.params.token;
 
   enableQuestionnaire = questionnaire => {
-    localStorage.setItem("questionnaire", JSON.stringify(questionnaire));
-    this.setState({questionnaire: true})
+    this.setState({questionnaire: questionnaire})
   };
 
   componentDidMount() {
@@ -105,18 +100,15 @@ class GiftPage extends React.Component{
     }
   }
 
+  onReceiveMessage = (evt) => {
+    if(evt.data === 'END_QUIZ') this.setState({questionnaire: null})
+  };
+
   render() {
     return (
       <>
         {this.state.questionnaire ? (
-          <Iframe url="/quick-quiz/index.htm"
-                  width="100%"
-                  height="630px"
-                  className={this.classes.iframe}
-                  display="initial"
-                  position="relative"
-                  allowFullScreen
-          />
+          <QuestionnaireIframe handleReceiveMessage={this.onReceiveMessage} data={this.state.questionnaire}/>
         ) : (
           <section className={this.classes.root}>
             <LayoutBody className={this.classes.layoutBody} width="large">
