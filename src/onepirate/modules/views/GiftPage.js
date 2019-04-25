@@ -41,6 +41,9 @@ const styles = theme => ({
   },
   link: {
     cursor: 'pointer'
+  },
+  iframe: {
+    border: 'none'
   }
 });
 
@@ -107,10 +110,9 @@ class GiftPage extends React.Component{
       <>
         {this.state.questionnaire ? (
           <Iframe url="/quick-quiz/index.htm"
-            // width="450px"
+                  width="100%"
                   height="630px"
-            // id="myId"
-            // className="myClassname"
+                  className={this.classes.iframe}
                   display="initial"
                   position="relative"
                   allowFullScreen
