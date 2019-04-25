@@ -55,6 +55,11 @@ class API {
         });
         return gift.data
     }
+
+    static async getQuestionnaire(id) {
+        let questionnaire = await axios.get(`${ENDPOINT}/questionnaires/${id}`)
+        return questionnaire.data
+    }
 }
 
 export default API

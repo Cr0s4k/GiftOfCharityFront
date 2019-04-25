@@ -1,0 +1,44 @@
+{
+  "title": "Rainforest Quiz",
+  "url": "https://tfgfrontend0.herokuapp.com",
+  "questions": [
+    {
+      "number": 1,
+      "prompt": "How many species become extinct every day in the world’s tropical rainforests?",
+      "answers": [
+        1,
+        12,
+        35
+      ],
+      "correct": {
+        "index": 2
+      }
+    },
+    {
+      "number": 2,
+      "prompt": "Traditional rainforest hunters use blow pipes and poison tipped darts. Where do they get the poison from?",
+      "answers": [
+        "Plants",
+        "Frogs",
+        "Spiders",
+        "Snakes"
+      ],
+      "correct": {
+        "index": 1
+      }
+    },
+    {
+      "number": 3,
+      "prompt": "Plants from the rainforest have helped us treat",
+      "answers": [
+        "Leukaemia",
+        "Breast cancer",
+        "Asthma",
+        "All of these"
+      ],
+      "correct": {
+        "index": 3
+      }
+    }
+  ]
+}
