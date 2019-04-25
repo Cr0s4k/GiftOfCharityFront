@@ -57,7 +57,7 @@ class GiftPage extends React.Component{
 
   state = {
     gift: null,
-    questionnaire: null
+    isQuestionnaireFinished: false
   };
 
   handleClick = () => {
@@ -71,21 +71,16 @@ class GiftPage extends React.Component{
   loadGiftFromLS = () => {
     let gift = JSON.parse(localStorage.getItem('gift'));
     this.setState({gift: gift});
-    if (gift != null) this.enableQuestionnaire(gift.questionnaire)
   };
 
   isADemo = () => !this.props.match.params.token;
-
-  enableQuestionnaire = questionnaire => {
-    this.setState({questionnaire: questionnaire})
-  };
 
   componentDidMount() {
     if(!this.isADemo()){ // If it is not a demo
       API.getGift(this.props.match.params.token)
         .then(gift => {
           this.setState({ gift: gift});
-          this.enableQuestionnaire(gift.questionnaire)
+
         })
         .catch(e => {
           this.props.history.push('/');
@@ -101,14 +96,14 @@ class GiftPage extends React.Component{
   }
 
   onReceiveMessage = (evt) => {
-    if(evt.data === 'END_QUIZ') this.setState({questionnaire: null})
+    if(evt.data === 'END_QUIZ') this.setState({isQuestionnaireFinished: true})
   };
 
   render() {
     return (
       <>
-        {this.state.questionnaire ? (
-          <QuestionnaireIframe handleReceiveMessage={this.onReceiveMessage} data={this.state.questionnaire}/>
+        {this.state.gift && this.state.gift.questionnaire && !this.state.isQuestionnaireFinished ? (
+          <QuestionnaireIframe handleReceiveMessage={this.onReceiveMessage} data={this.state.gift.questionnaire}/>
         ) : (
           <section className={this.classes.root}>
             <LayoutBody className={this.classes.layoutBody} width="large">
