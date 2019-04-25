@@ -106,7 +106,7 @@ class GiftPage extends React.Component{
     return (
       <>
         {this.state.questionnaire ? (
-          <Iframe url="/quick-quiz/"
+          <Iframe url="/quick-quiz/index.htm"
             // width="450px"
                   height="630px"
             // id="myId"
