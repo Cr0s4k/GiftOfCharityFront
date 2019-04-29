@@ -44,7 +44,7 @@ class API {
 
     static async makeDonation(data) {
         console.log(data);
-        await axios.post(`${ENDPOINT}/donations/make_donation`,  data);
+        await axios.post(`${ENDPOINT}/donations`,  data);
     }
 
     static async getGift(token) {
